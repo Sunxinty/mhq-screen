@@ -1,0 +1,53 @@
+//此乃内容库页面的假数据
+var Json = {
+    pgc:{
+        counts:15,
+        details:[
+            {name:"王林",title:"博览会现场",picUrl:"../static/imgs/dataContainer/1.jpg"},
+            {name:"曾雨晴",title:"大学生培训",picUrl:"../static/imgs/dataContainer/2.jpg"},
+            {name:"李阳",title:"凤凰街民居已损坏",picUrl:"../static/imgs/dataContainer/3.jpg"},
+            {name:"安晓军",title:"高铁监控状态",picUrl:"../static/imgs/dataContainer/4.jpg"},
+            {name:"蔡坤林",title:"高铁新革命",picUrl:"../static/imgs/dataContainer/5.jpg"},
+            {name:"赵思绪",title:"洪涝灾害，水上行走",picUrl:"../static/imgs/dataContainer/6.jpg"},
+            {name:"程毅成",title:"会客洽谈",picUrl:"../static/imgs/dataContainer/7.jpg"},
+            {name:"陈志松",title:"男子随身携带金条",picUrl:"../static/imgs/dataContainer/8.jpg"},
+            {name:"赵信亚",title:"",picUrl:"../static/imgs/dataContainer/9.jpg"},
+            {name:"代子航",title:"",picUrl:"../static/imgs/dataContainer/10.jpg"},
+            {name:"邓安娜",title:"",picUrl:"../static/imgs/dataContainer/11.jpg"},
+            {name:"邓宇轩",title:"",picUrl:"../static/imgs/dataContainer/12.jpg"},
+            {name:"董志洋",title:"",picUrl:"../static/imgs/dataContainer/13.jpg"},
+            {name:"杜安",title:"全面提高青少年素质和教育",picUrl:"../static/imgs/dataContainer/14.jpg"},
+            {name:"冯迪",title:"陕西文保寺庙坍塌数年 居民废墟上养鸡",picUrl:"../static/imgs/dataContainer/15.jpg"}
+        ]
+    },
+    vtube:{
+        counts:8,
+        details:[
+            {name:"程毅成",title:"伟大复兴中国",picUrl:"../static/imgs/dataContainer/16.jpg"},
+            {name:"董志洋",title:"文保寺庙坍塌破损",picUrl:"../static/imgs/dataContainer/17.jpg"},
+            {name:"杜安",title:"直击现场 志愿者",picUrl:"../static/imgs/dataContainer/18.jpg"},
+            {name:"邓安娜",title:"重点文物未保护",picUrl:"../static/imgs/dataContainer/19.jpg"},
+            {name:"程毅成",title:"博览会现场",picUrl:"../static/imgs/dataContainer/1.jpg"},
+            {name:"安晓军",title:"大学生培训",picUrl:"../static/imgs/dataContainer/2.jpg"},
+            {name:"代子航",title:"凤凰街民居已损坏",picUrl:"../static/imgs/dataContainer/3.jpg"},
+            {name:"邓宇轩",title:"高铁监控状态",picUrl:"../static/imgs/dataContainer/4.jpg"}
+        ]
+    },
+    pc:{
+        counts:12,
+        details:[
+            {name:"李阳",title:"高铁新革命",picUrl:"../static/imgs/dataContainer/5.jpg"},
+            {name:"邓宇轩",title:"洪涝灾害，水上行走",picUrl:"../static/imgs/dataContainer/6.jpg"},
+            {name:"董志洋",title:"会客洽谈",picUrl:"../static/imgs/dataContainer/7.jpg"},
+            {name:"程毅成",title:"会客洽谈",picUrl:"../static/imgs/dataContainer/7.jpg"},
+            {name:"陈志松",title:"男子随身携带金条",picUrl:"../static/imgs/dataContainer/8.jpg"},
+            {name:"赵信亚",title:"",picUrl:"../static/imgs/dataContainer/9.jpg"},
+            {name:"代子航",title:"",picUrl:"../static/imgs/dataContainer/10.jpg"},
+            {name:"邓安娜",title:"",picUrl:"../static/imgs/dataContainer/11.jpg"},
+            {name:"邓宇轩",title:"",picUrl:"../static/imgs/dataContainer/12.jpg"},
+            {name:"董志洋",title:"",picUrl:"../static/imgs/dataContainer/13.jpg"},
+            {name:"杜安",title:"全面提高青少年素质和教育",picUrl:"../static/imgs/dataContainer/14.jpg"},
+            {name:"冯迪",title:"陕西文保寺庙坍塌数年 居民废墟上养鸡",picUrl:"../static/imgs/dataContainer/15.jpg"}
+        ]
+    }
+};

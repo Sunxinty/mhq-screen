@@ -1,0 +1,31 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+body,h1,h2,h3,h4,h5,h6,p,span,img,a,input,button,textarea,form,ul,li,ol{
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	color: #323232;
+}
+a,a:link,a:visited,a:hover,a:active{
+	outline: none;
+	text-decoration: none;
+	display: inline-block;
+    color:#646464;
+}
+p,span,b,input,button,textarea,img{
+	color: #646464;
+	border: none;
+	outline: none;
+	display: inline-block;
+}
+img{
+	/*max-width: 100%;*/
+}
+li{
+	float: left;
+	list-style-type: none;
+}

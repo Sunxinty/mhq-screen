@@ -1,0 +1,70 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    background: #ffffff;
+    color: #333;
+    font-size: 16px;
+    font-family: "微软雅黑",Verdana, Geneva, sans-serif;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+a:hover,a:focus {
+    text-decoration: none;
+    outline: none;
+}
+ul,li {
+    list-style: none;
+}
+img {
+    border: none;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size: 16px;
+    margin: 0;
+}
+label {
+    font-weight: normal;
+}
+input {
+    border: 0;
+}
+input:focus {
+    outline: 0;
+}
+/*自定义滚动条样式*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 4px;
+    background-color: #F5F5F5;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: #fff ;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color:rgba(7, 170, 247, 0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color:rgba(7, 170, 247, 1);
+}
+
+[v-cloak] {
+    display: none;
+}

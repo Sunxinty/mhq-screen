@@ -1,0 +1,85 @@
+//此乃手机素材页面的假数据
+var Json = {
+    //回传总数
+    total:'5',
+    details:[
+        {name:"张红冰",time:"2017-08-15 12:21:00",counts:3,headPic:"../static/imgs/center/mzd.jpg"},
+        {name:"李梅",time:"2017-08-15 12:21:00",counts:1,headPic:"../static/imgs/center/hyb.jpg"},
+        {name:"王明",time:"2017-08-15 12:21:00",counts:2,headPic:"../static/imgs/center/zzy.jpg"},
+        {name:"赵夏男",time:"2017-08-15 12:21:00",counts:4,headPic:"../static/imgs/center/hjt.jpg"},
+        {name:"孙鑫",time:"2017-08-15 12:21:00",counts:6,headPic:"../static/imgs/center/xjp.jpg"}
+    ],
+    media:[
+        {
+            name:"张红冰",
+            picUrl:[
+                "../static/imgs/dataContainer/1.jpg",
+                "../static/imgs/dataContainer/2.jpg",
+                "../static/imgs/dataContainer/3.jpg",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            name:"李梅",
+            picUrl:[
+                "../static/imgs/dataContainer/4.jpg",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            name:"王明",
+            picUrl:[
+                "../static/imgs/dataContainer/5.jpg",
+                "../static/imgs/dataContainer/6.jpg",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            name:"赵夏男",
+            picUrl:[
+                "../static/imgs/dataContainer/7.jpg",
+                "../static/imgs/dataContainer/8.jpg",
+                "../static/imgs/dataContainer/9.jpg",
+                "../static/imgs/dataContainer/10.jpg",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            name:"孙鑫",
+            picUrl:[
+                "../static/imgs/dataContainer/11.jpg",
+                "../static/imgs/dataContainer/12.jpg",
+                "../static/imgs/dataContainer/13.jpg",
+                "../static/imgs/dataContainer/14.jpg",
+                "../static/imgs/dataContainer/15.jpg",
+                "../static/imgs/dataContainer/16.jpg",
+                "",
+                "",
+                ""
+            ]
+        }
+    ]
+};
+

@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>电话爆料</title>
+
+    <!--Third party style-->
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/normalize.css">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/font-awesome.min.css">
+    <link rel="stylesheet" href="../static2/plugins/circle360/circle360.css">
+    <link rel="stylesheet" href="../static2/plugins/datatimedropper/datedropper.css">
+    <link rel="stylesheet" href="../static2/css/TelRebellion.css">
+
+</head>
+<body>
+<!--选择时间范围-->
+<div id="time_choose">
+    <div id="time_start">
+        <p><input type="text" class="input" id="pickdate_start" value="2010-09-09"/></p>
+        <p style="line-height:30px;font-size: 20px;">~</p>
+    </div>
+    <div id="time_end">
+        <p><input type="text" class="input" id="pickdate_end" value="2020-09-09" /></p>
+        <p style="line-height:30px;font-size: 20px;"><span id="done" onClick="chooseTime();">确定</span></p>
+    </div>
+</div>
+
+<!--页面内容部分-->
+<div id="container" class="pageContent">
+    <!--顶部标题-->
+    <div id="top">
+        <div class="top_title">
+            电话爆料
+        </div>
+    </div>
+    <!--总量数字-->
+    <div class="TopicPlanNumber">
+        <ul>
+            <li id="monthCount">
+                <p>总量</p>
+                <p>0</p>
+            </li>
+            <li id="dayCount">
+                <p>今日增长</p>
+                <p>0</p>
+            </li>
+            <!--<li id="pre7Count">-->
+                <!--<p>0</p>-->
+                <!--<p>7日增长</p>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+    <div class="pageBody TelRebellionBody">
+        <!--每条新闻-->
+        <div class="newsList">
+			<div class="eachList">
+                <div class="newsListBody">
+                    <h3>锦州市附属第三人民医院门口有近百护士请愿!</h3>
+                    <ul>
+                        <li><span></span> 新闻现场</li>
+                        <li><span></span> 洪瑞</li>
+                        <li><span></span> 5小时前</li>
+                    </ul>
+                    <div>锦州市附属第三人民医院门口有近百护士请愿!锦州市附属第三人民医院门口有近百护士请愿!锦州市附属第三人民医院门口有近百护士请愿!</div>
+                </div>
+            </div>
+        </div>
+        <!--统计图-->
+        <div class="TelRebellionChart">
+            <div class="rebellionTop orderByUser">
+                <div class="topTitle">
+                    <div>
+                        <p>爆料录入排名</p>
+                        <div></div>
+                    </div>
+                    <!--<div>-->
+                        <!--<button class="month">本月</button>-->
+                        <!--<button class="beforemonth">上月</button>-->
+                    <!--</div>-->
+                </div>
+
+                <ul class="rebellionTopUser">
+                    <li>
+                        <img src="http://img2.3lian.com/2014/c7/62/d/27.jpg" alt="">
+                        <p>上传者姓名</p>
+                        <p class="topNumber">110</p>
+                        <div></div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="rebellionTop rebllionStatisticChart orderByChannel">
+                <div class="topTitle">
+                    <div>
+                        <p>爆料渠道统计</p>
+                        <!--<div></div>-->
+                    </div>
+                    <!--<div>-->
+                        <!--<button class="month">本月</button>-->
+                        <!--<button class="beforemonth">上月</button>-->
+                    <!--</div>-->
+                </div>
+                <!--环形统计图-->
+                <div class="rebllionStatistic">
+                    <div id="rebllionChart"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<script src="../static2/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="../static/lib/echarts4.0.3.min.js"></script>
+<script src="../static2/plugins/juicer/juicer.js"></script>
+<script src="../static2/plugins/layer/layer.js"></script>
+<script src="../static2/plugins/datatimedropper/datedropper.min.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static2/js/TelRebellion.js"></script>
+</body>
+</html>

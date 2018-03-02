@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>选题策划</title>
+    <link rel="stylesheet" type="text/css" href="../static/lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/topicPlan.css"/>
+</head>
+<body>
+	<!-- header -->
+	<div class="section header"><h1>选题策划</h1></div>
+	<!-- 任务列表 -->
+	<div class="section task-list">
+		<div class="section" style="height: 100%;">
+			<ul class="section">
+				<li v-for="item in taskList">
+					<h3 v-cloak>{{item.title}}</h3>
+					<p>
+						<span v-cloak>{{item.name}}</span>
+						<span v-cloak>{{item.time}}</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="bg-line"><img src="../static/imgs/topicPlan/line_bg.png"></div>
+	</div>
+	<!-- 专题内容 -->
+	<div class="section toppic-con">
+		<!-- 转动齿轮 -->
+		<div class="move-gear">
+			<div class="gear-box" v-for="n in gearList">
+				<span class="gear-bottom"></span>
+				<span class="gear-left" v-if="n%2==1"></span>
+				<span class="gear-line"><img src="../static/imgs/topicPlan/gear_line.png"></span>
+			</div>
+		</div>
+		<!-- 内容面板 -->
+		<div class="toppic-panel">
+			<!-- 星云图 -->
+			<div class="panel-star"><img src="../static/imgs/topicPlan/star.png"></div>
+			<!-- 一道光 -->
+			<div class="panel-light"><img src="../static/imgs/topicPlan/left_g.png"></div>
+			<!-- 任务状态 -->
+			<div class="panel-con">
+				<span class="panel-type panel-tg" v-bind:class="{active:toppicData.type.type1==0}">通 过</span>
+				<span class="panel-type panel-ds" v-bind:class="{active:toppicData.type.type1==2}">待 审</span>
+				<!--<span class="panel-type panel-th" v-bind:class="{active:toppicData.type.type1==-1}">退 回</span>-->
+				<span class="panel-type panel-yzp" v-bind:class="{active:toppicData.type.type1==3}">已指派</span>
+				<span class="panel-type panel-wzp" v-bind:class="{active:toppicData.type.type1==-1}">退回</span>
+				<h3 class="panel-title" v-cloak>{{toppicData.title}}</h3>
+				<p class="panel-p" v-cloak>{{toppicData.content}}</p>
+				<p class="panel-mesg" v-cloak><span>{{toppicData.name}}</span><span v-cloak>{{toppicData.time}}</span></p>
+				<p class="panel-span">
+					<span v-bind:class="{active:toppicData.type.type3==1}" title="采访"></span>
+					<span v-bind:class="{active:toppicData.type.type4==1}" title="互联网"></span>
+					<span v-bind:class="{active:toppicData.type.type2==1}" title="文稿"></span>
+				</p>
+			</div>
+		</div>
+
+		<!-- 圆盘背景 -->
+		<div class="toppic-bgimg"><img src="../static/imgs/topicPlan/pan.png"/></div>
+	</div>
+
+<script type="text/javascript" src="../static/lib/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/lib/vue.js"></script>
+<script type="text/javascript" src="../static/lib/vue-resource.js"></script>
+<script type="text/javascript" src="../static/json/topicPlanJson.js"></script>
+	<script src="../static/json/HTTPNAME.js"></script>
+<script type="text/javascript" src="../static/js/topicPlan.js"></script>
+</body>
+</html>

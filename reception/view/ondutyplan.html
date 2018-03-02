@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+     <meta charset="UTF-8">
+     <title>值班安排</title>
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/normalize.css">
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static2/css/spreadTop.css">
+    <script src="../static2/plugins/angularjs/angular-1.5.8.js"></script>
+    <script src="../static2/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../static2/fonts/iconfont.js"></script>
+        <script src="../static/json/HTTPNAME.js"></script>
+    <script src="../static2/js/spreadTop.js"></script>
+    <script src="../static2/js/ondutyData.js"></script>
+    <style>
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            color: #47fff8;
+        }
+        body{
+            color:white;
+            font-weight:600;
+        }
+        .lit-title{
+            color: #03d8e0;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .lit-title-inline{
+            /*color: #03d8e0;*/
+            margin-bottom: 10px;
+            display: flex;
+        }
+        .lit-title-inline>div{
+            flex: 1;
+        }
+        .lit-title-inline>div:first-child{
+            color: #03d8e0;
+            font-weight: 600;
+            font-size: 26px;
+        }
+        .lit-title-inline>div:last-child{
+            /*text-align: right;*/
+            padding-right: 10px;
+            font-size: 26px;
+        }
+        .lit-title .icon{
+            color: #095971;
+        }
+        .lit-title+.block-div{
+            font-size: 20px;
+        }
+        .page-title{
+            height: 600px;
+            width: 96%;
+            margin: 0 auto;
+            background-image: url('../static2/images/lit-title.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .page-title>h2{
+            padding-top: 40px;
+        }
+        .page-title>h2>div:first-child{
+            font-size: 54px;
+        }
+        .page-content{
+			font-size:28px;
+            margin-top: 50px;
+        }
+		.page-title .ng-binding{
+			font-size:32px;
+            font-weight: 600;
+		}
+		.page-content .ng-binding{
+			font-size:26px;
+		}
+		
+    </style>
+</head>
+    <body ng-controller="myfirstcontroller">
+        <!--生产力统计-->
+        <!--页面内容部分-->
+        <div class="pageContent">
+
+            <!--top  标题-->
+            <div class="pageTopStyle">
+                <!--顶部标题-->
+                <div id="top">
+                    <div class="top_title">
+                        值班安排
+                    </div>
+                </div>
+                <!--<div class="pageName">值班安排</div>-->
+                <!--<div class="pageTopRight">-->
+                    <!--<div class="animateCircle">-->
+                        <!--<p class="lineLeft"></p>-->
+                        <!--<div class="cicrleLeft"><p></p></div>-->
+                        <!--<p class="lineMiddle" style="margin-left:50px;margin-top:18px;"></p>-->
+                        <!--<p class="lineRight"></p>-->
+                        <!--<div class="circleRight"><p></p></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!--pageBody 串联单任务监看-->
+            <div class="pageBody taskWatchBody" style="top: 120px;width: 1800px;left: 75px;">
+                <div class="text-center" style="color: white;font-size: 32px;">本周值班安排</div>
+                <div style="display: flex;color: white;font-size: 32px;margin-top: 30px;">
+                    <div style="flex: 1;text-align: right;padding-right: 190px;">{{ondutyTitle}}</div>
+                    <div style="flex: 1;text-align: left;">值班总编&nbsp;:&nbsp;{{editorMaster}}</div>
+                </div>
+                <div style="display: flex;margin-top: 60px;">
+                    <div style="flex: 1;">
+                        <div class="page-title">
+                            <h2 class="text-center">
+                                <div style="position: relative;top: -5px;">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-dianshi"></use>
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{page[0].title}}
+                                </div>
+                            </h2>
+                            <div class="page-content">
+                                <div ng-repeat="item in page[0].data" style="margin-bottom: 30px;">
+                                    <div class="lit-title">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-playfill"></use>
+                                        </svg>
+                                        {{item.title}}
+                                    </div>
+                                    <div class="block-div" style="display: flex;padding-left: 30px;">
+                                        <div style="flex: 1;" ng-repeat="person in item.person">{{person.zhiwu}}&nbsp;:&nbsp;{{person.name}}</div>
+                                        <!--<div style="flex: 1;">{{item.person[1].zhiwu}}:{{item.person[1].name}}</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div class="page-title">
+                            <h2 class="text-center">
+                                <div>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-newspaper"></use>
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{page[1].title}}
+                                </div>
+                            </h2>
+                            <div class="page-content" style="display: flex;align-items: center;height: 300px;">
+                                <div class="text-center" style="width: 100%;font-size: 30px;position: relative;top: -30px;line-height: 80px;">
+                                    <div ng-repeat="item in page[1].data[0].person">
+                                        {{item.zhiwu}}&nbsp;:&nbsp;{{item.name}}
+                                    </div>
+                                    <!--<div>-->
+                                        <!--统版:黄庆时-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div class="page-title">
+                            <h2 class="text-center">
+                                <div>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-guangbo"></use>
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{page[2].title}}
+                                </div>
+                            </h2>
+                            <div class="page-content">
+                                <div class="lit-title-inline" ng-repeat="item in page[2].data" style="display:block;">
+                                    <div>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-playfill"></use>
+                                        </svg>
+                                        {{item.title}}
+                                    </div>
+                                    <!--<div style="text-align:left;padding-left: 80px;">-->
+                                        <!--{{item.person[0].zhiwu}}&nbsp;:&nbsp;{{item.person[0].name}}-->
+                                    <!--</div>-->
+                                    <div class="block-div" style="display: flex;padding-left: 30px;">
+                                        <div style="flex: 1;" ng-repeat="person in item.person">{{person.zhiwu}}&nbsp;:&nbsp;{{person.name}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div class="page-title">
+                            <h2 class="text-center">
+                                <div>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-meiti"></use>
+                                    </svg>
+                                </div>
+                                <div>
+                                    {{page[3].title}}
+                                </div>
+                            </h2>
+                            <div class="page-content" style="display: flex;align-items: center;height: 300px;">
+                                <div class="text-center" style="width: 100%;font-size: 30px;position: relative;top: -30px;line-height: 80px;">
+                                    <div ng-repeat="item in page[3].data[0].person">
+                                        {{item.zhiwu}}&nbsp;:&nbsp;{{item.name}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="pageBottom">-->
+                 <!--<p></p>-->
+                 <!--<p></p>-->
+                 <!--<p></p>-->
+                  <!--<div><span></span></div>-->
+            <!--</div>-->
+
+        </div>
+    </body>
+</html>

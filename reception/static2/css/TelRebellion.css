@@ -1,0 +1,532 @@
+/*
+ * @Author: HeSir 
+ * @Date: 2016-12-01 15:53:24 
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2016-12-20 19:04:43
+ */
+li {
+    list-style: none;
+}
+@font-face {
+    font-family: "Agency FB";
+    /*src: url('../css/AGENCYR.TTF');*/
+}
+body {
+    width: 1920px;
+    height: 1080px;
+    background: url("../images/phoneDisclose/bg.png") no-repeat;
+    overflow: hidden;
+    font-family: "Microsoft YaHei" ! important;
+}
+/* 顺时针*/
+@-webkit-keyframes Clockwise {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+/* 逆时针*/
+@-webkit-keyframes Anti-clockwise {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+/*页面内容部分 */
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../images/phoneDisclose/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../images/phoneDisclose/title.png") center no-repeat;
+}
+/*顶部标题 end*/
+
+/*选择时间 start*/
+input {
+    border: 0;
+}
+input:focus {
+    outline: 0;
+}
+[class^="dd-icon-"]:before, [class*=" dd-icon-"]:before {
+    line-height: inherit;
+}
+#time_choose input{
+    font:normal normal 14px "Arial";
+}
+#time_start{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 50px;
+    right:110px;
+    z-index: 100;
+}
+#time_start p{
+    float: left;
+    color: #fff;
+}
+#time_start p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:28px;
+    color: #fff;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 50px;
+    right:-60px;
+    z-index: 100;
+}
+#time_end p{
+    float: left;
+}
+#time_end p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:28px;
+    color: #fff;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end #done{
+    display: block;
+    width:60px;
+    height:30px;
+    margin-left:20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #00A5E9;
+}
+#time_end #done:hover{
+    color: #00A5E9;
+    background-color: transparent;
+}
+/*选择时间 end*/
+/* */
+.QTVratingsChartTip {
+    margin-left: 468px;
+    margin-top: 20px;
+}
+.QTVratingsChartTip li p:nth-child(1) {
+    width: 82px;
+    height: 8px;
+    background-color: red;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    float: left;
+}
+.QTVratingsChartTip li p:nth-child(2) {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    float: left;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-left: -50px;
+    margin-top: -6px;
+}
+.QTVratingsChartTip li p:nth-child(3) {
+    color: #01ecf5;
+    height: 30px;
+    width: 180px;
+    line-height: 30px;
+    font-size: 20px;
+    margin-top: -10px;
+    margin-left: 10px;
+    float: left;
+}
+/*pageBottom*/
+.pageBottom {
+    width: 100%;
+    height: 165px;
+    position: fixed;
+    bottom: 10px;
+}
+/* 页面主要内容------每块改变的区域*/
+.pageBody {
+    width: 1715px;
+    height: 630px;
+    margin: 60px 0 0 100px;
+}
+/* 上边动画 360 圆*/
+.pageTopRight {
+    width: 1490px;
+    height: 100%;
+    float: left;
+    margin-left: -10px;
+}
+.pageTopRight .fl {
+    position: fixed;
+    top: 110px;
+    left: 410px;
+}
+.pageTopRight .fl2 {
+    position: fixed;
+    top: 100px;
+    left: 1700px;
+    opacity: 0.5;
+}
+.pageTopRight .w60 {
+    width: 60px;
+    height: 60px;
+}
+.pageTopRight .w70 {
+    width: 70px;
+    height: 70px;
+}
+.pageTopRight .w80 {
+    width: 80px;
+    height: 80px;
+}
+.pageTopRight .w120 {
+    width: 120px;
+    height: 120px;
+}
+.pageTopRight .smallIcon {
+    position: absolute;
+    top: 0px;
+    left: 310px;
+    width: 129px;
+    height: 22px;
+    float: left;
+}
+/*TelRebellionBody  电话报料
+*
+*newsList 所有的新闻列表
+*TelRebellionChart  右边的统计图
+*
+
+*/
+.TopicPlanNumber {
+    width: 1250px;
+    height: 150px;
+    position: fixed;
+    top: -10px;
+    right:850px;
+}
+.TopicPlanNumber ul {
+    float: right;
+    margin-top: 40px;
+}
+.TopicPlanNumber ul li {
+    width: 150px;
+    height: 80px;
+    float: left;
+    padding-right: 40px;
+}
+.TopicPlanNumber ul li:nth-child(1){
+    border-right:2px solid #04365B;
+}
+.TopicPlanNumber ul li p:nth-of-type(1) {
+    color: #1EB2E2;
+    font-size: 18px;
+    height: 16px;
+    margin-top: 0px;
+    text-align: right;
+}
+.TopicPlanNumber ul li p:nth-of-type(2) {
+    color: #fff;
+    font-size: 40px;
+    height: 70px;
+    margin-top: 10px;
+    text-align: right;
+    font-family: "Agency FB";
+}
+/*.TopicPlanNumber ul li:nth-of-type(2) p:nth-of-type(1) {*/
+    /*color: #db0196;*/
+/*}*/
+.TelRebellionBody {
+    width: 1775px;
+    height: 880px;
+    margin: 0px;
+    position: relative;
+    left: 70px;
+    margin-top: 30px;
+    /*右边的视图统计*/
+}
+.TelRebellionBody .newsList {
+    width: 1260px;
+    height: 880px;
+    float: left;
+}
+.TelRebellionBody .newsList .eachList {
+    width: 569px;
+    height: 206px;
+    background:url("../images/phoneDisclose/details.png") center no-repeat;
+    margin:0 60px 20px 0;
+    padding:20px 0 0 35px;
+    float: left;
+}
+.TelRebellionBody .newsList .eachList .icon {
+    width: 28px;
+    height: 161px;
+    float: left;
+    margin-left: 15px;
+    position: relative;
+}
+.TelRebellionBody .newsList .eachList .icon div {
+    width: 23px;
+    height: 23px;
+    background-color: #096886;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.TelRebellionBody .newsList .eachList .icon div:before {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: 1px dashed #096886;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    animation: Anti-clockwise 5s linear infinite;
+    -moz-animation: Anti-clockwise 5s linear infinite;
+    -webkit-animation: Anti-clockwise 5s linear infinite;
+    -o-animation: Anti-clockwise 5s linear infinite;
+}
+.TelRebellionBody .newsList .eachList .icon div:after {
+    width: 0;
+    height: 0;
+    content: "";
+    display: block;
+    border-top: 7px solid transparent;
+    border-left: 10px solid #0a1d42;
+    border-bottom: 7px solid transparent;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+}
+.TelRebellionBody .newsList .eachList .icon p {
+    height: 125px;
+    width: 10px;
+    border-right: 1px dashed #096886;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody {
+    width: 500px;
+    height: 161px;
+    float: left;
+    margin-left: 5px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody h3 {
+    margin: 0;
+    padding: 0;
+    color: #FFFFF3;
+    font-size: 20px;
+    font-weight: bold;
+    line-height:32px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul {
+    width: 96%;
+    height: 40px;
+    padding-left: 5px;
+    background: url("../images/phoneDisclose/phone.png") center right no-repeat;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul.category1{
+    background: url("../images/phoneDisclose/website.png") center right no-repeat;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul.category2{
+    background: url("../images/phoneDisclose/weibo.png") center right no-repeat;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul.category3{
+    background: url("../images/phoneDisclose/phone.png") center right no-repeat;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul.category4{
+    background: url("../images/phoneDisclose/wechat.png") center right no-repeat;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul li {
+    float: left;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 110px;
+    line-height: 30px;
+    color: #A3C6DA;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul li span {
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+    color: #67A1AF;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul li:nth-child(1) {
+    width: 130px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul li:nth-child(2) {
+    width: 100px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody ul li:nth-child(3) {
+    width: 220px;
+}
+.TelRebellionBody .newsList .eachList .newsListBody div {
+    width: 98%;
+    height: 80px;
+    color: #A3C6DA;
+    font-size: 16px;
+    margin-left: 3px;
+}
+.TelRebellionBody .TelRebellionChart {
+    width: 513px;
+    height: 900px;
+    float: right;
+    /*环形统计图*/
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop {
+    width: 500px ;
+    height: 430px;
+	overflow:hidden;
+    background: url("../images/phoneDisclose/right1.png") center no-repeat;
+    margin-bottom:25px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle {
+    height: 55px;
+    width: 100%;
+    padding-left:30px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle div:nth-of-type(1) {
+    width: 258px;
+    height: 55px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle div:nth-of-type(1) p {
+    font-size: 27px;
+    font-weight: bold;
+    color: white;
+    line-height: 55px;
+    float: left;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle div:nth-of-type(2) {
+    width: 177px;
+    height: 83px;
+    float: right;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle div:nth-of-type(2) button {
+    width: 79px;
+    height: 29px;
+    background-color: transparent;
+    border: 1px solid #46fff8;
+    font-size: 18px;
+    color: white;
+    margin-top: 28px;
+    -webkit-box-shadow: 0 0 10px #2aa1e7;
+    -moz-box-shadow: 0 0 10px #2aa1e7;
+    box-shadow: 0 0 10px #2aa1e7;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .topTitle div:nth-of-type(2) button:nth-of-type(2) {
+    background-color: #17909b;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser {
+    padding-left:30px;
+    padding-top:30px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li {
+    width: 435px;
+    height: 65px;
+    background-color: rgba(252, 106, 116, 0.1);
+    margin-bottom: 10px;
+    -webkit-box-shadow: inset 0 0 10px #2d2245;
+    -moz-box-shadow: inset 0 0 10px #2d2245;
+    box-shadow: inset 0 0 20px #2d2245;
+    overflow: hidden;
+    padding-top: 8px;
+    margin-top: -5px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li img {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    float: left;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li p:nth-of-type(1) {
+    color: white;
+    font-size: 18px;
+    float: left;
+    line-height: 50px;
+    margin-left: 10px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li p:nth-of-type(2) {
+    color: white;
+    font-size: 30px;
+    float: right;
+    line-height: 50px;
+    margin-right: 10px;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li div {
+    width: 100%;
+    height: 50px;
+    background-color: #de0044;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li:nth-of-type(2) div {
+    background-color: #de0059;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li:nth-of-type(3) div {
+    background-color: #de0083 ;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li:nth-of-type(4) div {
+    background-color: #d300d1;
+}
+.TelRebellionBody .TelRebellionChart .rebellionTop .rebellionTopUser li:nth-of-type(5) div {
+    background-color: #8b00d3;
+}
+.TelRebellionBody .TelRebellionChart .rebllionStatisticChart {
+    width: 500px ;
+    height: 430px;
+    overflow:hidden;
+    background: url("../images/phoneDisclose/right2.png") center no-repeat;
+}
+.TelRebellionBody .TelRebellionChart .rebllionStatisticChart .topTitle div:nth-of-type(2) {
+    margin-right: 30px;
+}
+.TelRebellionBody .TelRebellionChart .rebllionStatisticChart .rebllionStatistic #rebllionChart {
+    width: 430px;
+    height: 350px;
+    position: relative;
+    top: 8px;
+    left: 23px;
+}

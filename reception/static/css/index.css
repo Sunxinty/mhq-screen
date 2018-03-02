@@ -1,0 +1,199 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/index/bg.jpg") top no-repeat;
+    background-size: 100%;
+    /*animation: bounce2 20s infinite;*/
+}
+@keyframes bounce2 {
+    0% {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 105%;
+    }
+    100% {
+        background-size: 100% ;
+    }
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 54px "微软雅黑";
+    height: 150px;
+    line-height:150px;
+    width:100%;
+    color: #fff;
+    background: url("../imgs/index/top.png") top no-repeat;
+    position: relative;
+}
+#top .top_title{
+    position: absolute;
+    top:0;
+    left:680px;
+}
+#top .settings{
+    width:53px;
+    height:51px;
+    background: url("../imgs/index/setting.png") top no-repeat;
+    position: absolute;
+    top:60px;
+    right:60px;
+    cursor: pointer;
+}
+/*顶部标题 end*/
+
+/*下方选择入口 start*/
+#choose{
+    width:100%;
+    height:850px;
+    margin-top:30px;
+    position: relative;
+}
+#choose .station{
+    perspective: 1600px;
+    position: relative;
+}
+#choose .station ul{
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    transition: transform .7s;
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 50%;
+    top:109px;
+}
+#choose .station ul li {
+    width: 200px;
+    height: 200px;
+    background: url("../imgs/index/circle.png") top no-repeat;
+    background-size:100%;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5);
+    transition: opacity .7s, transform .7s;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+#choose .station ul li img{
+    width:85px;
+    height:85px;
+    margin-top:58px;
+}
+#choose #clickLeft{
+    background: url("../imgs/index/left.png") top no-repeat;
+    background-size: 100%;
+    width:105px;
+    height:166px;
+    position: absolute;
+    bottom:130px;
+    left:310px;
+    cursor: pointer;
+    z-index:999;
+    transition: width 0.5s,height 0.5s,left 0.5s,bottom 0.5s;
+}
+#choose #clickLeft:hover {
+    width:85px;
+    height:135px;
+    bottom:140px;
+    left:325px;
+}
+#choose #clickRight{
+    background: url("../imgs/index/right.png") top no-repeat;
+    background-size: 100%;
+    width:105px;
+    height:166px;
+    position: absolute;
+    bottom:130px;
+    right:310px;
+    cursor: pointer;
+    z-index:999;
+    transition: width 0.5s,height 0.5s,right 0.5s,bottom 0.5s;
+}
+#choose #clickRight:hover {
+    width:85px;
+    height:135px;
+    bottom:140px;
+    right:325px;
+}
+
+#center{
+    width:676px;
+    height:676px;
+    position: absolute;
+    top:210px;
+    left:50%;
+    margin-left:-338px;
+    cursor: pointer;
+}
+#center .centerContainer{
+    position: relative;
+    width:676px;
+    height:676px;
+}
+#center .centerContainer img.zhuan{
+    position: absolute;
+    top:0;
+    left:0;
+    width:676px;
+    height:676px;
+    z-index:10;
+    /*animation:zhuan 10s alternate infinite;*/
+}
+@keyframes zhuan
+{
+    0%   {transform:rotate(0deg);}
+    25%  {transform:rotate(90deg);}
+    50%  {transform:rotate(180deg);}
+    75%  {transform:rotate(270deg);}
+    100% {transform:rotate(360deg);}
+}
+#center .centerContainer img.icon {
+    position: absolute;
+    left: 270px;
+    top: 270px;
+    width: 142px;
+    height: 142px;
+    z-index: 30;
+    transition: width 0.5s, height 0.5s, left 0.5s, top 0.5s;
+    animation: bounce-in 0.5s 0.5s;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+#center:hover .centerContainer img.icon{
+    left:250px;
+    top:250px;
+    width:182px;
+    height:182px;
+}
+#center .centerContainer .choose_title{
+    background: url("../imgs/index/title.png") top no-repeat;
+    position: absolute;
+    bottom:-30px;
+    left:130px;
+    width:410px;
+    height:130px;
+    line-height:130px;
+    text-align: center;
+    font-size:50px;
+    font-weight:bold;
+    text-shadow:5px 5px 2px #1A2C51;
+    color:#fff;
+    z-index: 20;
+}
+#center:hover .centerContainer .choose_title{
+    font-size:60px;
+    color:#F7BD05;
+    text-shadow:8px 8px 4px #1A2C51;
+}
+/*下方选择入口 end*/

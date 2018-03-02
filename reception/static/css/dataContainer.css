@@ -1,0 +1,194 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/dataContainer/bg.png") top no-repeat;
+    background-size: 100%;
+}
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../imgs/dataContainer/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../imgs/dataContainer/title.png") center left no-repeat;
+}
+/*顶部标题 end*/
+
+/*选择时间 start*/
+#time_start{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 105px;
+    right:137px;
+}
+#time_start p{
+    float: left;
+    color: #71E3FE;
+}
+#time_start p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:28px;
+    color: #71E3FE;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 105px;
+    right:-30px;
+}
+#time_end p{
+    float: left;
+}
+#time_end p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:28px;
+    color: #71E3FE;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end #done{
+    display: block;
+    width:80px;
+    height:40px;
+    line-height:40px;
+    margin-top:-5px;
+    margin-left:20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #FFFFFF;
+    background-color: #01A6EA;
+}
+#time_end #done:hover{
+    color: #FBC204;
+}
+/*选择时间 end*/
+
+/*左侧按钮组 start*/
+#btnList{
+    width:366px;
+    height:800px;
+    float: left;
+    margin:110px 0 0 80px;
+}
+#btnList .btn{
+    width: 304px;
+    height: 120px;
+    margin-top:10px;
+    background: url("../imgs/dataContainer/btn.png") top no-repeat;
+    font-size: 28px;
+    font-weight: bold;
+    color: #02BBE7;
+    position: relative;
+}
+#btnList .btn .btn_name{
+    width: 304px;
+    text-align: center;
+    position: absolute;
+    top:15px;
+    z-index: 20;
+}
+#btnSelected {
+    width:366px;
+    height:100px;
+    background-size: 100%;
+    background: url("../imgs/dataContainer/selected.png") top no-repeat;
+    position: absolute;
+    left:65px;
+    top:270px;
+    z-index: 10;
+    transition: top 1s;
+}
+/*左侧按钮组 end*/
+
+/*右侧详细内容 start*/
+#dataContainer{
+    width:1412px;
+    height:869px;
+    float: left;
+    margin-top:64px;
+    padding:50px 0 0 50px;
+    overflow: hidden;
+    background: url("../imgs/dataContainer/detailsContainer.png") center no-repeat;
+}
+#dataContainer .detailsContainer .details{
+    width:0;
+    height:0;
+    transition: width 1s,height 1s;
+}
+#dataContainer .detailsContainer .details p,
+#dataContainer .detailsContainer .details .img
+{
+    display: none;
+}
+#dataContainer .detailsContainer.show .details p,
+#dataContainer .detailsContainer.show .details .img
+{
+    display: block;
+}
+#dataContainer .detailsContainer.show .details{
+    width:232px;
+    height:243px;
+    float: left;
+    background: url("../imgs/dataContainer/bg-details.png") top no-repeat;
+    margin:0 38px 30px 0;
+}
+#dataContainer .detailsContainer .counts{
+    display: none;
+}
+#dataContainer .detailsContainer.show .counts{
+    display: block;
+    width:251px;
+    height:234px;
+    position: absolute;
+    top:180px;
+    left:110px;
+    font-size:20px;
+    color:#73D9FC;
+}
+.details .img{
+    width:232px;
+    height:130px;
+    overflow: hidden;
+    text-align: center;
+}
+.details .img img{
+    width:232px;
+    height:130px;
+	object-fit: cover; /*按照上面的尺寸比例剪裁图片并撑满容器*/
+}
+.details .title{
+    height:62px;
+    line-height:19px;
+    overflow: hidden;
+    padding:15px 10px;
+    color: #fff;
+}
+.details .dataUser{
+    padding:6px 10px;
+    color: #0A9BD4;
+}
+/*右侧详细内容 end*/

@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>采访调度</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <!--视频音频通话-->
+    <link rel="stylesheet" href="css/DrawingManager_min.css"/>
+    <link rel="stylesheet" href="./css/css/bootflat.min.css">
+    <link rel="stylesheet" href="./css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fontcss/iconfont.css">
+    <link rel="stylesheet" href="./css/css/toastr.min.css">
+    <link rel="stylesheet" href="./css/css/app.css">
+
+    <!-- Custom styles for this template -->
+    <link href="../../vendors/dashbord/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/global.css"/>
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendors/layer/skin/layer.css"/>
+    <link href="../../vendors/icheck-1.x/skins/minimal/_all.css" rel="stylesheet">
+    <link href="../../vendors/icheck-1.x/skins/minimal/red.css" rel="stylesheet">
+    <link href="../../vendors/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../vendors/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/TrafficControl_min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/bmap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../vendors/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="../../vendors/zTree/css/demo.css" type="text/css">
+    <link rel="stylesheet" href="../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../vendors/animateCss/animate.min.css">
+    <link rel="stylesheet" href="css/map-custom.css"/>
+    <link rel="stylesheet" href="css/map.css"/>	
+    
+    <!--视频音频通话-->
+    <script type="text/javascript" src="js/js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/js/artTemplate.js"></script>
+    <script type="text/javascript" src="js/js/toastr.min.js"></script>
+    <script type="text/javascript" src="js/js/iLiveSDK.js"></script>
+    <script type="text/javascript" src="js/js/demo.js"></script>
+
+
+    <!--引入腾讯登录服务TLS web sdk-->
+    <script type="text/javascript" src="https://tls.qcloud.com/libs/api.min.js"></script>
+    <script type="text/javascript" src="js/im/js/lib/rangeSlider/ion.rangeSlider.min.js"></script>
+    <script type="text/javascript" src="js/im/js/webav_demo_log.js?v=3.5"></script>
+
+    <!--web im sdk-->
+    <script type="text/javascript" src="js/im/js/webim.js"></script>
+
+    <script type="text/javascript" src="js/im/js/json2.js"></script>
+    <script type="text/javascript" src="js/im/js/send_common_msg.js"></script>
+
+    <!--web im sdk 发送自定义消息 api 示例代码-->
+    <script type="text/javascript" src="js/im/js/msg/send_custom_msg.js"></script>
+
+    <style type="text/css">
+        .layui-layer-title{
+            background-color: #6d6d6d;
+            color: white;
+        }
+    </style>
+</head>
+
+<body onload="OnInit()" onunload="OnUninit()">
+	<div class="gis-title"><h1>GIS地图</h1></div>
+<div id="shadowAll"></div>
+<div id="container">
+    <div id="aside">
+        <div class="header">
+            <div class="btn-group" role="group" id="xt-list-btns">
+                <button type="button" class="btn btn-aside-head btn-active" id="xt-list-btn">任务列表</button>
+                <button type="button" class="btn btn-aside-head" id="user-list-btn">记者列表</button>
+                <!--  刷新按钮 -->
+                <span class="glyphicon glyphicon-repeat"></span>
+            </div>
+            <div class="btn-group" role="group" id="xt-detail-btns" style="display: none;width:100%;">
+                <button type="button" class="btn btn-aside-head btn-active btn-block" id="backToList">返回列表</button>
+            </div>
+
+        </div>
+        <div class="float-bar">
+            <div id="switches-btn" class="icon-btn">
+                <!--<i class="sz-icon icon-magic-wand" ></i>  -->
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <span>
+                <i class="arrow-right"></i>
+                </span>
+            </div>
+        </div>
+        <div id="aside-content">
+            <div class="wrap">
+                <div id="panel-main">
+                    <div id="panel-searchUser" class="form-group has-success has-feedback"
+                         style="display: none;width: 100%;padding: 15px 30px;margin-bottom: 0;">
+                        <p id="userNumber" style="font-size: 14px;color: #fff;float: right;">0人</p>
+                        <input type="text" class="form-control" style="padding: 0 20px;height: 30px;line-height: 30px;color: #323232;">
+                    </div>
+
+                    <div id="panel-searchTask" class="form-group has-success has-feedback"
+                         style="width: 100%;padding: 15px 30px;margin-bottom: 0;">
+                         <p id="taskNumber" style="font-size: 14px;color: #fff;float: right;">0条</p>
+                        <input type="text" class="form-control" style="padding: 0 20px;height: 30px;line-height: 30px;color: #323232;">
+                    </div>
+
+                    <div id="xt-list">
+
+                    </div><!-- xt-list -->
+                    <div id="xt-detail" style="display:none;">
+                    </div><!-- xt-detail END-->
+                    <div id="user-list" style="display: none;overflow-y:auto;"><!--user-list 记者列表-->
+
+                    </div><!--user-list  END-->
+                </div><!-- panel-main -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="direct" class="material miss">
+        <div class="controlMiss"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+        <div class="auto">
+            <div class="headDir">
+                <span>回传素材</span>
+            </div>
+            <div class="contentDir">
+            </div>
+            <div class="bottomDir">
+            </div>
+            <div class="groupLiveBox"></div>
+        </div>
+    </div>
+    
+    <!-- 新建直播组 -->
+    <div class="createLiveBox">
+        <div class="create-live">
+            <h3>新建直播组</h3>
+            <div class="section live-input">
+                <p>直播主题：</p>
+                <input type="text" id="liveName" placeholder="请输入直播主题" maxlength="15" />
+            </div>
+            <div class="section live-input">
+                <p>直播时间：</p>
+                <input type="text" id="liveDate" placeholder="点击选择时间" />
+            </div>
+            <div class="section live-input">
+                <p>直播时长：</p>
+                <!-- <input type="text" id="liveTime" placeholder="点击选择时长" /> -->
+                <select id="liveTime">
+                    <option value="0">请选择</option>
+                    <option value="5">5分钟</option>
+                    <option value="10">10分钟</option>
+                    <option value="15">15分钟</option>
+                    <option value="30">30分钟</option>
+                    <option value="60">1小时</option>
+                    <option value="90">90分钟</option>
+                    <option value="120">2小时</option>
+                </select>
+            </div>
+            <div class="section live-input">
+                <p>直播组长：</p>
+                <input type="text" id="liveLeader" placeholder="点击选择组长" />
+            </div>
+            <div class="section live-input">
+                <p>直播组员：</p>
+                <input type="text" id="liveUser" placeholder="点击选择组员" />
+            </div>
+            <a href="##" class="suerCreateBtn">确定</a>
+        </div>
+        <div class="choice-list">
+            <h3>记者列表</h3>
+            <div class="section jizhe-list">
+                <ul class="section"></ul>
+            </div>
+        </div>
+        <span title="关闭">x</span>
+    </div>
+    <!-- 展示当前直播组 -->
+    <div class="showLiveGroup">
+        <div class="section liveUserList">
+            <ul class="section"></ul>
+        </div>
+        <div class="playLiveBox">
+            <div class="play-live">
+                <div id="live-video"></div>
+                <p class='no-liveRtmp'>未直播</p>
+            </div>
+            <div class="copyLive">
+                <p>直播流地址：<span></span></p>
+                <a href="##" id="closeLive" style="border-left: 1px solid #fff;">关闭</a>
+                <a href="##" class="copyLiveAddress">复制地址</a>
+            </div>
+            <span class="close-livegroup" title="关闭">x</span>
+        </div>
+    </div>
+
+    <!-- 直播审核 -->
+    <div class="examineLive">
+        <h2>直播审核</h2>
+        <ol class="section">
+            <li class="active" onclick="queryExamine(1)">待审核</li>
+            <li onclick="queryExamine(2)">审核通过</li>
+            <li onclick="queryExamine(3)">审核拒绝</li>
+        </ol>
+        <div class="section examine-list">
+           <ul class="section"></ul> 
+        </div>
+        <span title="关闭">x</span>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="mapNav" style="margin-top:70px;display:block;">
+    <div class="container" style="margin: auto;width: 620px;;">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid map-searchbar">
+                    <div class="collapse navbar-collapse form-bg"
+                         id="bs-example-navbar-collapse-1">
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">开始日期&nbsp;&nbsp;&nbsp;&nbsp;
+                            	<input type="text" class="form-control input-sm" name="datetimepicker" id="starttime" readonly size="10"/>
+                            </div>
+                            <div class="form-group">结束日期&nbsp;&nbsp;&nbsp;&nbsp;
+                            	<input type="text" class="form-control input-sm" name="datetimepicker" id="endtime" readonly size="10"/>
+                            </div>
+
+                            <div class="checkbox" style="margin-left: 40px;">
+                                <label>
+                                	<input name="optionsRadios" type="checkbox" id="listplanNotCheck" value="1" checked> 任务
+                                </label>
+                            </div>
+
+                            <div class="checkbox" style="display: none;">
+                                <label>
+                                	<input name="optionsRadios" type="checkbox" id="author" value="2" checked> 记者
+                                </label>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id="search-li">
+                            	<a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</nav>
+
+<div id="allmap"></div>
+<div id="smallMap"></div>
+
+
+<div id="layerVideoSdk" style="display: none;position: relative;height: 100%;width: 100%;">
+    <div id="callingVideoState" style="text-align:center;width: 100%;height: 100%;color: black;z-index: 2;background-color: white;position: absolute;z-index: 11101;top: 0;left: 0;">
+        <div style="line-height: 60px;padding-top:50px;">
+            正在呼叫<span class="userName"></span>
+        </div>
+        <div style="display: inline-block;width: 100px;height: 100px;border-radius: 50%;overflow: hidden;margin:50px;">
+            <img width="100%" height="100%" class="userIcon" src="" alt="">
+        </div>
+        <div style="margin-top: 50px;">
+            <button class="closeTongxun" style="background-color: #00A0EA;color: white;border: none;padding: 7px 35px;border-radius: 5px;">取消</button>
+        </div>
+    </div>
+    <div id="sucessVideoTongxun" style="position: absolute;top: 0;left: 0;width: 100%;">
+        <div class="thumbnail" style="padding: 0;margin-bottom: 0;">
+            <div class="video-box-standard">
+                <object id="localRender" classid="CLSID:1EA15A99-7F53-4B6F-8947-B57A0729918E" width="100%" height="520px"></object>
+            </div>
+            <div class="caption text-center" style="display: none;">
+                <span class="badge badge-primary" id="username0"></span>
+            </div>
+        </div>
+        <div class="thumbnail" style="position: absolute;top: 50px;right: 30px;width: 200px;height: 200px;padding: 0;margin-bottom: 0;">
+            <div class="video-box-standard">
+                <object id="render0" classid="CLSID:1EA15A99-7F53-4B6F-8947-B57A0729918E" width="200px" height="200px"></object>
+            </div>
+            <div class="caption text-center" style="display: none;">
+                <span class="badge badge-primary" id="username1"></span>
+            </div>
+        </div>
+        <div style="width: 100%;height: 30px;background-color: #6c6c6c;color: white;bottom: 0;overflow: hidden;">
+            <div style="padding-top: 5px;">
+                <span class="newTimeer" style="padding: 0 5px;"></span>
+                <button class="OnCloseMic" style="background-color: #00A0EA;color: white;border: none;padding: 0 7px;border-radius: 5px;"><i class="iconfont icon-huatong"></i></button>
+                <button class="OnClosePlayer" style="background-color: #00A0EA;color: white;border: none;padding: 0 7px;border-radius: 5px;"><i class="iconfont icon-webtubiaoku08"></i></button>
+                <button class="closeTongxun" style="background-color: #00A0EA;color: white;float: right;margin-right: 5px;border: none;padding: 0 7px;border-radius: 5px;">挂断</button>
+            </div>
+        </div>
+    </div>
+    <div id="sucessAudioTongxun" style="width: 100%;height: 100%;position: absolute;z-index: 1;display: none;background-color: white;">
+        <div style="display: inline-block;width: 100px;height: 100px;border-radius: 50%;overflow: hidden;position: relative;top: -120px;margin-top: 50%;margin-left: 50%;left: -50px;">
+            <img width="100%" height="100%" class="userIcon" src="" alt="">
+        </div>
+        <div style="position: absolute;width: 100%;height: 30px;background-color: #6c6c6c;color: white;bottom: 0;overflow: hidden;">
+            <div style="padding-top: 5px;">
+                <span class="newTimeer" style="padding: 0 5px;"></span>
+                <button class="OnCloseMic" style="background-color: #00A0EA;color: white;border: none;padding: 0 7px;border-radius: 5px;"><i class="iconfont icon-huatong"></i></button>
+                <button class="OnClosePlayer" style="background-color: #00A0EA;color: white;border: none;padding: 0 7px;border-radius: 5px;"><i class="iconfont icon-webtubiaoku08"></i></button>
+                <button class="closeTongxun" style="background-color: #00A0EA;color: white;float: right;margin-right: 5px;border: none;padding: 0 7px;border-radius: 5px;">挂断</button>
+            </div>
+        </div>
+    </div>
+    <div style="display:none;">
+        <button id="btn_open_camera" type="button" class="btn btn btn-primary" onclick="OnBtnOpenCamera()">打开摄像头</button>
+        <button id="btn_close_camera" type="button" class="btn btn btn-default" onclick="OnBtnCloseCamera()">关闭摄像头</button>
+        <br/>
+        <br/>
+        <button id="btn_open_mic" type="button" class="btn btn btn-primary" onclick="OnBtnOpenMic()">打开麦克风</button>
+        <button id="btn_close_mic" type="button" class="btn btn btn-default" onclick="OnBtnCloseMic()">关闭麦克风</button>
+        <br/>
+        <br/>
+        <button id="btn_open_player" type="button" class="btn btn btn-primary" onclick="OnBtnOpenPlayer()">打开扬声器</button>
+        <button id="btn_close_player" type="button" class="btn btn btn-default" onclick="OnBtnClosePlayer()">关闭扬声器</button>
+        <br/>
+        <!--<div class="form-inline" style="margin-top:10px;">-->
+        <!--<div class="form-group">-->
+        <!--<label for="exampleInputName2">发送群消息</label>-->
+        <!--<input type="text" class="form-control" id="group-message" placeholder="群消息">-->
+        <!--</div>-->
+        <!--<button type="button" class="btn btn-default" id="send-group">发送群消息</button>-->
+        <!--</div>-->
+    </div>
+
+    <div class="middle-left" style="display:none">
+
+        <hr/>
+
+        <form class="form-horizontal" role="form">
+            <!--<div class="form-group">
+                <label for="chat_type_radio" class="col-sm-2 control-label">房间类型:</label>
+                <div class="col-sm-10">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="chat_type_radio" id="ct_vedio_radio"
+                               value="1" checked>视频
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="chat_type_radio" id="ct_audio_radio"
+                               value="0"> 语音
+                    </label>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="room_id" class="col-sm-3 control-label">房间号:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="room_id"
+                           placeholder="请输入1-4294967295之间的数值" value="" maxlength="10">
+
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" onclick="enterRoom()">
+                        加入房间
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" onclick="exitRoom()">
+                        退出房间
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <hr/>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="room_members_list" class="col-sm-3 control-label">房间成员:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="room_members_list">
+                    </select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="win_width" class="col-sm-3 control-label">主视频画面坐标:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="win_x" value="0"
+                           placeholder="请输入X坐标" maxlength="3">
+                </div>
+                <div class="col-sm-1">
+                    <label class="col-sm-1 control-label">&</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="win_y" value="0"
+                           placeholder="请输入Y坐标" maxlength="3">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="win_width" class="col-sm-3 control-label">主视频画面宽高:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="win_width" value="480"
+                           placeholder="请输入宽度" maxlength="4">
+                </div>
+                <div class="col-sm-1">
+                    <label class="col-sm-1 control-label">X</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="win_height" value="360"
+                           placeholder="请输入高度" maxlength="4">
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" onclick="checkview()">
+                        观看成员视频画面
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <hr/>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="camera_list" class="col-sm-3 control-label">摄像头选择:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="camera_list" onchange="cameraListOnChange(this.options.selectedIndex)" >
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="camera_status_radio" class="col-sm-3 control-label">摄像头开关:</label>
+                <div class="col-sm-8">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="camera_status_radio" id="cs_on_radio"
+                               value="1" onclick="changeCameraStatus(this)" checked>开
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="camera_status_radio" id="cs_off_radio"
+                               value="0" onclick="changeCameraStatus(this)"> 关
+                    </label>
+                </div>
+
+            </div>
+            <!--<div class="form-group">
+                <label for="camera_quality_radio" class="col-sm-2 control-label">质量控制:</label>
+                <div class="col-sm-10">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="camera_quality_radio" id="cq_low_radio"
+                               value="0" checked>流畅
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="camera_quality_radio" id="cs_high_radio"
+                               value="1"> 高清
+                    </label>
+                </div>
+            </div>-->
+        </form>
+
+        <hr/>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="mic_list" class="col-sm-3 control-label">麦克风选择:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="mic_list" onchange="micListOnChange(this.options.selectedIndex)">
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="mic_status_radio" class="col-sm-3 control-label">麦克风开关:</label>
+                <div class="col-sm-8">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="mic_status_radio" id="cs_on_radio"
+                               value="1" onclick="changeMicStatus(this)" checked>开
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="mic_status_radio" id="cs_off_radio"
+                               value="0" onclick="changeMicStatus(this)" > 关
+                    </label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="mic_volume_radio" class="col-sm-3 control-label">音量控制:</label>
+                <div class="col-sm-8">
+                    <input type="text" id="mic_volume" value="50" name="mic_volume" />
+                </div>
+            </div>
+        </form>
+
+        <hr/>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="player_list" class="col-sm-3 control-label">扬声器选择:</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="player_list" onchange="playerListOnChange(this.options.selectedIndex)">
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="player_status_radio" class="col-sm-3 control-label">扬声器开关:</label>
+                <div class="col-sm-8">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="player_status_radio" id="cs_on_radio"
+                               value="1" onclick="changePlayerStatus(this)" checked>开
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="player_status_radio" id="cs_off_radio"
+                               value="0" onclick="changePlayerStatus(this)"> 关
+                    </label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="player_volume_radio" class="col-sm-3 control-label">音量控制:</label>
+                <div class="col-sm-8">
+                    <input type="text" id="player_volume" value="50" name="player_volume" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="middle-right-top" style="display: none;">
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <!-- <label class="col-sm-2 control-label">主视频:</label> -->
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10" style="padding-left:0px;">
+
+                    <div class="main-windows" id="mainView" style="left: 5px"></div>
+                  
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="middle-right-middle" style="display: none;">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <div class="other-windows1" id="other1View" style="position:fixed; top:35px; left:538px"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="other-windows2" id="other2View"></div>
+                    <br/>
+                </div>
+                <div class="col-sm-3">
+                    <div class="other-windows3" id="other3View"></div>
+                    <br/>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="middle-right-bottom" style="display: none;">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">事件通知:</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-9">
+                    <select multiple class="form-control" id="notice_list">
+
+                    </select>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+    <div class="modal fade in" id="invitedBox" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" id="logoutContent">
+                <h3 id="logout-text">收到了主播连麦的邀请，是否连麦？</h3>
+                <button type="button" class="btn btn-danger" id="invitedNo">取消</button>
+                <button type="button" class="btn btn-success" id="invitedYes">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="layerAudioSdk" style="display: none;position: relative;height: 100%;width: 100%;">
+    <div style="width: 100%;height: 100%;color: black;text-align: center;" id="callingAudioState">
+        <div style="line-height: 60px;">
+            正在呼叫<span class="userName"></span>
+        </div>
+        <div style="display: inline-block;width: 100px;height: 100px;border-radius: 50%;overflow: hidden;">
+            <img width="100%" height="100%" class="userIcon" src="" alt="">
+        </div>
+        <div style="margin-top: 20px;">
+            <button class="closeTongxun" style="background-color: #00A0EA;color: white;border: none;padding: 7px 35px;border-radius: 5px;">取消</button>
+        </div>
+    </div>
+</div>
+<object id="iLiveSDKCom" classid="CLSID:54E71417-216D-47A2-9224-C991A099C531" codebase="./iLiveSDK.cab#version=1,0,1,0"></object>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<script type="text/javascript" src="../../vendors/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8L8x2gmt38bDCMFWPyyezvUS&services=true"></script>
+<script type="text/javascript" src="../../vendors/echarts/dist/bmap.min.js"></script>
+<script src="js/TrafficControl_min.js"></script>
+<script src="js/DrawingManager_min.js"></script>
+<script type="text/javascript" src="js/CurveLine.min.js"></script>
+<script src="js/TextIconOverlay.js"></script>
+<script src="js/customOverlay.js"></script>
+<!--TLS web sdk(只用于托管模式，独立模式不用引入)-->
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script>
+
+<script src="../../vendors/jquery.base64/jquery.base64.min.js"></script>
+<script src="../../vendors/layer/layer.js"></script>
+<script src="../../vendors/lodash/lodash.min.js"></script>
+<script src="../../vendors/zTree/js/jquery.ztree.core.min.js"></script>
+<script src="../../vendors/zTree/js/jquery.ztree.exhide.min.js"></script>
+<script type="text/javascript" src="../../vendors/datetimepicker/js/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="../../vendors/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="../../vendors/icheck-1.x/icheck.js"></script>
+<script type="text/javascript" src="../../cfgs/config.js"></script>
+<script type="text/javascript" src="../../utils/dateUtil.js"></script>
+<script type="text/javascript" src="js/laydate/laydate.js"></script>
+<!--<script type="text/javascript" src="js/WaitShade.js"></script>-->
+<script type="text/javascript" src="../../utils/treeUtils.js"></script>
+<script type="text/javascript" src="js/drawMap.js"></script>
+
+
+<script type="text/javascript">
+    var modal = null;
+    var reLogin = true;
+    var liveLogin = 0;
+
+    var callType; // 语音视频通话类型
+    var roomId ; // 房间号
+    //测试应用
+    var sdkAppID = 1400028490;
+    var accountType = 8244;
+
+    var selToID = "ocean"; //当前选中聊天id（当聊天类型为私聊时，该值为好友帐号，否则为群号）
+    var selType = webim.SESSION_TYPE.C2C; //当前聊天类型
+    var selSess = null; //当前聊天会话对象
+    //默认好友头像
+    var friendHeadUrl = 'icons/auther3.png'; //仅demo使用，用于没有设置过头像的好友
+    //默认群头像
+    var groupHeadUrl = 'img/group.jpg'; //仅demo使用，用于没有设置过群头像的情况
+
+    var layerIndex;     //通话弹窗
+
+    var Mic;    //麦克风状态
+    var Player;    //播放器状态
+    var newTimeer;   //联通时间
+    var newTimeerInterval;   //通话时间定时器
+
+    //当前用户身份
+    var loginInfo = {
+        sdkAppID: sdkAppID,//用户所属应用id
+        appIDAt3rd: sdkAppID,//用户所属应用id
+        accountType: accountType,//用户所属应用帐号类型
+        identifier: null,//当前用户ID
+        userSig: null//当前用户身份凭证
+    };
+
+    var isAccessFormalEnv = true; //是否访问正式环境
+
+    if (webim.Tool.getQueryString("isAccessFormalEnv") == "false") {
+        isAccessFormalEnv = false; //访问测试环境
+    }
+
+    var isLogOn = false; //是否开启sdk在控制台打印日志
+
+    //初始化时，其他对象，选填
+    var options = {
+        'isAccessFormalEnv': isAccessFormalEnv, //是否访问正式环境，默认访问正式，选填
+        'isLogOn': isLogOn //是否开启控制台打印日志,默认开启，选填
+    };
+
+    //监听连接状态回调变化事件
+    var onConnNotify = function(resp) {
+        var info;
+        switch (resp.ErrorCode) {
+            case webim.CONNECTION_STATUS.ON:
+                webim.Log.warn('建立连接成功: ' + resp.ErrorInfo);
+                break;
+            case webim.CONNECTION_STATUS.OFF:
+                info = '连接已断开，无法收到新消息，请检查下你的网络是否正常: ' + resp.ErrorInfo;
+                // alert(info);
+                webim.Log.warn(info);
+                break;
+            case webim.CONNECTION_STATUS.RECONNECT:
+                info = '连接状态恢复正常: ' + resp.ErrorInfo;
+                // alert(info);
+                webim.Log.warn(info);
+                break;
+            default:
+                webim.Log.error('未知连接状态: =' + resp.ErrorInfo);
+                break;
+        }
+    };
+
+    //IE9(含)以下浏览器用到的jsonp回调函数
+    function jsonpCallback(rspData) {
+        webim.setJsonpLastRspData(rspData);
+    }
+
+    function defineModal(modal, $_modal, type) {
+        if (modal) {
+            modal.modal('show');
+        } else {
+            modal = $_modal.modal({
+                backdrop: 'static',
+                show: 'false'
+            }).on('show.bs.modal', function (e) {
+
+                if (type == "appoint") {
+                    $(modal).find('form').each(function () {
+                        $(this).on('submit', function (e) {
+                            e.preventDefault();
+                            //var data = $(this).serialize();
+                            var data = $_modal.data("originData");
+                            var formId = $(this).attr('id');
+                            var key = $('input[name="tasktype"][form="' + formId + '"]').val();
+                            if (!checkFormCanSubmit(key)) {
+                                return false;
+                            }
+
+                            data.tasktype = "interview";
+                            data.assigncode = $_modal.find('input[name="assigncode"]').val();
+                            data.assignname = $_modal.find('input[name="assignname"]').val();
+                            data.title = $_modal.find('input[name="title"]').val();
+                            var content = $_modal.find('textarea[name="content"]').val();
+                            if (content && content.trim() !== "") {
+                                data.content = content;
+                            }
+
+                            var datas = {"params": []};
+                            datas.params.push(data);
+                            appoint(datas, "appoint");
+
+                        });
+                    });
+                }
+
+            }).on('hidden.bs.modal', function (e) {
+                //startfresh();//继续自动刷新
+                //modal.isShown = false;
+                $(modal).find('div.userSelect').empty();
+                $(modal).find('input[name="assigncode"]').val("");
+                $(modal).find('input[name="assignname"]').val("");
+                $(modal).find('form').each(function () {
+                    $(this).off('submit');
+                });
+                //$('div.userSelect').trigger('childchanged');
+            });
+            modal.modal('show');
+
+        }
+        return modal;
+    }
+
+
+    //第三方应用需要实现这个函数，并在这里拿到UserSig
+    function tlsGetUserSig() {
+        //成功拿到凭证
+        log.info('tlsGetUserSig success');
+        //从当前URL中获取参数为identifier的值
+        loginInfo.identifier = "ocean";//TLSHelper.getQuery("identifier");
+        //拿到正式身份凭证
+        loginInfo.userSig = "eJxNTt1ugjAUfhduXeZpoSq7m2UhTHBjKnG7aZC22uigKZ1jmr37gGCyc3e*-6uzjlf3NT*yXGvFnQcHeQCAZ54Pzl1PikYrI1gurTAdTwjBrWRgexvLLXNN577BVn2KXowm4IM3RQOuuCitkqqPqgqRl7ecoqi*Ssvsjxb-cmq1b7-k6Z1GaZA9B9EH3rpBltHRqXlVtWvCKQpXo2iymRWn8TLlGoVJ85ZGh8dFfFHzTZzF5yMN9jtqD2Mpl4sXiy-fPifpmhKQu6QRwIeyszC1qsq2EEO7HLvQnfP7B0bGVp0_";
+        //从当前URL中获取参数为sdkappid的值
+        loginInfo.sdkAppID = loginInfo.appIDAt3rd = 1400028490;//TLSHelper.getQuery("sdkappid");
+
+        //从cookie获取accountType
+        if (accountType) {
+            loginInfo.accountType = accountType;
+            //登录qavSDK
+            OnBtnLogin();
+            // 视音频通话时才发送消息
+            if(!liveLogin){
+                webimLogin();
+            }
+        } else {
+            alert('accountType非法');
+        }
+    }
+    //监听事件
+    var listeners = {
+        "onConnNotify": onConnNotify //监听连接状态回调变化事件,必填
+        ,
+        "jsonpCallback": jsonpCallback //IE9(含)以下浏览器用到的jsonp回调函数，
+    };
+    //反初始化
+    function OnUninit() {
+        freeAllRender();
+        sdk.unInit();
+    }
+    //sdk登录
+    function webimLogin() {
+        webim.login(
+                loginInfo, listeners, options,
+                function (resp) {
+                    loginInfo.identifierNick = resp.identifierNick;//设置当前用户昵称
+                    sendCustomMsg(1);
+                    toastr.success("webim login success")
+                },
+                function (err) {
+                    alert(err.ErrorInfo);
+                }
+        );
+    }
+
+    function createLiveRoom(id,type){
+        roomId = id;
+        callType = type;
+        sdk.createRoom(roomId,1, "LiveMaster"
+            ,function() {
+                g_role = E_Role.LiveMaster;
+                toastr.success("进入直播间成功！");
+                OnBtnOpenMic();
+            }
+            ,function(err){
+                console.log(err)
+                if(err.code!="8024"){
+                    toastr.error("错误码:"+err.code+"错误信息:"+err.desc)
+                }
+            }
+        )
+    }
+
+    var liveUser = 0; // 选择直播人员，1组长  2组员
+    // 新建直播组的日期控件
+    laydate.render({
+      elem: '#liveDate',
+      type: 'datetime',
+      min: getToday(),
+      theme:"#187beb"
+    });
+
+    $(".groupLiveBox").on("click","a#createBtn",function(){
+        $("#liveName,#liveDate,#liveLeader,#liveUser").val("");
+        $(".createLiveBox").toggle();
+        $(".examineLive,.showLiveGroup").hide();
+    });
+    
+    $("#xt-list-btn,#user-list-btn").on("click",function(){
+        $(".createLiveBox,.examineLive,.showLiveGroup").hide();
+    });
+    $(".createLiveBox > span").click(function(){
+        $(".createLiveBox").hide();
+    });
+
+    var userArr=[],leader={};
+    // 直播组选择成员
+    $(".jizhe-list ul").on("click","li",function(){
+        // 选择组长
+        if(liveUser==1){
+            leader = {};
+            if(!$(this).hasClass("active")){
+                $(this).addClass("active")
+                $(this).siblings("li").removeClass("active")
+            }
+            var leaderName = $(this).find("p").eq(0).text();
+            var code = $(this).data("code");
+            $("#liveLeader").val(leaderName)
+            leader = {
+                "userName":leaderName,
+                "userCode":code,
+                "isGroupLeader":true
+            }
+        }
+        else if(liveUser==2){
+            // 选择组员
+            userArr = [];
+            $(this).toggleClass("active");
+            var nameArr = [];
+            $(".jizhe-list li").each(function(index,item){
+                if($(this).hasClass("active")){
+                    var name = $(this).find("p").eq(0).text();
+                    var code = $(this).data("code");
+                    userArr.push({
+                        "userName":name,
+                        "userCode":code,
+                        "isGroupLeader":false
+                    })
+                    nameArr.push(name)
+                }
+            });
+            $("#liveUser").val(nameArr.join(","))
+        }
+    });
+
+    $("#liveName,#liveDate").focus(function(){
+        $(".choice-list").hide();
+    })
+
+    $("#liveTime").change(function(){
+        $(".choice-list").hide();
+    })
+
+    $("#liveLeader").focus(function(){
+        $(".choice-list").show();
+        liveUser = 1;
+        $(".jizhe-list li").each(function(index,item){
+            $(this).removeClass("active");
+        })
+    });
+    $("#liveUser").focus(function(){
+        $(".choice-list").show();
+        liveUser = 2;
+        $(".jizhe-list li").each(function(index,item){
+            $(this).removeClass("active");
+        })
+    });
+
+    // 新建直播组
+    $(".suerCreateBtn").click(function(){
+        var groupMember = [];
+        if($("#liveName").val()==""){
+            toastr.warning("请输入直播组名称！")
+            $("#liveName").focus();
+            return;
+        }
+        else if($("#liveDate").val()==""){
+            toastr.warning("请选择直播时间！")
+            $("#liveDate").focus();
+            return;
+        }
+        else if($("#liveTime").val()==""){
+            toastr.warning("请选择直播时长！")
+            $("#liveTime").focus();
+            return;
+        }
+        else if($("#liveLeader").val()==""){
+            toastr.warning("请选择直播组长！")
+            $("#liveLeader").focus();
+            return;
+        }
+        groupMember.push(leader);
+        groupMember = groupMember.concat(userArr);
+        var liveParams = {
+            "beginTime":$("#liveDate").val(),
+            "liveTime":$("#liveTime").val(),
+            "isRemindPush":false,
+            "remindPushTime":"45",
+            "title":$("#liveName").val(),
+            "direct":"1",
+            "groupMember":groupMember
+        }
+        // console.log(liveParams)
+
+        $.ajax({
+            url: window.config.apiAddress+"/mhq-im-mservice/reserve/save.json",
+            type: 'post',
+            data:JSON.stringify(liveParams),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (res) {
+                if(res.ResponseMessage.status=="success"){
+                   toastr.success("新建成功！");
+                   $("#createBtn").trigger("click");
+                   setTimeout(function(){
+                        Map.prototype.groupLiveBox();
+                    },1000)
+                }
+                else{
+                    toastr.error(res.ResponseMessage.message.zh_CN)
+                }
+            },
+            error:function(err){
+                toastr.error(err.statusText)
+            }
+        });
+    });
+
+    // 点击直播列表
+    $(".groupLiveBox").on("click","ul li",function(){
+        var _this = this;
+        var id = $(this).data("id");
+        liveLogin = 1;
+        $(".examineLive,.createLiveBox").hide();
+        var ifLogin = webim.checkLogin(function(err){
+            // toastr.info(err)
+        }, true)
+        // if (!ifLogin){
+        if(reLogin){
+            roomId = id;
+            tlsGetUserSig();
+            OnBtnOpenMic();
+        }
+        else{
+            if(id!=roomId&&roomId!=0){
+                roomId = id;
+                sdk.quitRoom(function(suc){
+                    $(_this).trigger("click")
+                    toastr.info("准备进入房间")
+                },function(err){
+                    if(err.code!="8024"){
+                        toastr.error("退出房间错误码:"+err.code+"错误信息:"+err.desc)
+                    }
+                })
+                setTimeout(function(){
+                    createLiveRoom(id,1)
+                },500)
+            }
+            else if(roomId==0){
+                roomId = id;
+                setTimeout(function(){
+                    createLiveRoom(id,1)
+                },500)
+            }
+        }
+        reLogin = false;
+        $.ajax({
+            url: window.config.apiAddress+"/mhq-im-mservice/reserve/getRecordDetail.json?id="+id,
+            type: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (res) {
+                if(res.ResponseMessage.status=="success"){
+                    var members = res.data.members;
+                    $(".liveUserList ul").html("");
+                    if(members.length>0){
+                        for(var i=0;i<members.length;i++){
+                            $(".liveUserList ul").append('<li id="'+members[i].Id+'" data-url="'+members[i].liveURL+'"><p>直播流'+(i+1)+'</p><p>'+members[i].userName+'</p></li>')
+                        }
+                        $(".liveUserList ul li").eq(0).addClass("active");
+                        var liveURL = members[0].liveURL;
+                        showLiveRtmp(liveURL)
+                    }
+                }
+                else{
+                    toastr.info(res.ResponseMessage.message.zh_CN)
+                }
+            },
+            error:function(err){
+                toastr.error(err.statusText)
+            }
+        });
+        $(".showLiveGroup").show();
+    })
+
+    // 关闭直播组
+    $(".close-livegroup,#closeLive").click(function(){
+        $(".showLiveGroup").hide();
+        $(".liveUserList ul").html("");
+        $(".play-live #live-video").hide();
+        $(".play-live p.no-liveRtmp").show();
+        $(".copyLive p span").text("");
+        sdk.quitRoom(function(){
+            roomId=0;
+            toastr.success("out room success");
+            sdk.logout(function(){
+                toastr.success("logout success");
+                reLogin = true;
+            })
+        });
+    })
+
+    // 复制直播地址
+    $(".copyLiveAddress").click(function(e){
+        var text = $(".copyLive p span").text();
+        if(text=="无"||text==""){
+            toastr.error("无直播流地址！");
+            return false;
+        }
+        var clipboardData = window.clipboardData;
+        if (!clipboardData) {
+            clipboardData = e.originalEvent.clipboardData;  
+        }  
+        clipboardData.setData('Text', text);  
+        toastr.success("复制直播地址成功！") 
+    })
+
+    // 点击组员直播
+    $(".liveUserList ul").on("click","li",function(){
+        var url = $(this).data("url");
+        if(!$(this).hasClass("active")){
+            $(this).addClass("active")
+            $(this).siblings("li").removeClass("active")
+        }
+        showLiveRtmp(url)
+    })
+
+    // 播放直播
+    function showLiveRtmp(url){
+        if(url!=""&&url!=null&&url!="undefined"){
+            $(".copyLive p span").text(url);
+            $(".play-live #live-video").show();
+            var option = {
+                "live_url": url,
+                "width": 580,
+                "height": 380
+            };
+            
+            var player = new qcVideo.Player("live-video", option);
+            
+            $(".play-live p.no-liveRtmp").hide();
+            $(".video-js").css({"width":"100%","height":"100%"})
+        }
+        else{
+            $(".copyLive p span").text("无");
+            $(".play-live #live-video").hide();
+            $(".play-live p.no-liveRtmp").show();
+        }
+    }
+
+    // 点击审核按钮
+    $(".groupLiveBox").on("click","a#examineLive",function(){
+        $(".createLiveBox,.showLiveGroup").hide();
+        $(".examineLive").toggle();
+        $("#liveName,#liveDate,#liveLeader,#liveUser").val("");
+        $(".examineLive ol li").eq(0).trigger("click");
+    });
+    $(".examineLive ol li").click(function(){
+        if(!$(this).hasClass("active")){
+            $(this).siblings("li").removeClass("active");
+            $(this).addClass("active");
+        }
+    });
+    $(".examineLive > span").click(function(){
+        $(".examineLive").hide();
+        $(".examineLive ul li").html("");
+    })
+    // 查询审核状态
+    function queryExamine(type){
+        $(".examine-list ul").html("");
+        $.ajax({
+            url: window.config.apiAddress+"/mhq-im-mservice/reserve/search.json?pageNO=1&pageSize=10&checkStatus="+type,
+            type: 'get',
+            dataType: 'json',
+            success: function (res) {
+                if(res.data){
+                    var dataList = res.data;
+                    if(dataList.length>0){
+                        for(var i=0;i<dataList.length;i++){
+                            var members = dataList[i].members;
+                            var memberArr = [];
+                            for(var j=1;j<members.length;j++){
+                                memberArr.push(members[j].userName)
+                            }
+                            if(type==1){
+                                $(".examine-list ul").append('<li><p>直播主题：<span>'+dataList[i].title+'</span></p><p>直播时长：<span>'+dataList[i].liveTime+'分钟</span></p><p>直播时间：<span>'+dataList[i].beginTime+'</span></p><p>直播组长：<span>'+dataList[i].userName+'</span></p><p>直播组员：<span>'+memberArr.join(",")+'</span></p><div class="section t-center"><a href="##" onclick="examineBtn('+dataList[i].id+',3)">拒绝</a><a href="##" onclick="examineBtn('+dataList[i].id+',2)">通过</a></div></li>')
+                            }
+                            else{
+                                $(".examine-list ul").append('<li><p>直播主题：<span>'+dataList[i].title+'</span></p><p>直播时长：<span>'+dataList[i].liveTime+'分钟</span></p><p>直播时间：<span>'+dataList[i].beginTime+'</span></p><p>直播组长：<span>'+dataList[i].userName+'</span></p><p>直播组员：<span>'+memberArr.join(",")+'</span></p></li>')
+                            }
+                        }
+                    }
+                    else{
+                        $(".examine-list ul").html('<li>无数据！</li>')
+                    }
+                }
+            },
+            error:function(err){
+                $(".examine-list ul").html('<li>请求出错！</li>')
+            }
+        })
+    }
+    // 审核通过和拒绝
+    function examineBtn(id,type){
+        var params = {
+            "id":id,
+            "checkStatus":type,
+            "checkUser":"ocean"
+        }
+        $.ajax({
+            url: window.config.apiAddress+"/mhq-im-mservice/reserve/check",
+            type: 'post',
+            data:JSON.stringify(params),
+            dataType: 'json',
+            contentType:"application/json",
+            success: function (res) {
+                if(res.ResponseMessage.status=="success"){
+                    queryExamine(1)
+                    toastr.success(res.ResponseMessage.message.zh_CN);
+                }
+            },
+            error:function(err){
+                toastr.error(err.ResponseMessage.message.zh_CN,"审核失败！")
+            }
+        })
+    }
+
+    $(document).ready(function () {
+
+        loginInfo.sdkAppID = loginInfo.appIDAt3rd = sdkAppID;
+        loginInfo.accountType = accountType;
+
+        //调用客户端方法
+        $('body').on('click', 'button.sendMessage', function () {
+                    window.PostCmdToPC(0, $(this).data('username'), "", "");
+                })
+                .on('click', 'button.voiceCall', function () {
+                    roomId = 0;
+                    liveLogin = 0;
+                    var vidiouserid = $(this).attr('id');
+                    var userName=$(this).parent().children('p').text();
+                    var userIcon=$(this).parent().parent().prev().children('img').attr('src');
+                    layerIndex=layer.open({
+                        type: 1,
+                        title:'<div class="mine-move" style="position: absolute;width: 100%;height: 42px;background-color: #6d6d6d;color: white;top: 0;padding-left: 20px;left: 0;">正在与'+userName+'的通话中</div>',
+                        skin: 'layui-layer-demo', //样式类名
+                        closeBtn: 0, //不显示关闭按钮
+                        anim: 0,
+                        move: ".mine-move",
+                        shadeClose: false, //开启遮罩关闭
+                        content:$('#layerVideoSdk'),
+                        area:['600px',"600px"],
+                        success: function () {
+                            $('.userIcon').each(function () {
+                                $(this).attr('src',userIcon);
+                            });
+                            $('.userName').each(function () {
+                                $(this).text(userName);
+                            });
+                            Mic=true;
+                            Player=true;
+                            roomId = Math.round(Math.random()*99999)+1;
+                            callType=0;
+                            selToID=vidiouserid;
+                            tlsGetUserSig();
+                        }
+                    });
+                })
+                .on('click', 'button.videoConversation', function () {
+                    roomId = 0;
+                    liveLogin = 0;
+                    var vidiouserid = $(this).attr('id');
+                    var userName=$(this).parent().children('p').text();
+                    var userIcon=$(this).parent().parent().prev().children('img').attr('src');
+                    layerIndex=layer.open({
+                        type: 1,
+                        title:'<div class="mine-move" style="position: absolute;width: 100%;height: 42px;background-color: #6d6d6d;color: white;top: 0;padding-left: 20px;left: 0;">正在与'+userName+'的通话中</div>',
+                        skin: 'layui-layer-demo', //样式类名
+                        closeBtn: 0, //不显示关闭按钮
+                        anim: 0,
+                        move: ".mine-move",
+                        shadeClose: false, //开启遮罩关闭
+                        content:$('#layerVideoSdk'),
+                        area:['600px',"600px"],
+                        success: function () {
+                            $('.userIcon').each(function () {
+                                $(this).attr('src',userIcon);
+                            });
+                            $('.userName').each(function () {
+                                $(this).text(userName);
+                            });
+                            Mic=true;
+                            Player=true;
+                            roomId = Math.round(Math.random()*99999)+1;
+                            callType=1;
+                            selToID=vidiouserid;
+                            tlsGetUserSig();
+                        }
+                    });
+
+                })
+                .on('click', 'button.lineLive', function () {
+                    window.PostCmdToPC(3, $(this).data('username'), "", "");
+                })
+                .on('click','.closeTongxun',function(){
+                    sendCustomMsg(0);
+                    reLogin = true;
+                    OnBtnLogout(function () {
+                        $('#callingVideoState').show();
+                        $('#callingAudioState').show();
+                        $('#sucessAudioTongxun').hide();
+                        layer.close(layerIndex);
+                        $('.OnCloseMic').children('i').removeClass('icon-jingyin').addClass('icon-huatong');
+                        $('.OnClosePlayer').children('i').removeClass('icon-jingyin1').addClass('icon-webtubiaoku08');
+                        clearInterval(newTimeerInterval);
+                    });
+                })
+                .on('click','.OnCloseMic',function(){
+                    if(Mic){
+                        OnBtnCloseMic();
+                        $('.OnCloseMic').children('i').removeClass('icon-huatong').addClass('icon-jingyin');
+                    }else{
+                        OnBtnOpenMic();
+                        $('.OnCloseMic').children('i').removeClass('icon-jingyin').addClass('icon-huatong');
+                    }
+                    Mic=!Mic;
+                })
+                .on('click','.OnClosePlayer',function(){
+                    if(Player){
+                        OnBtnClosePlayer();
+                        $('.OnClosePlayer').children('i').removeClass('icon-webtubiaoku08').addClass('icon-jingyin1');
+                    }else{
+                        OnBtnOpenPlayer();
+                        $('.OnClosePlayer').children('i').removeClass('icon-jingyin1').addClass('icon-webtubiaoku08');
+                    }
+                    Player=!Player;
+                })
+        ;
+        //分享回调
+        window.passGroupId = function (id) {
+            if(window.voiceCall==1){
+                window.PostCmdToPC(3, id, "", "");
+            }
+        };
+        
+        //选题列表
+        $('#xt-list-btn').on('click', function (event) {
+            event.preventDefault();
+            //toggleElement([$('#xt-list'),$('#user-list'),$('#checkClaim')]);
+            $('#xt-list').show();
+            $('#user-list').hide();
+            $('#checkClaim').show();
+            $('#panel-searchUser').hide();
+            $('#panel-searchTask').show();
+            $(this).addClass('btn-active');
+            $('#user-list-btn').removeClass('btn-active');
+
+            //默认展示第一条素材
+            var materials = [];
+            if ($('#xt_list').find('.panel-wrap').length > 0) {
+                $('#xt_list').find('.panel-wrap').eq(0).addClass('dataChoose');
+                materials = $('.dataChoose').data('datas').materials;
+            }
+            console.log(Map.prototype);
+            Map.prototype.showMaterial(materials);
+        });
+        //用户列表
+        $('#user-list-btn').on('click', function (event) {
+            event.preventDefault();
+            //toggleElement([$('#xt-list'),$('#user-list'),$('#checkClaim')]);
+            $('#xt-list').hide();
+            $('#user-list').show();
+            $('#checkClaim').hide();
+            $('#panel-searchUser').show();
+            $('#panel-searchTask').hide();
+            $(this).addClass('btn-active');
+            $('#xt-list-btn').removeClass('btn-active');
+
+            Map.prototype.showDirect();
+
+        });
+        //为选题列表绑定事件
+        $('#xt-list').on('dblclick', 'div.panel-wrap', function (event) {
+            event.preventDefault();
+        });
+        //返回列表绑定事件
+        $('#backToList').on('click', function (event) {
+            event.preventDefault();
+            toggleElement([$('#xt-list'), $('#xt-list-btns'), $('#xt-detail'), $('#xt-detail-btns'), $('#checkClaim')]);
+        });
+
+        //选题列表过滤时间
+        $('#listplanClaim').on('ifChecked', function (event) {
+            $('#xt-list').children('div[data-flowstatus="5"]').show();
+        }).on('ifUnchecked', function (event) {
+            $('#xt-list').children('div[data-flowstatus="5"]').hide();
+        });
+        $('#listplanNotClaim').on('ifChecked', function (event) {
+            $('#xt-list').children('div[data-flowstatus!="5"]').show();
+        }).on('ifUnchecked', function (event) {
+            $('#xt-list').children('div[data-flowstatus!="5"]').hide();
+        });
+
+        //记者列表过滤
+        $('#panel-searchUser').on('input', 'input', function (e) {
+            var input = $(this).val().trim();
+            $('#user-list > .panel-wrap').hide();
+            var sel = $('#user-list > .panel-wrap').find('p:contains("' + input + '")');
+
+            sel.closest('div.panel-wrap').show();
+        });
+        //任务列表过滤
+        $('#panel-searchTask').on('input', 'input', function (e) {
+            var input = $(this).val().trim();
+            $('#xt-list > .panel-wrap').hide();
+            var sel = $('#xt-list > .panel-wrap').find('p:contains("' + input + '")');
+
+            sel.closest('div.panel-wrap').show();
+        });
+
+    });
+    new Map();
+</script>
+
+</body>
+</html>

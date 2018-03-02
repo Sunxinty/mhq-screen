@@ -1,0 +1,474 @@
+/*
+ * @Author: HeSir 
+ * @Date: 2016-12-01 15:53:24 
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2016-12-15 14:07:11
+ */
+ 
+ @font-face
+{
+font-family: Agency FB;
+src: url('../font/AGENCYR.TTF'),
+     url('../font/AGENCYR.TTF'); /* IE9+ */
+}
+li {
+  list-style: none;
+}
+body {
+  width: 1920px;
+  height: 1080px;
+  background-image: url("images/bg.jpg");
+  overflow: hidden;
+}
+#bgImg {
+  width: 1920px;
+  height: 1080px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+/* 妞ょ儤妞傞柦锟�/
+@-webkit-keyframes Clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/* 闁棙妞傞柦锟�/
+@-webkit-keyframes Anti-clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+/*妞ょ敻娼伴崘鍛啇闁劌鍨�*/
+.pageContent {
+  width: 1920px;
+  height: 1080px;
+}
+
+.pageTopStyle {
+  width: 100%;
+  height: 220px;
+  position: fixed;
+  top: 0;
+}
+.pageTopStyle .pageName {
+  width: 300px;
+  height: 220px;
+  margin-left: 90px;
+  float: left;
+  background-image: url("images/newsmanUploadName.png");
+  background-repeat: no-repeat;
+}
+.pageTopStyle .pageTopRight {
+  width: 1490px;
+  height: 100%;
+  float: left;
+  margin-left: 10px;
+}
+.pageTopStyle .pageTopRight .animateCircle {
+  width: 100%;
+  height: 137px;
+}
+.pageTopStyle .pageTopRight .animateCircle .cicrleLeft {
+  width: 80px;
+  height: 80px;
+  background: url("images/circleOut1.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 110px;
+  left: 400px;
+  -webkit-transform: rotate(-360deg);
+  animation: Anti-clockwise 5s linear infinite;
+  -moz-animation: Anti-clockwise 5s linear infinite;
+  -webkit-animation: Anti-clockwise 5s linear infinite;
+  -o-animation: Anti-clockwise 5s linear infinite;
+}
+.pageTopStyle .pageTopRight .animateCircle .cicrleLeft p {
+  width: 50px;
+  height: 50px;
+  background: url("images/circleIn1.png") no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 14px;
+  z-index: 9999;
+  margin: 0px auto;
+}
+.pageTopStyle .pageTopRight .animateCircle .lineMiddle {
+  width: 1280px;
+  border: 1px solid #35cef0;
+  position: fixed;
+  top: 130px;
+  left: 390px;
+}
+.pageTopStyle .pageTopRight .animateCircle .lineRight {
+  width: 250px;
+  border: 1px solid #02b8c7;
+  transform: rotate(-35deg);
+  position: fixed;
+  top: 77px;
+  right: -25px;
+}
+.pageTopStyle .pageTopRight .animateCircle .circleRight {
+  width: 150px;
+  height: 150px;
+  background: url("images/circleOut2.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+  text-align: center;
+  top: 75px;
+  right: 125px;
+  -webkit-transform: rotate(360deg);
+  animation: Clockwise 8s linear infinite;
+  -moz-animation: Clockwise 8s linear infinite;
+  -webkit-animation: Clockwise 8s linear infinite;
+  -o-animation: Clockwise 8s linear infinite;
+}
+.pageTopStyle .pageTopRight .animateCircle .circleRight p {
+  width: 120px;
+  height: 120px;
+  background: url("images/circleIn2.png") no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 16px;
+  z-index: 9999;
+  margin: 0px auto;
+}
+.pageTopStyle .titleName {
+  width: 100%;
+  padding-left: 245px;
+  color: white;
+  font-size: 50px;
+  margin-top: 20px;
+}
+.pageTopStyle .channel {
+  width: 400px;
+  height: 45px;
+  overflow: hidden;
+  background: url('images/toBottom.png') no-repeat right rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 30px;
+  right: 150px;
+  z-index: 99999;
+  -webkit-box-shadow: 0 0 10px #0CC;
+  -moz-box-shadow: 0 0 10px #0CC;
+  box-shadow: 0 0 10px #0CC;
+}
+.pageTopStyle .channel select {
+  background: transparent;
+  width: 398px;
+  padding: 5px;
+  color: #10c5d4;
+  font-size: 20px;
+  border: none;
+  height: 45px;
+  -webkit-appearance: none;
+  /*for chrome*/
+}
+.pageTopStyle .channel select option {
+  background-color: #0C122F;
+}
+/* */
+.QTVratingsChartTip {
+  margin-left: 468px;
+  margin-top: 20px;
+}
+.QTVratingsChartTip li p:nth-child(1) {
+  width: 82px;
+  height: 8px;
+  background-color: red;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  float: left;
+}
+.QTVratingsChartTip li p:nth-child(2) {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  float: left;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-left: -50px;
+  margin-top: -6px;
+}
+.QTVratingsChartTip li p:nth-child(3) {
+  color: #01ecf5;
+  height: 30px;
+  width: 180px;
+  line-height: 30px;
+  font-size: 20px;
+  margin-top: -10px;
+  margin-left: 10px;
+  float: left;
+}
+/*pageBottom*/
+.pageBottom {
+  width: 100%;
+  height: 165px;
+  position: fixed;
+  bottom: 10px;
+}
+.pageBottom p:nth-child(1) {
+  width: 170px;
+  border: 1px solid #02b8c7;
+  transform: rotate(-50deg);
+  position: fixed;
+  bottom: 128px;
+  left: 1369px;
+  float: left;
+}
+.pageBottom p:nth-child(2) {
+  width: 1300px;
+  border: 1px solid #02b8c7;
+  float: left;
+  margin-top: 101px;
+  margin-left: -50px;
+  position: fixed;
+  left: 150px;
+  bottom: 63px;
+}
+.pageBottom p:nth-child(3) {
+  width: 420px;
+  border: 1px solid #02b8c7;
+  transform: rotate(0deg);
+  position: fixed;
+  right: -7px;
+  bottom: 193px;
+}
+.pageBottom div {
+  width: 125px;
+  height: 125px;
+  background: url("images/circleOut2.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+  right: 350px;
+  bottom: 140px;
+  -webkit-transform: rotate(-360deg);
+  animation: Anti-clockwise 5s linear infinite;
+  -moz-animation: Anti-clockwise 5s linear infinite;
+  -webkit-animation: Anti-clockwise 5s linear infinite;
+  -o-animation: Anti-clockwise 5s linear infinite;
+}
+.pageBottom div span {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: url("images/circleIn2.png") no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 12px;
+  z-index: 9999;
+  margin: 0px auto;
+}
+
+.pageBody {
+  width: 1715px;
+  height: 630px;
+  margin: 60px 0 0 100px;
+}
+
+.TopicPlanNumber {
+  width: 1250px;
+  height: 150px;
+  position: fixed;
+  top: 0px;
+}
+.TopicPlanNumber ul {
+  float: right;
+}
+.TopicPlanNumber ul li {
+  width: 220px;
+  height: 130px;
+  float: left;
+  padding-right: 20px;
+}
+.TopicPlanNumber ul li p:nth-of-type(1) {
+  color: #00f6ff;
+  font-size: 90px;
+  height: 90px;
+  margin-top: 0px;
+  text-align: right;
+  font-family: "Agency FB";
+}
+.TopicPlanNumber ul li p:nth-of-type(2) {
+  color: #a3fbff;
+  font-size: 24px;
+  height: 26px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.newsManUploadBody {
+  width: 1920px;
+  height: 750px;
+  position: fixed;
+  top: 220px;
+  margin: 0px;
+  padding-left: 125px;
+
+}
+.newsManUploadBody .uplondMatter {
+  width: 1285px;
+  height: 727px;
+  float: left;
+}
+.newsManUploadBody .uplondMatter .uploadName {
+  width: 100%;
+  font-size: 24px;
+  color: white;
+}
+.newsManUploadBody .uplondMatter .eachUpload {
+  width: 208px;
+  height: 208px;
+  background: url("images/newsUploadBg.png") no-repeat;
+  margin: 10px 5px 0 0;
+  float: left;
+  padding: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.newsManUploadBody .uplondMatter .eachUpload .matterBox {
+  width: 195px;
+  height: 112px;
+}
+.newsManUploadBody .uplondMatter .eachUpload .vedioBtn {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #f7f3ff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: 35px;
+  left: 75px;
+  display: none;
+}
+.newsManUploadBody .uplondMatter .eachUpload .vedioBtn:after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 35%;
+  top: 20%;
+  background: 0 0;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-left: 25px solid #fbf9ff;
+  border-bottom: 15px solid transparent;
+}
+.newsManUploadBody .uplondMatter .eachUpload .matterBox img {
+  width: 100%;
+  height: 100%;
+}
+.newsManUploadBody .uplondMatter .eachUpload .matterBox video {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.newsManUploadBody .uplondMatter .eachUpload p {
+	    word-break: break-all;
+    overflow: hidden;
+  width: 195px;
+  height: 48px;
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight:bold;
+}
+.newsManUploadBody .uplondMatter .eachUpload span {
+     width: 150px;
+    color: #6f7da3;
+    display: block;
+    font-size: 14px;
+    margin-top: -8px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.newsManUploadBody .uploadUserRanking {
+  width: 410px;
+  height: 550px;
+  margin-left: 35px;
+  float: left;
+}
+.newsManUploadBody .uploadUserRanking .uploadUser {
+  width: 100%;
+  font-size: 24px;
+  color: white;
+  margin-top: 10px;
+}
+.newsManUploadBody .uploadUserRanking .uploadUser span {
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  background: url("images/newsUploadtop5.png") no-repeat;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li {
+  width: 383px;
+  height: 90px;
+  background-color: rgba(252, 106, 116, 0.1);
+  padding: 15px 0 0 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: inset 0 0 10px #2d2245;
+  -moz-box-shadow: inset 0 0 10px #2d2245;
+  box-shadow: inset 0 0 20px #2d2245;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  float: left;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li p:nth-of-type(1) {
+color: white;
+    font-size: 18px;
+    float: left;
+    line-height: 60px;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 250px;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li p:nth-of-type(2) {
+  color: white;
+  font-size: 30px;
+  float: right;
+  line-height: 60px;
+  margin-right: 10px;
+}
+
+
+.newsManUploadBody .uploadUserRanking .uploadUserTop li div {
+  width: 383px;
+  height: 72px;
+  background-color: #fd4553;
+  margin-top: -5px;
+  margin-left: -10px;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li:nth-of-type(2) div {
+  background-color: #fc6a74;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li:nth-of-type(3) div {
+  background-color: #fc7d6e;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li:nth-of-type(4) div {
+  background-color: #fa9d64;
+}
+.newsManUploadBody .uploadUserRanking .uploadUserTop li:nth-of-type(5) div {
+  background-color: #f7ab5f;
+}
+

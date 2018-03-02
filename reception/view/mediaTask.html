@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新媒体任务监看</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/mediaTask.css">
+</head>
+<body>
+<div id="container">
+    <div id="top">
+        <div class="top_title">
+            {{title}}
+        </div>
+    </div>
+    <div id="left">
+        <div id="wechat" class="selected"></div>
+        <div id="weibo"></div>
+        <div id="website"></div>
+    </div>
+    <div id="right">
+        <div id="wechatDetails" class="show">
+            <div v-for="news in dataArr[0].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div id="weiboDetails">
+            <div v-for="news in dataArr[1].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div id="websiteDetails">
+            <div v-for="news in dataArr[2].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/lib/jquery-3.1.0.min.js"></script>
+<script src="../static/lib/vue.js"></script>
+<script src="../static/lib/vue-resource.js"></script>
+<script src="../static/lib/echarts4.0.3.min.js"></script>
+<script src="../static/json/mediaTaskJson.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static/js/mediaTask.js"></script>
+
+</body>
+</html>

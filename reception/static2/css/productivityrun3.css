@@ -1,0 +1,589 @@
+/*
+ * @Author: HeSir 
+ * @Date: 2016-12-01 15:53:24 
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2016-12-21 10:07:53
+ */
+li {
+  list-style: none;
+}
+body {
+  width: 1920px;
+  height: 1080px;
+  background-image: url("../images/bgPro.jpg");
+  background-size: 100% 100%;
+  overflow: hidden;
+  font-family: "Microsoft YaHei" ! important;
+}
+
+/* 顺时针*/
+@-webkit-keyframes Clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/* 逆时针*/
+@-webkit-keyframes Anti-clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+/*页面内容部分 */
+.pageContent {
+  width: 1920px;
+  height: 1080px;
+}
+/* top  标题*/
+.pageTopStyle {
+  width: 100%;
+  height: 220px;
+  position: fixed;
+  top: 0;
+}
+.pageTopStyle #top {
+  font:italic bold 42px "微软雅黑";
+  height: 99px;
+  line-height:99px;
+  width:100%;
+  color: #fff;
+  background: url("../images/top.png") center no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.pageTopStyle #top .top_title {
+  margin-left:970px;
+  padding-top:10px;
+}
+.pageTopStyle .pageName {
+  width: 300px;
+  height: 220px;
+  margin-left: 90px;
+  float: left;
+  background-image: url("../images/titleBg.png");
+  background-repeat: no-repeat;
+}
+.pageTopStyle .pageTopRight {
+  width: 1490px;
+  height: 100%;
+  float: left;
+  margin-left: 10px;
+}
+.pageTopStyle .pageTopRight .animateCircle {
+  width: 100%;
+  height: 137px;
+}
+.pageTopStyle .pageTopRight .animateCircle .lineLeft {
+  width: 120px;
+  border: 1px solid #02b8c7;
+  transform: rotate(55deg);
+  position: fixed;
+  top: 50px;
+  left: 360px;
+}
+.pageTopStyle .pageTopRight .animateCircle .cicrleLeft {
+  width: 70px;
+  height: 70px;
+  background: url("../images/circleOut1.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 65px;
+  left: 420px;
+  -webkit-transform: rotate(-360deg);
+  animation: Anti-clockwise 5s linear infinite;
+  -moz-animation: Anti-clockwise 5s linear infinite;
+  -webkit-animation: Anti-clockwise 5s linear infinite;
+  -o-animation: Anti-clockwise 5s linear infinite;
+}
+.pageTopStyle .pageTopRight .animateCircle .cicrleLeft p {
+  width: 50px;
+  height: 50px;
+  background: url("../images/circleIn1.png") no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 9px;
+  z-index: 9999;
+  margin: 0px auto;
+}
+.pageTopStyle .pageTopRight .animateCircle .lineMiddle {
+  width: 1390px;
+  border: 1px solid #02b8c7;
+  position: fixed;
+  top: 80px;
+}
+.pageTopStyle .pageTopRight .animateCircle .lineRight {
+  width: 110px;
+  border: 1px solid #02b8c7;
+  transform: rotate(-60deg);
+  position: fixed;
+  top: 50px;
+  right: 0px;
+}
+.pageTopStyle .pageTopRight .animateCircle .circleRight {
+  width: 70px;
+  height: 70px;
+  background: url("../images/circleOut1.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 65px;
+  right: 50px;
+  -webkit-transform: rotate(360deg);
+  animation: Clockwise 5s linear infinite;
+  -moz-animation: Clockwise 5s linear infinite;
+  -webkit-animation: Clockwise 5s linear infinite;
+  -o-animation: Clockwise 5s linear infinite;
+}
+.pageTopStyle .pageTopRight .animateCircle .circleRight p {
+  width: 50px;
+  height: 50px;
+  background: url("../images/circleIn1.png") no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 9px;
+  z-index: 9999;
+  margin: 0px auto;
+}
+.pageTopStyle .titleName {
+  width: 100%;
+  padding-left: 245px;
+  color: white;
+  font-size: 50px;
+  margin-top: 20px;
+}
+.pageTopStyle .channel {
+  width: 400px;
+  height: 45px;
+  overflow: hidden;
+  background: url('../images/toBottom.png') no-repeat right rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 30px;
+  right: 150px;
+  z-index: 99999;
+  -webkit-box-shadow: 0 0 10px #0CC;
+  -moz-box-shadow: 0 0 10px #0CC;
+  box-shadow: 0 0 10px #0CC;
+}
+.pageTopStyle .channel select {
+  background: transparent;
+  width: 398px;
+  padding: 5px;
+  color: #10c5d4;
+  font-size: 20px;
+  border: none;
+  height: 45px;
+  -webkit-appearance: none;
+  /*for chrome*/
+}
+.pageTopStyle .channel select option {
+  background-color: #0C122F;
+}
+/* */
+.QTVratingsChartTip {
+  margin-left: 468px;
+  margin-top: 20px;
+}
+.QTVratingsChartTip li p:nth-child(1) {
+  width: 82px;
+  height: 8px;
+  background-color: red;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  float: left;
+}
+.QTVratingsChartTip li p:nth-child(2) {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  float: left;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-left: -50px;
+  margin-top: -6px;
+}
+.QTVratingsChartTip li p:nth-child(3) {
+  color: #01ecf5;
+  height: 30px;
+  width: 180px;
+  line-height: 30px;
+  font-size: 20px;
+  margin-top: -10px;
+  margin-left: 10px;
+  float: left;
+}
+/*pageBottom*/
+.pageBottom {
+  width: 100%;
+  height: 165px;
+  position: fixed;
+  bottom: -10px;
+}
+.pageBottom .fl2 {
+  position: fixed;
+  bottom: 15px;
+  right: 160px;
+  opacity: 0.5;
+}
+.pageBottom .w120 {
+  width: 120px;
+  height: 120px;
+}
+/* 页面主要内容------每块改变的区域*/
+.pageBody {
+  width: 1715px;
+  height: 630px;
+  margin: 60px 0 0 100px;
+}
+.timeChoose {
+  width: 350px;
+  height: 40px;
+  overflow: hidden;
+  position: fixed;
+  top: 60px;
+  right: 120px;
+  z-index: 99999;
+  -webkit-box-shadow: 0 0 10px #0CC;
+  -moz-box-shadow: 0 0 10px #0CC;
+  box-shadow: 0 0 10px #0CC;
+}
+.timeChoose p {
+  height: 30px;
+  width: 30px;
+  background: url("../images/reportClock.png") no-repeat;
+  position: fixed;
+  top: 67px;
+  margin-left: 10px;
+}
+.timeChoose #date1 {
+  width: 400px;
+  height: 40px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #3FD4D6;
+  border: none;
+  text-indent: 35px;
+}
+/*生产力统计----report */
+.QTVReportBody {
+  width: 1734px;
+  height: 700px;
+  margin-top: -80px;
+  padding: 0px;
+  padding-left: 50px;
+  position: fixed;
+  top: 230px;
+}
+.QTVReportBody .eachReportBox {
+  width: 500px;
+  height: 450px;
+  float: left;
+  margin-right: 50px;
+  position: relative;
+}
+.QTVReportBody .eachReportBox .allNumberImg {
+  width: 220px;
+  height: 70px;
+  background: url("../images/reportName3No.png") no-repeat;
+  background-size: 100%;
+  text-align: center;
+  line-height: 60px;
+  font-size: 20px;
+  margin: 0 auto;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-weight: 600;
+  color: #c7f7fe;
+}
+.QTVReportBody .eachReportBox .allNumberImg span{
+  color: white;
+}
+.QTVReportBody .eachReportBox .reportTitle {
+  font-size: 22px;
+  color: #C7F7FE;
+  /*text-align: center;*/
+  margin-top: 30px;
+  margin-left: 30px;
+  line-height: 25px;
+}
+.QTVReportBody .eachReportBox .reportTitle span {
+  font-size: 35px;
+  font-weight: bolder;
+}
+.QTVReportBody .eachReportBox .reportBox {
+  width: 512px;
+  height: 400px;
+  margin-top: 10px;
+  background: url("../images/report2.png") no-repeat;
+  padding-left: 15px;
+  padding-top: 15px;
+  background-size: 100%;
+  /*Y轴线 数字*/
+  /*Y轴线*/
+  /*中间统计图表*/
+  /*x轴线*/
+  /*x轴线 数字*/
+  /* x y 轴的参数及名字*/
+}
+.QTVReportBody .eachReportBox .reportBox .yAxisNo {
+  width: 30px;
+  height: 270px;
+  font-size: 12px;
+  color: white;
+  float: left;
+  margin-top: 30px;
+}
+.QTVReportBody .eachReportBox .reportBox .yAxisNo li {
+  margin-bottom: 10px;
+}
+.QTVReportBody .eachReportBox .reportBox .yAxisLine {
+  height: 250px;
+  width: 1px;
+  margin-top: 30px;
+  background-color: white;
+  float: left;
+}
+.QTVReportBody .eachReportBox .reportBox .chartListBox {
+  width: 310px;
+  height: 270px;
+  float: left;
+  margin: 10px 0 0 10px;
+  padding-top: 30px;
+  padding-left: 5px;
+}
+.QTVReportBody .eachReportBox .reportBox .chartListBox li {
+  height: 240px;
+  width: 40px;
+  overflow: hidden;
+  float: left;
+  margin-right: 21px;
+  background: url("../images/reportOut.png") no-repeat;
+}
+.QTVReportBody .eachReportBox .reportBox .chartListBox li div {
+  height: 100%;
+  width: 38px;
+  margin-left: 2px;
+  position: relative;
+  z-index: 9999;
+  display: inline-block;
+}
+.QTVReportBody .eachReportBox .reportBox .chartListBox li div p {
+  margin-top: -15px;
+  position: relative;
+  top: 10px;
+  width: 35px;
+  text-align: center;
+  z-index: 99999;
+  font-weight: bold;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisLine {
+  width: 320px;
+  height: 1px;
+  background-color: white;
+  float: left;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo {
+  width: 340px;
+  height: 30px;
+  float: left;
+  margin-top: 0;
+  margin-left: 35px;
+  position: relative;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li {
+  width: 122px;
+  line-height: 30px;
+  color: white;
+  font-size: 16px;
+  font-weight: lighter;
+  transform: rotate(50deg);
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li:nth-of-type(1) {
+  margin-top: 20px;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li:nth-of-type(2) {
+  margin-top: -30px;
+  margin-left: 65px;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li:nth-of-type(3) {
+  margin-top: -30px;
+  margin-left: 130px;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li:nth-of-type(4) {
+  margin-top: -30px;
+  margin-left: 195px;
+}
+.QTVReportBody .eachReportBox .reportBox .xAxisNo li:nth-of-type(5) {
+  margin-top: -30px;
+  margin-left: 260px;
+}
+.QTVReportBody .eachReportBox .reportBox .XName {
+  color: white;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+.QTVReportBody .eachReportBox .reportBox .YName {
+  color: white;
+  position: absolute;
+  right: -20px;
+  top: 270px;
+}
+.QTVReportBody .eachReportBox .reportNumber {
+  width: 412px;
+}
+.QTVReportBody .eachReportBox .reportNumber .number {
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Arial';
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 0.9em #1dcad9, 0 0 0.9em #1dcad9;
+}
+.QTVReportBody .eachReportBox .reportNumber .NumberImg {
+  width: 50%;
+  height: 15px;
+  box-shadow: 0 0 8px #1dcad9;
+  -webkit-box-shadow: 0 0 8px #1dcad9;
+  -moz-box-shadow: 0 0 8px #1dcad9;
+  -o-box-shadow: 0 0 8px #1dcad9;
+  border: 1px solid #01d4e0;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin: 0 auto;
+  margin-top: -10px;
+  background: url("../images/ratingsNimg.png");
+}
+.QTVReportBody .eachReportBox .reportNumber .reportName {
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  margin-top: 10px;
+}
+.QTVReportBody .eachReportBox1 .reportBox .chartListBox li div {
+  background: url("../images/reportIn.png") no-repeat;
+}
+.QTVReportBody .eachReportBox1 .reportBox .chartListBox li div p {
+  color: #1443b5;
+}
+.QTVReportBody .eachReportBox1 .reportNumber .NumberImg {
+  width: 80%;
+}
+.QTVReportBody .eachReportBox2 .reportBox .chartListBox li div {
+  background: url("../images/reportIn2.png") no-repeat;
+}
+.QTVReportBody .eachReportBox2 .reportBox .chartListBox li div p {
+  color: #148c46;
+}
+.QTVReportBody .eachReportBox3 .reportBox .chartListBox li div {
+  background: url("../images/reportIn3.png") no-repeat;
+}
+.QTVReportBody .eachReportBox3 .reportBox .chartListBox li div p {
+  color: #ca7919;
+}
+.QTVReportBody .eachReportBox4 .reportBox .chartListBox li div {
+  background: url("../images/reportIn4.png") no-repeat;
+}
+.QTVReportBody .eachReportBox4 .reportBox .chartListBox li div p {
+  color: #9742ae;
+}
+/* 上边动画 360 圆*/
+.pageTopRight {
+  width: 1490px;
+  height: 100%;
+  float: left;
+  margin-left: -10px;
+}
+.pageTopRight .fl {
+  position: fixed;
+  top: 70px;
+  left: 418px;
+}
+.pageTopRight .fl2 {
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  opacity: 0.5;
+}
+.pageTopRight .w60 {
+  width: 60px;
+  height: 60px;
+}
+.pageTopRight .w70 {
+  width: 70px;
+  height: 70px;
+}
+.pageTopRight .w80 {
+  width: 80px;
+  height: 80px;
+}
+.pageTopRight .w120 {
+  width: 120px;
+  height: 120px;
+}
+.pageTopRight .smallIcon {
+  position: absolute;
+  top: 0px;
+  left: 310px;
+  width: 129px;
+  height: 22px;
+  background: url("../images/guang.png") no-repeat;
+  float: left;
+}
+
+#table{
+  color: white;
+  padding-right: 5px;
+  margin-top: 50px;
+}
+#table .detailsBox{
+  display: inline-block;
+  width: 500px;
+  background: url("../images/tableBG.png") center no-repeat;
+  background-size: 100%;
+  height: 350px;
+  margin-right: 50px;
+  padding-left:10px;
+}
+#table .detailsBox h3{
+  line-height:30px;
+  padding-left:60px;
+  font-size:24px;
+  color: #C7F7FE;
+  margin-bottom: 14px;
+}
+#table .detailsBox thead th{
+  line-height:34px;
+  font-size: 18px;
+  border-bottom: none;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+#table .detailsBox tbody td{
+  max-width: 226px;
+  line-height:36px;
+  font-size: 16px;
+  border-top: none;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+#table .detailsBox tbody td:nth-child(2){
+  text-align: left;
+}
+#table .detailsBox img{
+  width:80px;
+  height:36px;
+}

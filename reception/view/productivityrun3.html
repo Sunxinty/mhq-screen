@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>生产力统计</title>
+    <!--Third party style-->
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/normalize.css">
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static2/plugins/bootstrap/font-awesome.min.css">
+    <link rel="stylesheet" href="../static2/plugins/circle360/circle360.css">
+    <link rel="stylesheet" href="../static2/plugins/pickerDateRange/dateRange.css">
+    <link rel="stylesheet" href="../static2/plugins/pickerDateRange/monthPicker.css">
+    <link rel="stylesheet" href="../static2/css/productivityrun3.css">
+</head>
+<body>
+<!--autoplay loop  -webkit-filter:grayscale(100%) 背景视频-->
+<!--<video autoplay loop  style="width:100%; ">-->
+<!--<source src="../images/bg.mp4">-->
+<!--</video>-->
+
+
+
+<!--生产力统计-->
+<!--页面内容部分-->
+<div class="pageContent">
+
+    <!--top  标题-->
+    <div class="pageTopStyle">
+        <!--顶部标题-->
+        <div id="top">
+            <div class="top_title">
+                生产力统计
+            </div>
+        </div>
+        <!--<div class="pageName"></div>-->
+        <div class="pageTopRight">
+            <!--<svg width="1920" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">-->
+                <!--<path d="M0 0 L100 147  L1360 147  L1550 0 " style="fill: none"  />-->
+                <!--<polyline  points="0,0 50,100  1450,100 1500,0"-->
+                           <!--style="fill: none;stroke:#44f9f7;stroke-width: 1" />-->
+            <!--</svg>-->
+            <!--&lt;!&ndash;<div class="smallIcon">  </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;两个圆&ndash;&gt;-->
+            <!--<div class="fl" >-->
+                <!--<div class="spin-circle w60">-->
+                    <!--<div class="torus"></div>-->
+                    <!--<div class="circle-inner"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="fl2" >-->
+                <!--<div class="spin-circle w80">-->
+                    <!--<div class="torus"></div>-->
+                    <!--<div class="circle-inner"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+
+            <!--
+                                 <div class="channel">
+                                    <select>
+                                    <option>QTV-1</option>
+                                    <option>The second option</option>
+                                    </select>
+                                </div>-->
+
+            <!--时间选择-->
+
+            <div class="timeChoose">
+                <p></p>
+                <input id="date1" type="text" style="" name="reservation" class="form-control" value="" readonly="readonly"/>
+            </div>
+        </div>
+    </div>
+
+    <!--pageBody-->
+    <div class="pageBody QTVReportBody">
+        <div class="eachReportBox eachReportBox1">
+            <div class="allNumberImg">写稿总量：<span id="ywgdoc_totalCount">0</span></div>
+            <div class="reportTitle"><div>写稿量</div></div>
+            <div class="reportBox">
+                <div style="width:360px;height: 200px; position: relative;margin: 0 auto;">
+                    <ul class="yAxisNo" id="ywgdoc_yAxisNo">
+                    </ul>
+                    <p class="yAxisLine"></p>
+                    <!--中间部分 统计图-->
+                    <ul class="chartListBox" id="ywgdoc_ycount">
+                    </ul>
+
+                    <!---->
+                    <p class="xAxisLine"></p>
+                    <ul class="xAxisNo" id="ywgdoc_xAxisNo">
+                    </ul>
+                    <!--X Y 的参数名字-->
+                    <span class="XName">数量</span>
+                    <span class="YName">名字</span>
+                </div>
+            </div>
+            <!--<div class="reportNumber">
+                <p class="number">2350</p>
+                <p class="NumberImg"></p>
+                <p class="reportName">写稿总量</p>
+            </div>-->
+        </div>
+        <div class="eachReportBox eachReportBox2" >
+            <div class="allNumberImg">微信发布总量：<span id="weixin_totalCount">0</span></div>
+            <div class="reportTitle"><div>微信发布量</div></div>
+            <div class="reportBox">
+                <div style="width:360px;height: 200px; position: relative;margin: 0 auto;">
+
+                    <ul class="yAxisNo" id="weixin_yAxisNo">
+                    </ul>
+                    <p class="yAxisLine"></p>
+                    <!--中间部分 统计图-->
+                    <ul class="chartListBox" id="weixin_ycount">
+                    </ul>
+
+                    <!---->
+                    <p class="xAxisLine"></p>
+                    <ul class="xAxisNo" id="weixin_xAxisNo">
+                    </ul>
+                    <!--X Y 的参数名字-->
+                    <span class="XName">数量</span>
+                    <span class="YName">名字</span>
+                </div>
+            </div>
+            <!--<div class="reportNumber">
+                <p class="number">1350</p>
+                <p class="NumberImg"></p>
+                <p class="reportName">微信发布总量</p>
+            </div>-->
+        </div>
+        <div class="eachReportBox eachReportBox3">
+            <div class="allNumberImg">微博发布总量：<span id="weibo_totalCount">0</span></div>
+            <div class="reportTitle"><div>微博发布量</div></div>
+            <div class="reportBox">
+                <div style="width:360px;height: 200px; position: relative;margin: 0 auto;">
+                    <ul class="yAxisNo" id="weibo_yAxisNo">
+                    </ul>
+                    <p class="yAxisLine"></p>
+                    <!--中间部分 统计图-->
+                    <ul class="chartListBox" id="weibo_ycount">
+                    </ul>
+
+                    <!---->
+                    <p class="xAxisLine"></p>
+                    <ul class="xAxisNo" id="weibo_xAxisNo">
+                    </ul>
+                    <!--X Y 的参数名字-->
+                    <span class="XName">数量</span>
+                    <span class="YName">名字</span>
+                </div>
+
+            </div>
+            <!--<div class="reportNumber">
+                <p class="number">6350</p>
+                <p class="NumberImg"></p>
+                <p class="reportName">微博发布总量</p>
+            </div>-->
+        </div>
+        <div class="clearfix"></div>
+        <div id="table">
+            <div class="detailsBox">
+                <h3>最新写稿TOP5</h3>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>标题</th>
+                            <th>撰稿人</th>
+                            <th>发布时间</th>
+                        </tr>
+                    </thead>
+                    <tbody id="XIEGAO">
+                        <tr>
+                            <td><img src="images/headerIco.png" alt=""></td>
+                            <td>认识建设现代化经济体重要性</td>
+                            <td>马超</td>
+                            <td>2/1 17:28</td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/headerIco.png" alt=""></td>
+                            <td>女护士帮醉驾男友逃避处罚</td>
+                            <td>李明</td>
+                            <td>2/1 17:23</td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/headerIco.png" alt=""></td>
+                            <td>全面清理损坏共享单车</td>
+                            <td>张帅</td>
+                            <td>2/1 17:18</td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/headerIco.png" alt=""></td>
+                            <td>16岁少女坠楼身亡</td>
+                            <td>安航</td>
+                            <td>2/1 17:14</td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/headerIco.png" alt=""></td>
+                            <td>春运大潮拉开序幕</td>
+                            <td>西楼</td>
+                            <td>2/1 17:13</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="detailsBox">
+                <h3>最新发布TOP5</h3>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>标题</th>
+                        <th>撰稿人</th>
+                        <th>发布时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="WEIXIN">
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>谢娜生下双胞胎</td>
+                        <td>李乐乐</td>
+                        <td>2/1 17:45</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>张继科景甜互动频繁要公布恋情？</td>
+                        <td>王广瑜</td>
+                        <td>2/1 17:39</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>鹿晗专辑销量超越周杰伦</td>
+                        <td>胡狼</td>
+                        <td>2/1 17:33</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>跑男第六季阵容曝光</td>
+                        <td>海星</td>
+                        <td>2/1 17:30</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>贝克汉姆家又多一个纹身控</td>
+                        <td>杜一</td>
+                        <td>2/1 17:28</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="detailsBox">
+                <h3>最新发布TOP5</h3>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>标题</th>
+                        <th>撰稿人</th>
+                        <th>发布时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="WEIBO">
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>中英将在雄安共建金融科技城</td>
+                        <td>张洋</td>
+                        <td>2/1 18:48</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>印度将在中印边境大搞基地</td>
+                        <td>马海</td>
+                        <td>2/1 18:45</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>Facebook高管解读财报</td>
+                        <td>王科科</td>
+                        <td>2/1 18:13</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>任天堂公布switch主机销量</td>
+                        <td>赵点</td>
+                        <td>2/1 17:58</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/headerIco.png" alt=""></td>
+                        <td>旅行青蛙下载量中国占95%</td>
+                        <td>钱兴鑫</td>
+                        <td>2/1 17:41</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--pageBottom-->
+    <!--<div class="pageBottom animate3">-->
+        <!--<svg width="1920" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">-->
+            <!--&lt;!&ndash;<path id="path2" d="M0 15 L135 76 L1600 76  L1680 85 L1920 250 "   />&ndash;&gt;-->
+            <!--&lt;!&ndash;<path id="path2" d="M1950 250 L1680 62 L1600 63  L120 60 L0 0 "  style="fill: none"  />&ndash;&gt;-->
+
+            <!--<polyline  points="0,200 150,80  1700,80 1950,250"-->
+                       <!--style="fill: none;stroke:#44f9f7;stroke-width: 1" />-->
+        <!--</svg>-->
+
+        <!--<div class="fl2" >-->
+            <!--<div class="spin-circle w120">-->
+                <!--<div class="torus"></div>-->
+                <!--<div class="circle-inner"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>
+
+</div>
+	<script src="../static2/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../static2/plugins/pickerDateRange/dateRange.js"></script>
+    <script src="../static2/plugins/pickerDateRange/monthPicker.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+    <script src="../static2/js/productivityrun3.js"></script>
+</body>
+</html>
+<style>
+    .eachReportBox1{
+        /*background-color: #55ff53;*/
+        /*-webkit-animation:myfirst1 20s infinite linear ;*/
+    }
+    .eachReportBox2{
+        /*background-color: red;*/
+        /*transform:scale(1.5);*/
+        /*-webkit-animation:myfirst2 20s infinite linear ;*/
+    }
+    .eachReportBox3{
+        /*background-color: #31acff;*/
+        /*-webkit-animation:myfirst3 20s infinite linear ;*/
+    }
+
+
+    @keyframes myfirst1
+    {
+        0%   { left:0px; top:0px;transform:scale(1); }
+        15%   { left:0px; top:0px;}
+
+        30%  { left:1050px; top:0px;}
+        45%  { left:1050px; top:0px;transform:scale(1);}
+
+        60%  { left:500px; top:00px;transform:scale(1.5);}
+        75%  { left:500px; top:00px;transform:scale(1.5);}
+
+        90%{left:0px; top:0px; transform:scale(1); }
+        100%{left:0px; top:0px; }
+    }
+
+    @keyframes myfirst2
+    {
+
+        0%   { left:0px; top:0px;transform:scale(1.5); }
+        15%   { left:0px; top:0px; transform:scale(1.5);}
+
+        30%  {  left:-530px; top:0px;transform:scale(1);}
+        45%  {  left:-530px; top:0px;}
+
+        60%  { left:520px; top:00px;transform:scale(1); }
+        75%  { left:520px; top:00px;transform:scale(1);}
+
+        90%{left:0px; top:0px;transform:scale(1.5);}
+        100%{left:0px; top:0px;}
+    }
+
+    @keyframes myfirst3
+    {
+
+        0%   {  left:-0px; top:0px;}
+        15%   {  left:-0px; top:0px;transform:scale(1);}
+
+        30%  {  left:-500px; top:0px; transform:scale(1.5);}
+        45%  {  left:-500px; top:0px; transform:scale(1.5);}
+
+        60%  {  left:-1050px; top:0px; transform:scale(1);}
+        75%  {  left:-1050px; top:0px;}
+
+        90%{left:0px; top:0px;  }
+        100%{left:0px; top:0px; }
+    }
+</style>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>融合媒体报道指挥监看系统</title>
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+
+<!--顶部标题-->
+<div id="top">
+    <div class="top_title">
+        {{title}}
+    </div>
+    <div class="settings" v-on:click="open(settingUrl)"></div>
+</div>
+<!--选择入口-->
+<div id="container">
+    <div id="choose" class="zy-Slide">
+        <section id="clickLeft" v-on:click="left()"></section>
+        <section id="clickRight" v-on:click="right()"></section>
+        <div class="station">
+            <ul>
+                <li v-for="list in list" v-on:click="open(list.url)">
+                    <img v-bind:src=list.icon />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="center" v-on:click="openSelected(whichList.url)">
+        <div class="centerContainer">
+            <img class="icon" v-bind:src=whichList.icon_s alt="">
+            <img class="zhuan" v-bind:src=centerSrc alt="">
+            <div class="choose_title">
+                {{whichList.name}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="static/lib/jquery-3.1.0.min.js"></script>
+<script src="static/lib/vue.js"></script>
+<script src="static/json/indexJson.js"></script>
+<script src="static/json/HTTPNAME.js"></script>
+<script src="static/js/index.js"></script>
+</body>
+</html>

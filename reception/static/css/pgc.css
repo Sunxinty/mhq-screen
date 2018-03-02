@@ -1,0 +1,247 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/pgc/bg.png") top no-repeat;
+    background-size: 100%;
+}
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../imgs/pgc/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../imgs/pgc/title.png") center left no-repeat;
+}
+/*顶部标题 end*/
+
+/*total start*/
+#total{
+    width:620px;
+    height:100px;
+    position: fixed;
+    top:64px;
+    right:20px;
+    z-index: 30;
+}
+#total .title{
+    width:200px;
+    height:76px;
+    line-height:76px;
+    float: left;
+    color:#0FFBFE;
+    font-size:32px;
+    font-weight:bold;
+    padding-left:16px;
+}
+#total .num{
+    width:240px;
+    height:36px;
+    float: left;
+    margin:10px;
+    padding:10px 22px;
+    background: #00e0be;
+    border-radius: 16px;
+}
+#total .num div{
+    width:24px;
+    height:36px;
+    line-height:36px;
+    text-align: center;
+    float: left;
+    background: #ffffff;
+    margin-right: 6px;
+    font-size: 36px;
+    font-weight:bold;
+    color:#347778;
+}
+/*total end*/
+
+#up {
+    width:1764px;
+    height:739px;
+    position: absolute;
+    top:142px;
+    left:78px;
+    background: url("../imgs/pgc/detailsContainer.png") center no-repeat;
+}
+.details{
+    width:398px;
+    height:202px;
+    opacity: 0.3;
+    background: url("../imgs/pgc/details.png") center no-repeat;
+    background-size: 100%;
+    position: relative;
+    transition: width 1s;
+}
+.details .texts{
+    width:200px;
+    height:90px;
+    position: absolute;
+    top:38px;
+    right:36px;
+    text-align: center;
+    color:#fff;
+}
+.details .timer{
+    font-size:14px;
+    margin-bottom:10px;
+    color: #45E8EE;
+}
+.details .name{
+    font-size:12px;
+    margin-bottom:6px;
+    padding-right:20px;
+    color: #FFC300;
+}
+.details .pics{
+    font-size:14px;
+    text-align: right;
+    padding-right:10px;
+}
+.details .pics span{
+    padding:0 8px;
+    color: #45E8EE;
+    font-size:32px;
+}
+.details .images{
+    width:120px;
+    height:90px;
+    position: absolute;
+    top:29px;
+    left:36px;
+}
+.details .images img
+{
+    width:120px;
+    height:90px;
+    margin-left:-20px;
+}
+
+.s{
+    width:100%;
+    height:280px;
+    margin-bottom:60px;
+}
+.s .left {
+    float: left;
+    width:50%;
+}
+.s .left .details{
+    float: right;
+    margin-top: 50px;
+    margin-right:80px;
+}
+.s .right {
+    float: left;
+    width:50%;
+}
+.s .right .details{
+    margin-top: 50px;
+    margin-left:80px;
+}
+.b{
+    width:100%;
+    height:280px;
+}
+.b .details{
+    float: left;
+    margin-top:40px;
+    margin-left:60px;
+}
+/*大的details样式 start*/
+#up .details.big {
+    width:612px;
+    height:318px;
+    margin-top:0;
+    opacity: 1;
+}
+.details.big .texts{
+    width:350px;
+    height:150px;
+    position: absolute;
+    top:68px;
+    right:36px;
+}
+.details.big .timer{
+    font-size:20px;
+    margin-bottom:20px;
+}
+.details.big .name{
+    font-size:18px;
+    margin-bottom:16px;
+    padding-right:40px;
+}
+.details.big .pics{
+    font-size:20px;
+    padding-right:30px;
+}
+.details.big .pics span{
+    padding:0 10px;
+    font-size:44px;
+}
+.details.big .images{
+    width:180px;
+    height:144px;
+    position: absolute;
+    top:48px;
+    left:56px;
+}
+.details.big .images img
+{
+    width:180px;
+    height:180px;
+    margin-left:-20px;
+}
+/*大的details样式 end*/
+
+#down{
+    width:1920px;
+    height:180px;
+    margin:auto;
+    padding-top: 790px;
+    padding-left:78px;
+}
+#down .createUser{
+    display: none;
+}
+#down .createUser.show{
+    display: block;
+}
+#down .media{
+    width: 167px;
+    height:129px;
+    float: left;
+    margin-right:32px;
+    background: url("../imgs/pgc/bg-small.png") no-repeat center;
+    background-size: 100%;
+    text-align: center;
+}
+#down .media .content{
+    width:150px;
+    height:110px;
+    margin:9px;
+    overflow: hidden;
+    opacity: 1;
+}
+#down .media img{
+    width:150px;
+    height:110px;
+    object-fit: cover;
+}
+
+

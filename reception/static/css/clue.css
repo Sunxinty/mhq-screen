@@ -1,0 +1,227 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/clue/bg.png") top no-repeat;
+    background-size: 100%;
+}
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../imgs/clue/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../imgs/clue/title.png") center left no-repeat;
+}
+/*顶部标题 end*/
+
+/*左侧按钮组 start*/
+#btnList{
+    width:771px;
+    height:800px;
+    float: left;
+    margin:34px 32px 0 85px;
+    position: relative;
+}
+#btnList .btn{
+    width: 728px;
+    height: 128px;
+    margin-top:16px;
+    position: relative;
+    transition: width 1s;
+    text-align: left;
+}
+#btnList .btn.selected {
+    width:728px;
+}
+#btnList .btn .filter{
+    width: 728px;
+    height: 128px;
+    background: url("../imgs/clue/btn.png") bottom no-repeat;
+    background-size:728px 128px;
+    position: absolute;
+    top:0;
+    left:0;
+    transition: width 1s;
+}
+#btnList .btn.selected .filter{
+    filter: blur(5px);
+}
+#btnList .btn .sort {
+    width:70px;
+    height:70px;
+    line-height:70px;
+    position: absolute;
+    top:30px;
+    left:40px;
+    z-index: 20;
+    font-size: 32px;
+    font-weight:bold;
+    color:#fff;
+    text-align: center;
+    border-radius: 35px;
+    background: #FF5F5F;
+}
+#btnList .btn:nth-child(1) .sort{
+    background: url("../imgs/clue/sort1.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn:nth-child(2) .sort{
+    background: url("../imgs/clue/sort2.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn:nth-child(3) .sort{
+    background: url("../imgs/clue/sort3.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn:nth-child(4) .sort{
+    background: url("../imgs/clue/sort4.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn:nth-child(5) .sort{
+    background: url("../imgs/clue/sort5.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn:nth-child(6) .sort{
+    background: url("../imgs/clue/sort6.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList .btn .btn_info{
+    width: 540px;
+    position: absolute;
+    top:30px;
+    left:170px;
+    z-index: 20;
+}
+#btnList .btn.selected .btn_info h3{
+    color:#29F7FE;
+}
+#btnList .btn.selected .btn_info p{
+    color:#16AAC2;
+}
+#btnList .btn .btn_info h3{
+    height:40px;
+    line-height:40px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    font-size: 26px;
+    font-weight:normal;
+    color:#01C2EC;
+}
+#btnList .btn .btn_info p{
+    height:36px;
+    line-height:36px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    color:#5782AD;
+}
+#btnList .btn .btn_info p .btn_name {
+    margin-right:16px;
+}
+#btnSelected {
+    width:836px;
+    height:176px;
+    background: url("../imgs/clue/selected.png") center no-repeat;
+    background-size:836px 176px;
+    position: absolute;
+    top:-10px;
+    left:-40px;
+    z-index: 10;
+    transition: top 1s;
+}
+/*左侧按钮组 end*/
+
+/*右侧详细内容 start*/
+#dataContainer{
+    width:976px;
+    height:850px;
+    position: absolute;
+    top:160px;
+    right:60px;
+    background: url("../imgs/clue/details.png") top no-repeat;
+    background-size: 100%;
+}
+#dataContainer .detailsContainer {
+    width:960px;
+    height:800px;
+    display: none;
+}
+#dataContainer .detailsContainer.show {
+    display: block;
+}
+#dataContainer .detailsContainer .details_info {
+    width:100%;
+    height:180px;
+    text-align: center;
+}
+#dataContainer .detailsContainer .details_info h3.details_title{
+    width:600px;
+    height:110px;
+    line-height:80px;
+    padding-top:40px;
+    margin:auto;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    font-size: 36px;
+    font-weight:bold;
+    color:#29D4FF;
+}
+#dataContainer .detailsContainer .details_info p{
+    font-size: 20px;
+    color:#BAFFFF;
+}
+#dataContainer .detailsContainer .details_info p .details_name {
+    margin-right:30px;
+}
+#dataContainer .detailsContainer .auto {
+    height:620px;
+    overflow: auto;
+}
+#dataContainer .detailsContainer .content {
+    width:800px;
+    line-height:34px;
+    margin:0 0 20px 76px;
+    font-size: 20px;
+    color:#D5F3FE;
+}
+#dataContainer .detailsContainer .content b{
+    font-size:26px;
+}
+#dataContainer .detailsContainer .imgs {
+    width:700px;
+    overflow: hidden;
+    text-align: center;
+    margin:auto;
+    padding-bottom:20px;
+}
+#dataContainer .detailsContainer .imgs img {
+    max-height:320px;
+    border:18px solid #007BC1;
+    opacity: 0.8;
+}
+#dataContainer .detailsContainer .fullText {
+    width:800px;
+    line-height:30px;
+    margin:0 0 20px 76px;
+    font-size: 18px;
+    color:#D5F3FE;
+}
+/*右侧详细内容 end*/

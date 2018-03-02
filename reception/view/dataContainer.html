@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容库展示</title>
+    <link rel="stylesheet" href="../static/lib/datatimedropper/datedropper.css">
+    <link rel="stylesheet" href="../static/css/dataContainer.css">
+</head>
+<body>
+<div id="container">
+    <!--顶部标题-->
+    <div v-cloak id="top">
+        <div class="top_title">
+            {{title}}
+        </div>
+    </div>
+    <!--选择时间范围-->
+    <div id="time_choose">
+        <div id="time_start">
+            <p><input type="text" class="input" id="pickdate_start" v-model="startDate" ref="newStart"/></p>
+            <p style="line-height:30px;font-size: 20px;">~</p>
+        </div>
+        <div id="time_end">
+            <p><input type="text" class="input" id="pickdate_end" v-model="endDate" ref="newEnd" /></p>
+            <p style="line-height:30px;font-size: 20px;"><span id="done" v-on:click="chooseTime()">确定</span></p>
+        </div>
+    </div>
+    <!--左侧按钮组-->
+    <div id="btnList">
+        <div v-for="b in btn" class="btn">
+            <p class="btn_name">{{b.name}}</p>
+        </div>
+        <div id="btnSelected"></div>
+    </div>
+    <!--右侧详细内容-->
+    <div id="dataContainer">
+        <div v-for="d in details" class="detailsContainer">
+            <div class="counts">
+                {{countsName}} {{d.counts}}
+            </div>
+            <div v-for="content in d.details" class="details">
+                <div class="img">
+                    <img v-bind:src=content.picUrl alt="">
+                </div>
+                <p class="title">{{content.title}}</p>
+                <p class="dataUser">上传人：{{content.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/lib/jquery-3.1.0.min.js"></script>
+<script src="../static/lib/vue.js"></script>
+<script src="../static/lib/vue-resource.js"></script>
+<script src="../static/lib/datatimedropper/datedropper.min.js"></script>
+<script src="../static/json/dataContainerJson.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static/js/dataContainer.js"></script>
+</body>
+</html>

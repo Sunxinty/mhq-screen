@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生产力统计</title>
+    <link rel="stylesheet" href="../static/css/center.css">
+</head>
+<body>
+<!--顶部-->
+    <div id="top">
+        <div class="weather">
+            <img src="../static/imgs/center/zycf-tq.png" alt="多云">
+            {{weather}}
+        </div>
+        <div class="center">
+            <img src="../static/imgs/center/zycf-title.png" v-bind:alt="title">
+        </div>
+        <div class="time">{{time}}</div>
+    </div>
+<!--近期重点和资源-->
+    <div id="left">
+        <div class="up">
+            <div class="play">
+                <ul>
+                    <li v-for="msg in news">
+                        <div class="sort">{{msg.id}}</div>
+                        <div class="title">{{msg.title}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="down">
+            <div class="leida">
+                <p id="shang">{{zy.shang}}</p>
+                <p id="you">{{zy.you}}</p>
+                <p id="xia">{{zy.xia}}</p>
+                <p id="zuo">{{zy.zuo}}</p>
+            </div>
+            <!--雷达图-->
+            <div id="radar"></div>
+        </div>
+    </div>
+
+    <div id="right">
+        <div class="up">
+            <!--成片比-->
+            <div id="cpb">
+                <div id="total">
+                    <span><span>{{total}}</span> %</span>
+                    <div id="bolang">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <div id="bb">
+                                        <canvas id="myC" width="200" height="200"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="personal">
+                    <div id="one" class="per">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <img v-bind:src=personal.one.src alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{personal.one.count}}</p>
+                    </div>
+                    <div id="two" class="per">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <img v-bind:src=personal.two.src alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{personal.two.count}}</p>
+                    </div>
+                    <div id="three" class="per">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <img v-bind:src=personal.three.src alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{personal.three.count}}</p>
+                    </div>
+                    <div id="four" class="per">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <img v-bind:src=personal.four.src alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{personal.four.count}}</p>
+                    </div>
+                    <div id="five" class="per">
+                        <div class="boxF">
+                            <div class="boxS">
+                                <div class="boxT">
+                                    <img v-bind:src=personal.five.src alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{personal.five.count}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="down">
+            <!--台内生产力-->
+            <div id="scl">
+                <div class="left">
+                    <ul>
+                        <li class="details">
+                            <div class="yellow"></div>
+                            <span class="type_name">{{images.name}}</span>
+                            <span class="type_num">{{images.scl}}</span>
+                        </li>
+                        <li class="details">
+                            <div class="orange"></div>
+                            <span class="type_name">{{audio.name}}</span>
+                            <span class="type_num">{{audio.scl}}</span>
+                        </li>
+                        <li class="details">
+                            <div class="red"></div>
+                            <span class="type_name">{{video.name}}</span>
+                            <span class="type_num">{{video.scl}}</span>
+                        </li>
+                        <li class="details">
+                            <div class="green"></div>
+                            <span class="type_name">{{article.name}}</span>
+                            <span class="type_num">{{article.scl}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div id="wz">{{article.name}}</div>
+                    <div id="tp">{{images.name}}</div>
+                    <div id="yp">{{audio.name}}</div>
+                    <div id="sp">{{video.name}}</div>
+                    <div id="zj">{{total}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--今日收视率排名-->
+    <div id="jrsslpm">
+        <div class="jrpm">
+            <div class="paiming"><span>{{jrpm.paiming}}</span>th</div>
+            <div class="shangsheng">{{jrpm.shangsheng}}</div>
+        </div>
+        <div class="lmssl">
+            <ul>
+                <li v-for="lm in lms" class="lm">
+                    <span class="name">{{lm.name}}</span>
+                    <span class="ssl">{{lm.ssl}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<!--全渠道粉丝总数-->
+    <div id="count1">
+        <div class="title">{{title}}</div>
+        <div class="num">
+            <div v-for="n in num">{{n}}</div>
+        </div>
+    </div>
+<!--月均阅读量-->
+<div id="count2">
+    <div class="title">{{title}}</div>
+    <div class="num">
+        <div v-for="n in num">{{n}}</div>
+    </div>
+</div>
+
+<!--北京市地图echarts-->
+    <div id="beijing"></div>
+
+
+
+    <script src="../static/lib/jquery-3.1.0.min.js"></script>
+    <script src="../static/lib/vue.js"></script>
+    <script src="../static/lib/vue-resource.js"></script>
+    <script src="../static/lib/echarts-3.0.min.js"></script>
+    <script src="../static/lib/beijing.js"></script>
+    <script src="../static/js/poly.js"></script>
+    <script src="../static/json/centerJson.js"></script>
+    <script src="../static/json/HTTPNAME.js"></script>
+    <script src="../static/js/center.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收视率对比</title>
+    <link rel="stylesheet" href="../static/css/ratings.css">
+</head>
+<body>
+<div id="container">
+    <!--顶部标题-->
+    <div id="top">
+        <div class="top_title">
+            {{title}}
+        </div>
+    </div>
+    <!--右侧按钮组-->
+    <div id="btnList">
+        <div v-for="(b,index) in btn" class="btn">
+            <div class="sort">{{index+1}}</div>
+            <div class="btn_info">
+                <h3 class="btn_name">{{b.name}}</h3>
+                <p class="btn_ratings">{{b.ratings}}%</p>
+                <p class="btn_trend"><span v-bind:class="b.trend===0?'down':'up'"></span></p>
+            </div>
+        </div>
+    </div>
+    <!--左侧详细内容-->
+    <div id="dataContainer">
+        <div id="table_head">
+            <div class="td td1">排 序</div>
+            <div class="td td2">名 称</div>
+            <div class="td td3">类 别</div>
+            <div class="td td4">收视率%</div>
+            <div class="td td5">趋 势</div>
+        </div>
+        <div id="table_body">
+            <div id="glass">
+                <div v-for="(tr,index) in list" class="tr" v-bind:class="tr.trend===0?'down':'up'">
+                    <div class="td td1">
+                        <span>{{index+1}}</span>
+                    </div>
+                    <div class="td td2">{{tr.name}}</div>
+                    <div class="td td3">{{tr.type}}</div>
+                    <div class="td td4">{{tr.ratings}}%</div>
+                    <div class="td td5">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/lib/jquery-3.1.0.min.js"></script>
+<script src="../static/lib/vue.js"></script>
+<script src="../static/lib/vue-resource.js"></script>
+<script src="../static/json/ratingsJson.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static/js/ratings.js"></script>
+</body>
+</html>

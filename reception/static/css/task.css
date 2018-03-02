@@ -1,0 +1,350 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/task/bg.png") top no-repeat;
+    background-size: 100%;
+}
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../imgs/task/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../imgs/task/title.png") center left no-repeat;
+}
+/*顶部标题 end*/
+
+/*表格 start*/
+#taskTable{
+    width:1920px;
+    height:880px;
+    margin-top:40px;
+    text-align: center;
+}
+#table_head{
+    height:72px;
+    line-height:72px;
+    width:1760px;
+    margin:0 80px;
+    font-size:26px;
+    color: #99E9FF;
+    background: url("../imgs/task/thead.png") center no-repeat;
+}
+#table_body .tr{
+    height:117px;
+    line-height:117px;
+    margin:13px 80px;
+    width:1760px;
+    font-size:26px;
+    color: #40DDFF;
+    background: url("../imgs/task/tr.png") center no-repeat;
+    background-size:100%;
+}
+.td{
+    float: left;
+}
+#table_head .td1{
+    visibility: hidden;
+}
+#table_body .td1{
+    height:114px;
+    line-height:100px;
+    background: url("../imgs/task/sort.png") center no-repeat;
+    position: relative;
+}
+#table_body .td1 span{
+    font-size: 26px;
+    font-weight:bold;
+    position: absolute;
+    top:10px;
+    right:55px;
+    z-index: 10;
+}
+#table_body .td3,
+#table_body .td4,
+#table_body .td5
+{
+    height:117px;
+    line-height:117px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.td1{
+    width:8%;
+}
+.td2{
+    width:8%;
+}
+.td3{
+    width:23%;
+}
+.td4{
+    width:8%;
+}
+.td5{
+    width:7%;
+}
+.td6{
+    width:280px;
+    position: relative;
+    overflow: hidden;
+}
+.td7{
+    width:500px;
+    position: relative;
+    overflow: hidden;
+}
+/*表格 end*/
+
+/*任务进程 start*/
+.process {
+    height:85px;
+    margin:15px 0;
+}
+.process.docProcess{
+    width:280px;
+}
+.process li{
+    width: 120px;
+    height: 85px;
+    float: left;
+}
+.process li p{
+    width:100%;
+    font-size: 20px;
+}
+.process li p.up {
+    height:50px;
+    line-height: 60px;
+}
+.process li p.up span{
+    display: inline-block;
+    width: 24px;
+    height:24px;
+    border:3px solid #00D8FF;
+    border-radius:12px;
+    visibility: hidden;
+}
+.process li:nth-child(1) p.up span{
+    background: #FE5F60;
+}
+.process li:nth-child(2) p.up span{
+    background: #FF8A33;
+}
+.process li:nth-child(3) p.up span{
+    background: #FBCA01;
+}
+.process li:nth-child(4) p.up span{
+    background: #40FF1B;
+}
+.process.docProcess li:nth-child(1) p.up span{
+    background: #FE5F60;
+}
+.process.docProcess li:nth-child(2) p.up span{
+    background: #40FF1B;
+}
+.process li.active p.up span{
+    visibility: visible;
+}
+.process li p.down {
+    height:40px;
+    line-height: 40px;
+    color: #1B7C9C;
+}
+.process li.active p.down{
+    color: #3EDDFF;
+}
+.processContainer1{
+    width:140px;
+    height:20px;
+    border:3px solid #00D8FF;
+    border-radius: 12px;
+    position: absolute;
+    top:31px;
+    left:50px;
+    z-index: -2;
+    overflow: hidden;
+}
+.processContainer2{
+    width:375px;
+    height:20px;
+    border:3px solid #00D8FF;
+    border-radius: 12px;
+    position: absolute;
+    top:31px;
+    left:50px;
+    z-index: -2;
+    overflow: hidden;
+}
+.huakuai {
+    width: 370px;
+    height:14px;
+    background: #00D8FF;
+}
+.huakuai.process1 {
+    margin-left:-375px;
+}
+.huakuai.process2 {
+    margin-left:-240px;
+}
+.huakuai.process3 {
+    margin-left:-120px;
+}
+.huakuai.process4 {
+    margin-left:0px;
+}
+/*任务进程 end*/
+
+/*选择框 start*/
+@keyframes fanqilai{
+    0%{
+        transform:rotateX(0deg);
+    }
+    30%{
+        transform:rotateX(180deg);
+    }
+    100%{
+        transform:rotateX(180deg);
+    }
+}
+#selected{
+    width:1920px;
+    height:181px;
+    background: url("../imgs/task/selected.png") top no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top:202px;
+    left:-2px;
+    transition: top 1s;
+    z-index:-10;
+    animation: fanqilai infinite;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+    transform-origin: 0 50%;
+}
+#selected .selectedImg{
+    width:114px;
+    height:114px;
+    border-radius: 61px;
+    /*border:#45E8EE 4px solid;*/
+    overflow: hidden;
+    margin-left:910px;
+    margin-top:42px;
+    display: none;
+}
+#selected .selectedImg img{
+    width:114px;
+}
+#selected .selectedImg.show{
+    display: block;
+}
+#table_body .tr.selected{
+    color: #F6E71C;
+    background:none;
+}
+#table_body .tr.selected .process li.active p.down{
+    color: #F6E71C;
+}
+#table_body .tr.selected .td1 span{
+    color: #F6E71C;
+}
+/*选择框 end*/
+
+/*选择栏目 start(更改插件默认样式)*/
+#lanmu{
+    width:200px;
+    height:40px;
+    position: absolute;
+    top: 80px;
+    right:75px;
+}
+#lanmu .dk-select .dk-selected,
+#lanmu .dk-select.dk-select-open-down .dk-selected
+{
+    background-color: rgba(255,255,255,0);
+}
+#lanmu .dk-select .dk-selected{
+    height: 40px;
+    line-height: 40px;
+    font-size: 22px;
+    color: #84D9F3;
+    text-shadow: none;
+    border:1px solid #009DC0;
+    border-radius: 4px;
+}
+#lanmu .dk-select .dk-selected:before{
+    border-top-color:#84D9F3;
+}
+#lanmu .dk-select .dk-selected:after{
+    border-top:5px solid #FBC204;
+    border-left:0;
+}
+#lanmu .dk-select .dk-select-options{
+    z-index: 20;
+}
+#lanmu .dk_container .dk-select-options .dk-option{
+    border:none;
+}
+/*选择栏目 end*/
+
+/*选择时间 start*/
+.time{
+    width:260px;
+    height:40px;
+    line-height:40px;
+    border:1px solid #009DC0;
+    border-radius: 4px;
+    position:absolute;
+    top:80px;
+    right:300px;
+}
+#time_dropper{
+    float: left;
+    width:180px;
+    height:40px;
+}
+#time_dropper p{
+    float: left;
+}
+#time_dropper p input{
+    width:180px;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    font-size:22px;
+    color: #84D9F3;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#search{
+    float: left;
+    width:78px;
+    height:38px;
+    line-height:38px;
+    border-radius: 4px;
+    text-align: center;
+    color: #84D9F3;
+    background: #0262A0;
+    font-size: 20px;
+    cursor: pointer;
+}
+#search:hover{
+    color: #FBC204;
+}
+/*选择时间 end*/

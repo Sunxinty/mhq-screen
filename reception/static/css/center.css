@@ -1,0 +1,513 @@
+@import url("base.css");
+
+body{
+    background: url("../imgs/center/bg.jpg") top no-repeat;
+    background-size:100%;
+}
+/*top start*/
+#top{
+    width:100%;
+    height: 270px;
+    background: url("../imgs/center/zycf-top.png") top no-repeat;
+    text-align: center;
+    color: #1ebffe;
+    font-size:60px;
+    margin-bottom:80px;
+}
+#top .weather{
+    float: left;
+    width:18%;
+    height:270px;
+    line-height: 270px;
+}
+#top .weather img{
+    width:120px;
+    height:100px;
+    margin: 70px 20px 0 150px;
+}
+#top .center{
+    float: left;
+    width:64%;
+    height:270px;
+    line-height: 270px;
+    padding-top:30px;
+}
+#top .time{
+    float: left;
+    width:18%;
+    height:270px;
+    line-height: 270px;
+}
+/*top end*/
+
+/*left start*/
+#left{
+    width:24%;
+    height:730px;
+    position:fixed;
+    top:350px;
+    left:0;
+}
+#left .up{
+    width:100%;
+    height:160px;
+    padding-top:140px;
+    background: url("../imgs/center/zycf-jqzd.png") center no-repeat;
+}
+@keyframes myplay
+{
+    0%   {top:0px;}
+    25%  {top:-70px;}
+    50%  {top:-140px;}
+    75%  {top:-210px;}
+    100% {top:-280px;}
+}
+#left .up .play{
+    width:550px;
+    height:70px;
+    margin-left:200px;
+    overflow: hidden;
+    position: relative;
+}
+.play ul{
+    position: absolute;
+    top:0;
+    animation: myplay 10s infinite;
+    animation-delay:2s;
+}
+.play ul li{
+    width:550px;
+    height: 70px;
+}
+.play .sort{
+    width: 70px;
+    height:70px;
+    float: left;
+    line-height: 70px;
+    text-align: center;
+    color: #ffc203;
+    font-size: 22px;
+    background: url("../imgs/center/zycf-jqzd-left.png") center no-repeat;
+}
+.play .title{
+    width: 450px;
+    height:70px;
+    float: left;
+    line-height: 70px;
+    padding-left:30px;
+    text-overflow: ellipsis;
+    color: #ffffff;
+    font-size: 32px;
+}
+#left .down{
+    width:100%;
+    height:430px;
+    position:relative;
+    background: url("../imgs/center/zycf-zy.png") center no-repeat;
+}
+#left .down .leida{
+    width: 700px;
+    height:250px;
+    padding-top: 230px;
+    padding-left:215px;
+    background: url("../imgs/center/zycf-zy-radar.png") center no-repeat;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+}
+#left .down #radar{
+    width:180px;
+    height:180px;
+    position: absolute;
+    top:152px;
+    left:360px;
+}
+#shang{
+    position:absolute;
+    top: 110px;
+    left:495px;
+}
+#you{
+    position:absolute;
+    top: 165px;
+    left:605px;
+}
+#xia{
+    position:absolute;
+    top: 315px;
+    left:550px;
+}
+#zuo{
+    position:absolute;
+    top: 165px;
+    left:135px;
+}
+/*left end*/
+
+/*right start*/
+#right{
+    width:24%;
+    height:810px;
+    position:fixed;
+    top:270px;
+    right:0;
+    background: url("../imgs/center/zycf-scl.png") center no-repeat;
+}
+#right .up{
+    width:100%;
+    height:270px;
+    margin-top:140px;
+}
+#total{
+    width:320px;
+    height:270px;
+    line-height: 270px;
+    float: left;
+    margin-left:110px;
+    margin-top:20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    background: url("../imgs/center/zycf-jrcpl.png") center no-repeat;
+    position: relative;
+}
+#total>span{
+    position: absolute;
+    left:110px;
+    z-index: 20;
+}
+#total>span>span{
+    font-size: 60px;
+}
+#total #bolang{
+    position: absolute;
+    top:19px;
+    left:77px;
+    z-index:10;
+}
+#total .boxF,#total .boxS,#total .boxT{
+    width:172px;
+    height:215px;
+}
+#total #bb{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+}
+#total #myC{
+    position: absolute;
+    top: 10px;
+    left:-8px;
+}
+#personal{
+    float: left;
+    width:460px;
+    height:270px;
+    margin-left:20px;
+    margin-top:10px;
+    position: relative;
+    color: #ffffff;
+    font-size: 24px;
+}
+#personal .per{
+    width:200px;
+    height:105px;
+    padding-left:38px;
+    padding-top:2px;
+    background: url("../imgs/center/zycf-cpl-litter.png") center no-repeat;
+}
+#personal .per p{
+    position: absolute;
+    bottom: 10px;
+    right:70px;
+    z-index: 10;
+}
+#one{
+    position: absolute;
+    top:10px;
+    left:-90px;
+}
+#two{
+    position: absolute;
+    top:45px;
+    left:40px;
+}
+#three{
+    position: absolute;
+    top:100px;
+    left:-40px;
+}
+#four{
+    position: absolute;
+    top:80px;
+    left:170px;
+}
+#five{
+    position: absolute;
+    top:135px;
+    left:90px;
+}
+
+/*六边形DIV样式 start*/
+.boxF, .boxS, .boxT
+{
+    width: 80px;
+    height: 100px;
+    overflow: hidden;
+}
+.boxF, .boxS
+{
+    visibility: hidden;
+}
+.boxF
+{
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+.boxS
+{
+    transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+}
+.boxT
+{
+    transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+    visibility: visible;
+}
+.boxT img
+{
+    width:100px;
+    margin-left:-18px;
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+}
+/*六边形DIV样式 end*/
+
+#right .down{
+    width:100%;
+    height:300px;
+    margin-top:80px;
+}
+#right .down #scl .left{
+    width:150px;
+    height:200px;
+    float: left;
+    padding-top:50px;
+    padding-left:200px;
+    color: #ffffff;
+    font-size: 22px;
+}
+#right .down #scl .left .details{
+    width:150px;
+    height:32px;
+    margin-bottom: 16px;
+}
+.details div{
+    width:20px;
+    height:20px;
+    margin:6px;
+    float: left;
+}
+.details span{
+    margin-right:5px;
+}
+.yellow{
+    background-color: yellow;
+}
+.orange{
+    background-color: orange;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+#right .down #scl .right{
+    width:246px;
+    height:230px;
+    float: left;
+    margin-left:100px;
+    margin-top:10px;
+    color: #ffffff;
+    font-size: 20px;
+    background: url("../imgs/center/zycf-tnscl-in.png") bottom no-repeat;
+    position: relative;
+}
+#wz{
+    position: absolute;
+    top:0;
+    left:143px;
+}
+#tp{
+    position: absolute;
+    bottom:8px;
+    right:0;
+}
+#yp{
+    position: absolute;
+    top:156px;
+    left:10px;
+}
+#sp{
+    position: absolute;
+    top:78px;
+    left:0;
+}
+#zj{
+    position: absolute;
+    top:116px;
+    left:114px;
+    font-size: 34px;
+}
+/*right end*/
+
+/*jrsslpm start*/
+#jrsslpm {
+    width:736px;
+    height:513px;
+    background: url("../imgs/center/zycf-jrssl.png") center no-repeat;
+    position: fixed;
+    top: 520px;
+    right: 920px;
+}
+#jrsslpm .jrpm{
+    width:200px;
+    height:300px;
+    margin-left:50px;
+    margin-top:150px;
+    float: left;
+    background: url("../imgs/center/zycf-ssl.png") left no-repeat;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+}
+.jrpm .paiming{
+    position: absolute;
+    top:52px;
+    left:62px;
+}
+.jrpm .paiming span{
+    font-size:32px;
+}
+.jrpm .shangsheng{
+    position: absolute;
+    top:242px;
+    left:135px;
+}
+#jrsslpm .lmssl{
+    width:460px;
+    height:300px;
+    margin-top:190px;
+    float: left;
+    color: #ffffff;
+    font-size: 28px;
+}
+.lmssl .lm{
+    width:410px;
+    height:28px;
+    line-height: 28px;
+    margin-bottom: 28px;
+    padding-left:16px;
+    background: url("../imgs/center/zycf-ssl-left.png") left no-repeat;
+}
+.lmssl .lm:nth-child(2n-1){
+    background: url("../imgs/center/zycf-ssl-right.png") left no-repeat;
+}
+.lmssl .lm .ssl{
+    float: right;
+    padding-right:16px;
+}
+/*jrsslpm end*/
+
+/*count1 start*/
+#count1{
+    width:640px;
+    height:200px;
+    position: fixed;
+    top:400px;
+    left:925px;
+}
+#count1 .title{
+    color:#97BADA;
+    font-size:54px;
+    font-weight:bold;
+    padding-left:16px;
+}
+#count1 .num{
+    width:480px;
+    height:80px;
+    margin:10px;
+    padding:20px 42px;
+    background: #00e0be;
+    border-radius: 16px;
+}
+#count1 .num div{
+    width:50px;
+    height:75px;
+    line-height:75px;
+    text-align: center;
+    float: left;
+    background: #ffffff;
+    margin-right: 10px;
+    font-size: 66px;
+    font-weight:bold;
+    color:#516E76;
+}
+/*count1 end*/
+/*count2 start*/
+#count2{
+    width:640px;
+    height:200px;
+    position: fixed;
+    top:700px;
+    left:925px;
+}
+#count2 .title{
+    color:#97BADA;
+    font-size:34px;
+    font-weight:bold;
+    padding-left:16px;
+}
+#count2 .num{
+    width:340px;
+    height:52px;
+    margin:10px;
+    padding:14px 22px;
+    background: #00e0be;
+    border-radius: 10px;
+}
+#count2 .num div{
+    width:36px;
+    height:54px;
+    line-height:54px;
+    text-align: center;
+    float: left;
+    background: #ffffff;
+    margin-right: 6px;
+    font-size: 46px;
+    font-weight:bold;
+    color:#516E76;
+}
+/*count2 end*/
+
+/*beijing start*/
+#beijing{
+    width:1800px;
+    height:710px;
+    margin:auto;
+}
+/*beijing end*/

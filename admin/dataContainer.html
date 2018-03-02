@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Bookmark" href="/favicon.ico" >
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+
+    <![endif]-->
+    <link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="static/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>内容库展示管理页面</title>
+    <link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+    <style>
+        .c-black {
+            font-size:18px;
+        }
+        input[type=radio]{
+            width:16px;
+            height:16px;
+            cursor: pointer;
+        }
+        .cl .check-box{
+            min-width: 180px;
+            margin: 6px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="pd-20">
+    <div class="page-container">
+        <form class="form form-horizontal" id="form-article-add">
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 展示模块</strong></label>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"></label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-6 clo-lg-6">
+                    <div class="skin-minimal boxes">
+                        <div class="check-box">
+                            <input type="checkbox" id="infoshare" value="infoshare">
+                            <label for="infoshare">Info文稿</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="ingest" value="ingest">
+                            <label for="ingest">收录入库</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="ARTICLEEDITOR" value="ARTICLEEDITOR">
+                            <label for="ARTICLEEDITOR">多媒体稿</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="import" value="import">
+                            <label for="import">ML引入素材</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="info_xml" value="info_xml">
+                            <label for="info_xml">info_xml</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="nle_create" value="nle_create">
+                            <label for="nle_create">非编生成</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="pgc" value="pgc">
+                            <label for="pgc">PGC回传</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="clouddisk" value="clouddisk">
+                            <label for="clouddisk">目录树引入</label>
+                        </div>
+                        <!--<div class="check-box">-->
+                            <!--<input type="checkbox" id="MAM_SPACE" value="ARTICLEEDITOR">-->
+                            <!--<label for="MAM_SPACE">MAM_SPACE</label>-->
+                        <!--</div>-->
+                        <div class="check-box">
+                            <input type="checkbox" id="shine" value="shine">
+                            <label for="shine">外部系统shine</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="megateway_test" value="megateway_test">
+                            <label for="megateway_test">megateway_test</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="nle" value="nle">
+                            <label for="nle">非编采集上载</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="mpc" value="mpc">
+                            <label for="mpc">MPC 入库</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="render" value="render">
+                            <label for="render">新闻网素材</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="hhtest" value="hhtest">
+                            <label for="hhtest">hhtest</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="testvrocket" value="testvrocket">
+                            <label for="testvrocket">testvrocket</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="shine_20170527" value="shine_20170527">
+                            <label for="shine_20170527">shine_20170527</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="shinexml" value="shinexml">
+                            <label for="shinexml">shinexml</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="testhqy" value="testhqy">
+                            <label for="testhqy">testhqy</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="own_upload" value="upload">
+                            <label for="own_upload">独立上载</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="web_other" value="web_other">
+                            <label for="web_other">其他来源</label>
+                        </div>
+                        <div class="check-box">
+                            <input type="checkbox" id="simple" value="普通入库">
+                            <label for="simple">普通入库</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"></div>
+                <label class="formControls col-xs-8 col-sm-9 col-md-6 clo-lg-6" style="color: #F53B19;">(最多勾选三个)</label>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 时间设置</strong></label>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">请求间隔(秒)：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">
+                    <input type="number" class="input-text" value="" placeholder="99" id="REQUEST" name="Refresh">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">轮播间隔(秒)：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">
+                    <input type="number" class="input-text" value="" placeholder="99" id="PLAY" name="Play">
+                </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 样式修改</strong></label>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">标题：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-4 clo-lg-4">
+                    <input type="text" class="input-text" value="" placeholder="内容库展示" id="TITLE" name="Title">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">背景图：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-4 clo-lg-4">
+                    <div class="radio-box-boom">
+                        <input type="radio" id="DEFULT" value="0" name="radio-bg">
+                        <label for="DEFULT">默认</label>
+                    </div>
+                    <div class="radio-box-boom">
+                        <input type="radio" id="USER" value="1" name="radio-bg">
+                        <label for="USER">自定义</label>
+                    </div>
+                </div>
+            </div>
+            <div id="UPLOAD" class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">上传自定义背景：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-5 clo-lg-5">
+                    <div class="uploader-list-container" >
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder" style="height:160px;min-height:150px;padding-top:78px;background-position: center 13px;">
+                                <div id="filePicker-2"></div>
+                                <p>或将照片拖到这里，最多可上传1张</p>
+                            </div>
+                        </div>
+                        <div class="statusBar" style="display:none;">
+                            <div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+                            <div class="info"></div>
+                            <div class="btns">
+                                <div id="filePicker2"></div>
+                                <div class="uploadBtn">开始上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-md-4 clo-lg-4 col-xs-offset-4 col-sm-offset-2 col-md-offset-4 clo-lg-offset-4">
+                    <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.js"></script>
+<script type="text/javascript" src="static/js/HTTPNAME.js"></script>
+<script type="text/javascript" src="static/js/dataContainer.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/gis/bg.jpg") top no-repeat;
+    background-size: 100%;
+    height: 938px;
+}
+
+/*顶部标题 start*/
+#top{
+    font:italic bold 38px "微软雅黑";
+    height: 99px;
+    line-height:99px;
+    width:100%;
+    color: #fff;
+    background: url("../imgs/gis/top.png") top no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#top .top_title{
+    margin-left:990px;
+    padding-top:6px;
+}
+/*顶部标题 end*/
+
+/*选项卡 start*/
+#myTab{
+    width:395px;
+    height:77px;
+    border-bottom: none;
+    background: url("../imgs/gis/nav_tab.png") top no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top:50px;
+    margin-left:150px;
+    padding-left:30px;
+}
+#myTab li a{
+    width:160px;
+    height:77px;
+    line-height:70px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    border:none;
+}
+#myTab li.active a,
+#myTab li a:hover
+{
+    background:none;
+    border:none;
+}
+#huakuai{
+    width:223px;
+    height:77px;
+    position: absolute;
+    top:0;
+    left:0;
+    background: url("../imgs/gis/nav_tab_selected.png") top no-repeat;
+    background-size: 100%;
+    transition: left 0.5s;
+}
+/*选项卡 end*/
+
+/*选项卡内容 start*/
+#myTabContent{
+    margin-top:142px;
+    color: #fff;
+}
+#news_list{
+    width:776px;
+    height:980px;
+    position: absolute;
+    top:100px;
+    right:0;
+    background: url("../imgs/gis/list.png") top no-repeat;
+    background-size: 100%;
+}
+#news_list .news{
+    position: relative;
+    margin-left:65px;
+    margin-top:80px;
+}
+#news_list .news .beSelected{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 10;
+}
+#news_list .news .selected{
+    width:654px;
+    height:134px;
+    position: absolute;
+    top:-10px;
+    left:-22px;
+    z-index: 9;
+    background: url("../imgs/gis/selected.png") bottom no-repeat;
+    background-size: 100%;
+    transition: top 0.7s;
+}
+#news_list .list{
+    width:608px;
+    height:100px;
+    background: url("../imgs/gis/list_bg.png") bottom no-repeat;
+    background-size: 100%;
+}
+#news_list .list .title{
+    height:50px;
+    line-height:50px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-top:8px;
+    padding-left:30px;
+    font-size:24px;
+    color:#00ffff;
+}
+#news_list .list .title i{
+    display: inline-block;
+    width:13px;
+    height:13px;
+    border-radius: 6px;
+    border:6px solid #00ffff;
+    margin-right:10px;
+}
+#news_list .list.active .title{
+    font-size:30px;
+    color:#b4ee44;
+}
+#news_list .list.active .title i{
+    border-color: #b4ee44;
+}
+#news_list .list .info{
+    padding-left:60px;
+    font-size:18px;
+    color:#BAFFFF;
+}
+#news_list .list.active .info {
+    color: #fff;
+}
+#news_list .list .info span{
+    margin-right:50px;
+}
+#news_list .list .info i{
+    margin-right:6px;
+}
+/*选项卡内容 end*/
+
+/*china start*/
+#china{
+    width:1200px;
+    height:880px;
+    margin-left:10px;
+}
+/*china end*/
+/*tooltip start*/
+#tooltip{
+    width:408px;
+    height:134px;
+    padding:20px;
+    background: url("../imgs/gis/tooltip.png") center no-repeat;
+    background-size: 100%;
+}
+#tooltip h3{
+    height:40px;
+    line-height: 40px;
+    color: #fff;
+    font-size:25px;
+    text-align: center;
+	display:none;
+}
+#tooltip p{
+    line-height: 70px;
+    color: #fff;
+    font-size:24px;
+    text-align: center;
+}
+#tooltip p span{
+    display: inline-block;
+    width: 160px;
+}
+/*tooltip end*/

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手机素材展示</title>
+    <link rel="stylesheet" href="../static/css/pgc.css">
+</head>
+<body>
+<div id="container">
+    <div id="top">
+        <div class="top_title">
+            {{title}}
+        </div>
+    </div>
+    <div id="total">
+        <div class="title">{{title}}</div>
+        <div class="num">
+            <div v-for="n in num">{{n}}</div>
+        </div>
+    </div>
+    <div id="pgcShow">
+        <div id="up">
+            <div class="s">
+                <div class="left">
+                    <div id="details2" class="details">
+                        <div class="images">
+                            <img v-bind:src=details[1].headPic alt="">
+                        </div>
+                        <div class="texts">
+                            <p class="timer">{{details[1].time}}</p>
+                            <p class="name">{{details[1].name}}</p>
+                            <p class="pics">上传了<span>{{details[1].counts}}</span>张照片</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div id="details4" class="details">
+                        <div class="images">
+                            <img v-bind:src=details[3].headPic alt="">
+                        </div>
+                        <div class="texts">
+                            <p class="timer">{{details[3].time}}</p>
+                            <p class="name">{{details[3].name}}</p>
+                            <p class="pics">上传了<span>{{details[3].counts}}</span>张照片</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="b">
+                <div id="details1" class="details">
+                    <div class="images">
+                        <img v-bind:src=details[0].headPic alt="">
+                    </div>
+                    <div class="texts">
+                        <p class="timer">{{details[0].time}}</p>
+                        <p class="name">{{details[0].name}}</p>
+                        <p class="pics">上传了<span>{{details[0].counts}}</span>张照片</p>
+                    </div>
+                </div>
+                <div id="details3" class="details">
+                    <div class="images">
+                        <img v-bind:src=details[2].headPic alt="">
+                    </div>
+                    <div class="texts">
+                        <p class="timer">{{details[2].time}}</p>
+                        <p class="name">{{details[2].name}}</p>
+                        <p class="pics">上传了<span>{{details[2].counts}}</span>张照片</p>
+                    </div>
+                </div>
+                <div id="details5" class="details">
+                    <div class="images">
+                        <img v-bind:src=details[4].headPic alt="">
+                    </div>
+                    <div class="texts">
+                        <p class="timer">{{details[4].time}}</p>
+                        <p class="name">{{details[4].name}}</p>
+                        <p class="pics">上传了<span>{{details[4].counts}}</span>张照片</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="down">
+            <div v-for="user in media" class="createUser">
+                <div v-for="pUrl in user.picUrl" class="media">
+                    <div class="content">
+                        <img v-bind:src=pUrl alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/lib/jquery-3.1.0.min.js"></script>
+<script src="../static/lib/vue.js"></script>
+<script src="../static/lib/vue-resource.js"></script>
+<script src="../static/json/pgcJson.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static/js/pgc.js"></script>
+
+</body>
+</html>
