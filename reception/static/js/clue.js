@@ -75,7 +75,7 @@
                 const REQUEST = parseInt(result.reqtime)*1000||36000;
                 const PLAY = parseInt(result.carouseltime)*1000||6000;
                 const TITLE = result.title||"互联网线索汇聚";
-                const RADIO_BG = parseInt(result.imgtype)||0;
+                const RADIO_BG = parseInt(result.imgtype)||1;
                 const BG_URL = result.backgroundurl;
                 //定时发送请求刷新数据
                 if(refresh){
@@ -93,9 +93,11 @@
                 Vue.set(Top,'title', TITLE);
                 //更改背景
                 if(RADIO_BG===0){
-                    $("body").css("background-image","url('../static/imgs/clue/bg.png')");
-                }else if(RADIO_BG===1){
                     $("body").css("background-image","url("+BG_URL+")");
+                }else if(RADIO_BG===1){
+                    $("body").css("background-image","url('../static/imgs/clue/bg1.png')");
+                }else if(RADIO_BG===2){
+                    $("body").css("background-image","url('../static/imgs/clue/bg2.png')");
                 }
 
             })

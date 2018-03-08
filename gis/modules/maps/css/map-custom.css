@@ -12,7 +12,8 @@
 body, html {
     width: 100%;
     height: 100%;
-    background: #0d3b6c;
+    background: url("../icons/bg.png") center no-repeat;
+    background-size: 100% 100%;
     margin: 0;
     font-family: "微软雅黑";
     color: #fff;
@@ -42,6 +43,8 @@ ul li {
     right: 0;
     bottom: 0;
     left: 0;
+    background: url(../icons/container.png) center no-repeat;
+    background-size: 100% 100%;
 }
 
 #container .top-bar {
@@ -211,12 +214,12 @@ ul li {
  * sunxin
  */
 #allmap{
-	margin: 130px 2% 20px;
-	width: 96%;
-	border: 5px solid #316fb8;
+	margin: 110px 3% 60px;
+	width: 94%;
+	/*border: 5px solid #316fb8;*/
 }
 #aside{
-	margin: 160px 0 60px 5%;
+	margin: 140px 0 90px 6%;
 	width: 300px;
 	left: -424px;
 	background: rgba(16,54,90,0.9);
@@ -240,7 +243,7 @@ ul li {
 	border-radius: none;
 }
 #aside .float-bar{
-	right: -100px; 
+	right: -116px;
 	top: 0; 
 	width: 30px; 
 	height: 50px; 

@@ -8,6 +8,7 @@ function article_save_submit(){
             "layoutid": "SOBEY_MHQ_CENTER",
             "reqtime": REQUEST,
             "title": TITLE,
+            "carouseltime": PLAY,
             "staticdata": null,
             "datatype": 0,// 0：读取静态数据  1：读取接口数据
             "imgtype":Number(RADIO_BG)
@@ -51,9 +52,11 @@ function loadData(){
                 $("#TITLE").val(TITLE);
                 var RADIO_BG = result.data.imgtype;
                 if(RADIO_BG===0){
-                    $('#DEFULT').prop('checked',true);
-                }else if(RADIO_BG===1){
                     $('#USER').prop('checked',true);
+                }else if(RADIO_BG===1){
+                    $('#DEFULT1').prop('checked',true);
+                }else if(RADIO_BG===2){
+                    $('#DEFULT2').prop('checked',true);
                 }
             }
             //隐藏或者显示上传图片
@@ -66,10 +69,10 @@ function loadData(){
 }
 //隐藏或者显示上传图片
 function changeBG(){
-    if($('#DEFULT').prop("checked")){
-        $('#UPLOAD').css("display","none");
-    }else{
+    if($('#USER').prop("checked")){
         $('#UPLOAD').css("display","block");
+    }else{
+        $('#UPLOAD').css("display","none");
     }
 }
 

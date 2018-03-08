@@ -1,6 +1,9 @@
+//刷新数据的定时器
+let refresh;
 //动画播放间隔的定时器
 let timer;
-const PLAY = 6000;
+//动画间隔
+let play;
 
 //初始化 MediaTask对象
 let MediaTask = new Vue({
@@ -11,6 +14,14 @@ let MediaTask = new Vue({
         postParams:{},
         domArr:["wechat","weibo","website"],
         dataArr:[Json.wechat,Json.weibo,Json.website]
+    },
+    mounted:function(){
+        var _this = this;
+        _this.getData();
+        // 每十分钟更新数据
+        refresh = setInterval(function(){
+            _this.getData();
+        },600000);
     },
     methods: {
         getData: function() {
@@ -274,7 +285,49 @@ function animotion(i){
     $("#right>div").eq(i).addClass("show");
 }
 
+//请求管理设置数据
+function getSettings(MediaTask) {
+    Vue.http.get(HTTP.url+"allocation/search/SOBEY_MHQ_CENTER")
+        .then(function(response){
+            let result = response.body.data;
+            const REQUEST = parseInt(result.reqtime)*1000||36000;
+            PLAY = parseInt(result.carouseltime)*1000||6000;
+            const TITLE = result.title||"新媒体任务监看";
+            const RADIO_BG = parseInt(result.imgtype)||1;
+            const BG_URL = result.backgroundurl;
+            //定时发送请求刷新数据
+            if(refresh){
+                clearInterval(refresh);
+            }
+            refresh = setInterval(function(){
+                MediaTask.getData();
+            },REQUEST);
+            //重置页面动画间隔
+            if(timer){
+                clearInterval(timer);
+            }
+            action(PLAY,3);
+            //重置标题
+            Vue.set(MediaTask,'title', TITLE);
+
+            //更改背景
+            if(RADIO_BG===0){
+                $("body").css("background-image","url("+BG_URL+")");
+            }else if(RADIO_BG===1){
+                $("body").css("background-image","url('../static/imgs/mediaTask/bg1.png')");
+            }else if(RADIO_BG===2){
+                $("body").css("background-image","url('../static/imgs/mediaTask/bg2.png')");
+            }
+
+        })
+        .catch(function(response) {
+            console.log(response)
+        })
+}
+
 $(function(){
+
+    getSettings(MediaTask);
 
     action(PLAY,3);
 

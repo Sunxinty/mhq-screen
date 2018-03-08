@@ -1,0 +1,250 @@
+@import url("base.css");
+
+body {
+    background: url("../imgs/taskView/bg.png") top no-repeat;
+    background-size: 100%;
+}
+#container{
+    width:100%;
+    height:1080px;
+    background: url("../imgs/taskView/container.png") top no-repeat;
+}
+/*顶部标题 start*/
+#top{
+    font:italic bold 34px "微软雅黑";
+    height: 110px;
+    width:100%;
+    position: relative;
+}
+#top .top_title{
+    width:381px;
+    height:87px;
+    line-height:87px;
+    position: absolute;
+    top:20px;
+    left:70px;
+    color: #fff;
+    text-align: center;
+    background: url("../imgs/taskView/title.png") center no-repeat;
+}
+/*顶部标题 end*/
+
+#dataContainer{
+    width:1280px;
+    height:900px;
+    margin:30px 0 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+#dataContainer>div{
+    position: absolute;
+    top:900px;
+    left:0;
+    opacity:0;
+}
+@keyframes BtoT
+{
+    from {
+        top: 900px;
+        opacity:0;
+    }
+    to {
+        top: 0;
+        opacity:1;
+    }
+}
+@keyframes translate1
+{
+    0% {
+        transform: translate(-200px,0);
+    }
+    50% {
+        transform: translate(-100px,0);
+    }
+    75% {
+        transform: translate(-50px,0);
+    }
+    100% {
+        transform: translate(0px,0);
+    }
+}
+@keyframes translate2
+{
+    0% {
+        transform: translate(200px,0);
+    }
+    50% {
+        transform: translate(100px,0);
+    }
+    75% {
+        transform: translate(50px,0);
+    }
+    100% {
+        transform: translate(0px,0);
+    }
+}
+#dataContainer>div.show{
+    top: 0;
+    left:0;
+    opacity:1;
+    animation: BtoT .7s linear 0s;
+}
+#dataContainer>div.show div.details:nth-child(1){
+    animation: translate1 .7s linear 0s;
+}
+#dataContainer>div.show div.details:nth-child(2){
+    animation: translate2 .7s linear 0s;
+}
+#dataContainer>div.show div.details:nth-child(3){
+    animation: translate1 .7s linear 0.2s;
+}
+#dataContainer>div.show div.details:nth-child(4){
+    animation: translate2 .7s linear 0.2s;
+}
+#dataContainer>div.show div.details:nth-child(5){
+    animation: translate1 .7s linear 0.4s;
+}
+#dataContainer>div.show div.details:nth-child(6){
+    animation: translate2 .7s linear 0.4s;
+}
+#dataContainer>div.show div.details:nth-child(7){
+    animation: translate1 .7s linear 0.6s;
+}
+#dataContainer>div.show div.details:nth-child(8){
+    animation: translate2 .7s linear 0.6s;
+}
+
+#dataContainer .details{
+    width:567px;
+    height: 206px;
+    margin:0 70px 20px 0;
+    padding:20px 20px 20px 40px;
+    float: left;
+    color: #87ACBC;
+    background: url("../imgs/taskView/details.png") center no-repeat;
+    position: relative;
+}
+.details h3.title{
+    width:500px;
+    height:70px;
+    line-height: 35px;
+    overflow: hidden;
+    color: #00CBF0;
+    font-weight:bold;
+    font-size: 18px;
+}
+.details p.content{
+    width:370px;
+    height:42px;
+    overflow: hidden;
+    font-size: 16px;
+}
+.details div.info{
+    margin-top:20px;
+    font-size: 16px;
+}
+.details div.info p{
+    width:100px;
+    float: left;
+}
+.details div.info p span{
+    margin-right:6px;
+}
+.details div.info p:nth-child(1){
+    width:160px;
+}
+.details div.info p:nth-child(3){
+    width:120px;
+}
+.details .marker{
+    position: absolute;
+    right:50px;
+    top:100px;
+    width:70px;
+    height:70px;
+    line-height:70px;
+    text-align: center;
+    color: #02E5F5;
+    border-radius:35px;
+    border:2px solid #02E5F5;
+    background:#016281;
+}
+.details.notclaim .marker{
+    color: #D4D0CD;
+    border:2px solid #D4D0CD;
+    background:#2B4A5F;
+}
+.details.claim .marker{
+    color: #02E5F5;
+    border:2px solid #02E5F5;
+    background:#016281;
+}
+.details.finish .marker{
+    color: #00FF02;
+    border:2px solid #00FF02;
+    background:#055242;
+}
+
+#chartPie{
+    width:450px;
+    height:900px;
+    float: right;
+    margin:30px 100px 0 0;
+    position: relative;
+}
+#chartPie .part{
+    float: left;
+    width:140px;
+    height:50px;
+    line-height:50px;
+    margin:0 4px;
+    font-size:24px;
+    text-align: center;
+    border:1px solid #142E4F;
+    background: #052443;
+    color: #77DAFF;
+}
+#chartPie .part.selected{
+    background: #01A6EA;
+    color: #fff;
+}
+#chartPie .chart{
+    width:100%;
+    height:710px;
+    padding-top:50px;
+}
+#chartPie .text{
+    width:140px;
+    position: absolute;
+    top:340px;
+    left:50%;
+    margin-left:-70px;
+    text-align: center;
+    color: #fff;
+    font-size:26px;
+}
+#chartPie .num{
+    width:120px;
+    position: absolute;
+    top:380px;
+    left:50%;
+    margin-left:-60px;
+    text-align: center;
+    color: #fff;
+    font-size:42px;
+}
+#chartPie .count{
+    width:100%;
+    height:140px;
+    padding-top:20px;
+    border-top:2px solid #009AFF;
+    border-bottom:2px solid #009AFF;
+}
+#chartPie .count p{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    font-size:30px;
+    color: #fff;
+}

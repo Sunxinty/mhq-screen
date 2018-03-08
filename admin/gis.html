@@ -21,7 +21,7 @@
     <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>实时热点管理页面</title>
+    <title>gis地图管理页面</title>
     <link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
     <style>
         .c-black {
@@ -39,21 +39,21 @@
     <div class="page-container">
         <form class="form form-horizontal" id="form-article-add">
 
-            <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 时间设置</strong></label>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">请求间隔(秒)：</label>
-                <div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">
-                    <input type="number" class="input-text" value="" placeholder="99" id="REQUEST" name="Refresh">
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">轮播间隔(秒)：</label>
-                <div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">
-                    <input type="number" class="input-text" value="" placeholder="99" id="PLAY" name="Play">
-                </div>
-            </div>
+            <!--<div class="row cl">-->
+                <!--<label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 时间设置</strong></label>-->
+            <!--</div>-->
+            <!--<div class="row cl">-->
+                <!--<label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">请求间隔(秒)：</label>-->
+                <!--<div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">-->
+                    <!--<input type="number" class="input-text" value="" placeholder="99" id="REQUEST" name="Refresh">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row cl">-->
+                <!--<label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">轮播间隔(秒)：</label>-->
+                <!--<div class="formControls col-xs-8 col-sm-9 col-md-1 clo-lg-1">-->
+                    <!--<input type="number" class="input-text" value="" placeholder="99" id="PLAY" name="Play">-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 样式修改</strong></label>
@@ -61,19 +61,23 @@
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">标题：</label>
                 <div class="formControls col-xs-8 col-sm-9 col-md-4 clo-lg-4">
-                    <input type="text" class="input-text" value="" placeholder="实时热点" id="TITLE" name="Title">
+                    <input type="text" class="input-text" value="" placeholder="gis地图" id="TITLE" name="Title">
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">背景图：</label>
                 <div class="formControls col-xs-8 col-sm-9 col-md-4 clo-lg-4">
                     <div class="radio-box-boom">
-                        <input type="radio" id="DEFULT" value="0" name="radio-bg">
-                        <label for="DEFULT">默认</label>
+                        <input type="radio" id="USER" value="0" name="radio-bg">
+                        <label for="USER">自定义</label>
                     </div>
                     <div class="radio-box-boom">
-                        <input type="radio" id="USER" value="1" name="radio-bg">
-                        <label for="USER">自定义</label>
+                        <input type="radio" id="DEFULT1" value="1" name="radio-bg">
+                        <label for="DEFULT1">星空蓝</label>
+                    </div>
+                    <div class="radio-box-boom">
+                        <input type="radio" id="DEFULT2" value="2" name="radio-bg">
+                        <label for="DEFULT2">星空紫</label>
                     </div>
                 </div>
             </div>

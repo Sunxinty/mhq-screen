@@ -137,7 +137,7 @@ function getSettings(DataContainer,Top) {
             REQUEST = parseInt(result.reqtime)*1000||72000;
             const PLAY = parseInt(result.carouseltime)*1000||6000;
             const TITLE = result.title||"内容库展示";
-            const RADIO_BG = parseInt(result.imgtype)||0;
+            const RADIO_BG = parseInt(result.imgtype)||1;
             const BG_URL = result.backgroundurl;
             const EXTEND = JSON.parse(result.extend)||[];
 
@@ -159,9 +159,11 @@ function getSettings(DataContainer,Top) {
             Vue.set(Top,'title', TITLE);
             //更改背景
             if(RADIO_BG===0){
-                $("body").css("background-image","url('../static/imgs/dataContainer/bg.png')");
-            }else if(RADIO_BG===1){
                 $("body").css("background-image","url("+BG_URL+")");
+            }else if(RADIO_BG===1){
+                $("body").css("background-image","url('../static/imgs/dataContainer/bg1.png')");
+            }else if(RADIO_BG===2){
+                $("body").css("background-image","url('../static/imgs/dataContainer/bg2.png')");
             }
 
         })

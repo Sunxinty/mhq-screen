@@ -714,7 +714,7 @@ nav {
 }
 
 #direct .bottomDir {
-    height: 590px;
+    height: 396px;
     overflow: auto;
     box-sizing: border-box;
 }
@@ -1259,30 +1259,28 @@ nav {
 }
 .gis-title{
 	position: absolute;
-	width: 100%;
+	width: 274px;
 	top: 0;
-	left: 0;
-	height: 120px;
-	background: url(../icons/title.png) no-repeat;
-	background-position: 50% 20px;
+	left: 50%;
+    margin-left:-137px;
+	height: 103px;
+	background: url(../icons/title.png) center no-repeat;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
 	text-align: center;
 	color: #fff;
 	font-size: 40px;
 }
 .gis-title h1{
 	color: #fff;
-	font-size: 40px;
-	width: 360px;
-	margin: 0 auto;
-	line-height: 146px;
-	position: relative;
-	left: 115px;
-	font-style: italic;
+	font-size: 34px;
+	line-height: 103px;
 	font-weight: bold;
+    margin:0;
 }
 #direct.material{
 	height: 800px;
-	margin: 200px 100px 0 0;
+	margin: 180px 6% 0 0;
 	width: 440px;
 	background: none;
 	-moz-transition: 0.3s ease;
@@ -1319,7 +1317,7 @@ nav {
 	color: #fff;
 }
 #direct .bottomDir{
-	height: auto;
+	/*height: auto;*/
 	width: 100%;
 }
 #direct .imgShow{
@@ -1351,7 +1349,7 @@ nav {
 	border-radius: 0 0 0 0;
 }
 #direct.miss .controlMiss{
-	left: -100px;
+	left: -116px;
 }
 #direct.miss{
 	right: -568px;

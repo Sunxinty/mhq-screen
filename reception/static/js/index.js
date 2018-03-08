@@ -32,6 +32,7 @@ let Container = new Vue({
         }
     },
     mounted: function () {
+        loadData();
         this.layout();
     },
     methods:{
@@ -105,3 +106,25 @@ let Container = new Vue({
         }
     }
 });
+
+//读取个性化配置
+function loadData(){
+    $.ajax({
+        url:HTTP.url+"allocation/search/SOBEY_MHQ_HOME",
+        type:"get",
+        success:function(result){
+            console.log(result.data);
+            if(result.data){
+                var RADIO_BG = result.data.imgtype;
+                if(RADIO_BG===1){
+                    $("body").css("background-image","url('static/imgs/index/bg1.png')");
+                }else if(RADIO_BG===2){
+                    $("body").css("background-image","url('static/imgs/index/bg2.png')");
+                }
+            }
+        },
+        error:function(error){
+            $.Huimodalalert(error.msg||"请求异常",2000);
+        }
+    });
+}

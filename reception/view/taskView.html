@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务一览</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/taskView.css">
+</head>
+<body>
+<div id="container">
+    <!--顶部标题-->
+    <div id="top">
+        <div class="top_title">
+            {{title}}
+        </div>
+    </div>
+    <!--右侧概览-->
+    <div id="chartPie">
+        <div class="part selected">采访任务</div>
+        <div class="part">电视任务</div>
+        <div class="part">互联网任务</div>
+        <div id="pie" class="chart"></div>
+        <div class="text">{{whichToShow.text}}</div>
+        <div class="num">{{whichToShow.num}}</div>
+        <div class="count">
+            <p>任务总量&nbsp;&nbsp;{{totalCount}}</p>
+            <p>已完成&nbsp;&nbsp;{{finishCount}}</p>
+        </div>
+    </div>
+    <!--左侧详细内容-->
+    <div id="dataContainer">
+        <div id="interviewDetails" class="show">
+            <div v-for="details in dataArr[0]" class="details" v-bind:class="{'notclaim':details.status===0,'claim':details.status===1,'finish':details.status===2}">
+                <h3 class="title">{{details.title}}</h3>
+                <p class="content">{{details.content}}</p>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-time"></span>{{details.time}}</p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{details.name}}</p>
+                    <p><span class="glyphicon glyphicon-flag"></span>{{details.category}}</p>
+                </div>
+                <div class="marker">
+                    {{ details.status===0 ? '未认领' : '' }}
+                    {{ details.status===1 ? '进行中' : '' }}
+                    {{ details.status===2 ? '已完成' : '' }}
+                </div>
+            </div>
+        </div>
+        <div id="tvDetails">
+            <div v-for="details in dataArr[1]" class="details" v-bind:class="{'notclaim':details.status===0,'claim':details.status===1,'finish':details.status===2}">
+                <h3 class="title">{{details.title}}</h3>
+                <p class="content">{{details.content}}</p>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-time"></span>{{details.time}}</p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{details.name}}</p>
+                    <p><span class="glyphicon glyphicon-flag"></span>{{details.category}}</p>
+                </div>
+                <div class="marker">
+                    {{ details.status===0 ? '未认领' : '' }}
+                    {{ details.status===1 ? '进行中' : '' }}
+                    {{ details.status===2 ? '已完成' : '' }}
+                </div>
+            </div>
+        </div>
+        <div id="webDetails">
+            <div v-for="details in dataArr[2]" class="details" v-bind:class="{'notclaim':details.status===0,'claim':details.status===1,'finish':details.status===2}">
+                <h3 class="title">{{details.title}}</h3>
+                <p class="content">{{details.content}}</p>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-time"></span>{{details.time}}</p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{details.name}}</p>
+                    <p><span class="glyphicon glyphicon-flag"></span>{{details.category}}</p>
+                </div>
+                <div class="marker">
+                    {{ details.status===0 ? '未认领' : '' }}
+                    {{ details.status===1 ? '进行中' : '' }}
+                    {{ details.status===2 ? '已完成' : '' }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/lib/jquery-3.1.0.min.js"></script>
+<script src="../static/lib/vue.js"></script>
+<script src="../static/lib/vue-resource.js"></script>
+<script src="../static/lib/echarts4.0.3.min.js"></script>
+<script src="../static/json/taskViewJson.js"></script>
+<script src="../static/json/HTTPNAME.js"></script>
+<script src="../static/js/taskView.js"></script>
+</body>

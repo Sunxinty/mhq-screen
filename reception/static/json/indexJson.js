@@ -8,7 +8,7 @@ var Json = {
         // {name:"手机素材",icon:"static/imgs/index/sjsc.png",icon_s:"static/imgs/index/s_sjsc.png",url:"view/pgc.html"},
         {name:"内容库",icon:"static/imgs/index/nrk.png",icon_s:"static/imgs/index/s_nrk.png",url:"view/dataContainer.html"},
         {name:"新媒体任务",icon:"static/imgs/index/scl.png",icon_s:"static/imgs/index/s_scl.png",url:"view/mediaTask.html"},
-        {name:"采访任务",icon:"static/imgs/index/cfbd.png",icon_s:"static/imgs/index/s_cfbd.png",url:"view/interviewTask.html"},
+        {name:"任务一览",icon:"static/imgs/index/cfbd.png",icon_s:"static/imgs/index/s_cfbd.png",url:"view/taskView.html"},
         // {name:"实时热点",icon:"static/imgs/index/rd.png",icon_s:"static/imgs/index/s_rd.png",url:"view/gis.html"},
         {name:"收视率排行",icon:"static/imgs/index/sslph.png",icon_s:"static/imgs/index/s_sslph.png",url:"view/ratings.html"},
         {name:"GIS地图",icon:"static/imgs/index/map.png",icon_s:"static/imgs/index/s_map.png",url:"../gis/modules/maps/index.html"},

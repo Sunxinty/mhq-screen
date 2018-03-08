@@ -16,8 +16,7 @@ let Top = new Vue({
 let TVlist = new Vue({
     el:"#container",
     data:{
-        // chooseTime:getDate(),
-        chooseTime:"2018-02-08",
+        chooseTime:getDate(),
         programs:[{'name':"当日无数据",'uid':"0"}],
         selectedProgram:'0',
         selectedProgramName:'',
@@ -40,7 +39,7 @@ let TVlist = new Vue({
             {uid:3,name:"节目审片"},
             {uid:4,name:"节目送播"}
         ],
-        list:[],
+        list:Json.tabData,
         ImgsUrls:[]
     },
     methods: {
@@ -97,7 +96,8 @@ function formatProgramsData(msg){
     let programs = [];
     let arr = msg.data;
     if(arr.length===0){
-        programs.push({'name':"当日无数据",'uid':"0"});
+        // programs.push({'name':"当日无数据",'uid':"0"});
+        programs.push({'name':"sobey新闻",'uid':"0"}); //展会时接口未返回数据要展示假数据
     }else{
         for (let i = 0; i < arr.length; i++) {
             programs.push({
@@ -116,7 +116,7 @@ function formatProgramsData(msg){
         dk.refresh();
     },50);
 
-    TVlist.getList();
+    // TVlist.getList();
 
 }
 
@@ -224,7 +224,7 @@ function getSettings(Top) {
             const REQUEST = parseInt(result.reqtime)*1000||36000;
             PLAY = parseInt(result.carouseltime)*1000||3000;
             const TITLE = result.title||"串联单任务监看";
-            const RADIO_BG = parseInt(result.imgtype)||0;
+            const RADIO_BG = parseInt(result.imgtype)||1;
             const BG_URL = result.backgroundurl;
             //重置页面动画间隔
             if(timer){
@@ -237,9 +237,11 @@ function getSettings(Top) {
             
             //更改背景
             if(RADIO_BG===0){
-                $("body").css("background-image","url('../static/imgs/task/bg.png')");
-            }else if(RADIO_BG===1){
                 $("body").css("background-image","url("+BG_URL+")");
+            }else if(RADIO_BG===1){
+                $("body").css("background-image","url('../static/imgs/task/bg1.png')");
+            }else if(RADIO_BG===2){
+                $("body").css("background-image","url('../static/imgs/task/bg2.png')");
             }
 
         })

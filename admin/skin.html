@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Bookmark" href="/favicon.ico" >
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+
+    <![endif]-->
+    <link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="static/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>一键换肤管理页面</title>
+    <link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+    <style>
+        .c-black {
+            font-size:18px;
+        }
+        input[type=radio]{
+            width:16px;
+            height:16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="pd-20">
+    <div class="page-container">
+        <form class="form form-horizontal" id="form-article-add">
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 背景设置</strong></label>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">背景图：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-4 clo-lg-4">
+                    <div class="radio-box-boom">
+                        <input type="radio" id="DEFULT1" value="1" name="radio-bg">
+                        <label for="DEFULT1">星空蓝</label>
+                    </div>
+                    <div class="radio-box-boom">
+                        <input type="radio" id="DEFULT2" value="2" name="radio-bg">
+                        <label for="DEFULT2">星空紫</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-md-4 clo-lg-4 col-xs-offset-4 col-sm-offset-2 col-md-offset-4 clo-lg-offset-4">
+                    <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.js"></script>
+<script type="text/javascript" src="static/js/HTTPNAME.js"></script>
+<script type="text/javascript" src="static/js/skin.js"></script>
+</body>
+</html>
