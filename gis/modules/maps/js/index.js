@@ -402,7 +402,7 @@ $(document).ready(function () {
         $('#panel-searchTask').show();
         $(this).addClass('btn-active');
         $('#user-list-btn').removeClass('btn-active');
-
+		$(".groupLiveBox").hide();
         //默认展示第一条素材
         var materials = [];
         if ($('#xt_list').find('.panel-wrap').length > 0) {
@@ -422,7 +422,7 @@ $(document).ready(function () {
         $('#panel-searchTask').hide();
         $(this).addClass('btn-active');
         $('#xt-list-btn').removeClass('btn-active');
-
+		$(".groupLiveBox").show();
         Map.prototype.showDirect();
     });
     //为选题列表绑定事件
