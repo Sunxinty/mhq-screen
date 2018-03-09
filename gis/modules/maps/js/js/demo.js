@@ -271,11 +271,13 @@ function onDeviceOperation(oper, code) {
         if (code != 0) {
             toastr.warning("打开摄像头失败; 错误码:" + code);
         }else{
-            g_localRender.setIdentifer(g_id);
+            //g_localRender.setIdentifer(g_id);
+            g_localRender.setIdentifer(selToID);
+            g_renders[0].setIdentifer(g_id);
             StatusManager.setCamera(1);//更新状态
         }
     }
-    else if (oper == E_iLiveOperType.Close_Camera) {
+    else if (oper == E_iLiveOperType.Close_Camera ) {
         if (code != 0) {
             toastr.warning("关闭摄像头失败; 错误码:" + code);
         }
@@ -339,9 +341,6 @@ function OnInit() {
             $('#loginBox').css('display', 'block');
             g_localRender = new ILiveRender("localRender");
             g_renders[0] = new ILiveRender("render0");
-            // g_renders[1] = new ILiveRender("render1");
-            // g_renders[2] = new ILiveRender("render2");
-            // g_screenRender = new ILiveRender("screenRender");
 
             sdk.setForceOfflineListener(onForceOfflineCallback);
             sdk.setRoomDisconnectListener(onRoomDisconnect);
@@ -603,46 +602,6 @@ function OnBtnJoinRoom(roomid, role, succ, err) {
 }
 
 function OnBtnQuitRoom(cb) {
-    // var url = null;
-    // var param = {};
-    // if (g_role == E_Role.LiveMaster) {
-    //     url = g_serverUrl + "?svc=live&cmd=exitroom",
-    //         param = {
-    //             "token": g_token,
-    //             "type": "live",
-    //             "roomnum": g_roomnum,
-    //         }
-    // } else { //观众
-    //     url = g_serverUrl + "?svc=live&cmd=reportmemid",
-    //         param = {
-    //             "token": g_token,
-    //             "id": g_id,
-    //             "roomnum": g_roomnum,
-    //             "role": g_role || E_Role.Guest,
-    //             "operate": 1
-    //         }
-    // }
-    // var quit_callback = function() {
-    //     ajaxPost(url, JSON.stringify(param),
-    //         function(rspJson) {
-    //             sdk.quitRoom(function() {
-    //                 toastr.success("quit room succ");
-    //                 initState();
-    //                 cb();
-    //             }, function(errMsg) {
-    //                 toastr.error("错误码:" + errMsg.code + " 错误信息:" + errMsg.desc);
-    //             });
-    //         }
-    //     );
-    // }
-    // if (g_role == E_Role.LiveMaster) {
-    //     SendGroupMessage({
-    //             "userAction": E_IM_CustomCmd.AVIMCMD_ExitLive,
-    //             "actionParam": ''
-    //         }, quit_callback) //主播要先发送退出房间的信令
-    // } else {
-    //     quit_callback();
-    // }
     sdk.quitRoom(function() {
         toastr.success("quit room succ");
         initState();
@@ -653,40 +612,44 @@ function OnBtnQuitRoom(cb) {
 }
 
 function OnBtnOpenCamera() {
-    // if (g_role != E_Role.LiveGuest && g_role != E_Role.LiveMaster) {
-    //     toastr.error('被连麦之后才可以打开摄像头');
-    //     return;
-    // }
-    // var nRet = sdk.getCameraList();
-    // if (nRet.code != 0) {
-    //     toastr.warning("获取摄像头列表出错; 错误码:" + nRet);
-    //     return;
-    // }
-    // sdk.openCamera(nRet.devices[0].id);
     if (g_role == 0) {
         toastr.error('被连麦之后才可以打开摄像头');
         return;
     }
+    g_localRender.setIdentifer(selToID);
+    g_renders[0].setIdentifer(g_id);
     var nRet = sdk.getCameraList();
-    if (nRet.code != 0) {
-        toastr.warning("获取摄像头列表出错; 错误码:" + nRet.code);
+    console.log(nRet)
+    if (nRet.code != 0||!nRet.devices[0]) {
+        toastr.warning("获取摄像头列表出错！");
         return;
     }
-    ret = sdk.openCamera(nRet.cameras[0].id);
-    if (ret != 0) {
-        toastr.warning("打开摄像头失败; 错误码:" + ret.code);
-    } else {
-        console.log(g_id);
-        g_localRender.setIdentifer(selToID);
+    ret = sdk.openCamera(nRet.devices[0].id);
+    console.log(ret)
+    // if (ret != 0) {
+    //     toastr.warning("打开摄像头失败; 错误码:" + ret.code);
+    // } else {
+    //     console.log(g_id);
+    //     g_localRender.setIdentifer(selToID);
+    //     g_renders[0].setIdentifer(g_id);
+    //     clearInterval(g_getUserPic);
+    //     g_getUserPic=setInterval(function () {
+    //         g_renders[0].setIdentifer(g_id);
+    //         console.log('刷新进入房间用户视频');
+    //     },1000);
+    //     //更新状态
+    //     StatusManager.setCamera(1);
+    //     return;
+    // }
+    $(".render0").show();
+    
+    clearInterval(g_getUserPic);
+    g_getUserPic=setInterval(function () {
         g_renders[0].setIdentifer(g_id);
-        clearInterval(g_getUserPic);
-        g_getUserPic=setInterval(function () {
-            g_renders[0].setIdentifer(g_id);
-            console.log('刷新进入房间用户视频');
-        },1000);
-        //更新状态
-        StatusManager.setCamera(1);
-    }
+        console.log('刷新进入房间用户视频');
+    },1000);
+    //更新状态
+    StatusManager.setCamera(1);
 }
 
 function OnBtnCloseCamera() {
@@ -907,6 +870,10 @@ function dealCustomMessage(user, msg) {
             $('#sucessAudioTongxun').show();
             layer.close(layerIndex);
             clearInterval(newTimeerInterval);
+            $(".render0").hide()
+            setTimeout(function(){
+                $('#xt-list-btns span').trigger("click")
+            },1000)
         });
 
     }else if(msg.subcmd=='REFUSE'&&msg.room==roomId){
@@ -918,6 +885,9 @@ function dealCustomMessage(user, msg) {
             $('#sucessAudioTongxun').show();
             layer.close(layerIndex);
             clearInterval(newTimeerInterval);
+            setTimeout(function(){
+                $('#xt-list-btns span').trigger("click")
+            },1000)
         });
     }else if(msg.subcmd=='OPEN_CAMERA'){
         OnBtnOpenCamera();

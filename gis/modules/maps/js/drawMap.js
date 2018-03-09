@@ -27,13 +27,14 @@ function getToday(){
     var urlParams = {};//当前url参数
     var refreshBtn = false;
     var newZoom = 13;
+    var resc = 1;
     var newLacotion = {
         lng:0,
         lat:0
     };
 
     function Map() {
-        this.getUrlParams();
+        // this.getUrlParams();
         this.initMap();
         this._init();
     }
@@ -107,7 +108,7 @@ function getToday(){
         _init: function () {
             var _this = this;
             _this._bindLabelEvent(_this);
-             _this.map = new BMap.Map("allmap");
+            _this.map = new BMap.Map("allmap");
             /**
              * 地图初始化是构建时间空间为当天日期
              */
@@ -133,17 +134,6 @@ function getToday(){
             var returnV = _this._checkValue();
             _this._getAjaxData(returnV);
 
-            if (urlParams.refreshTime) {
-                if (!isNaN(urlParams.refreshTime)) {
-                    window.setInterval(function () {
-                        $('#xt-list-btns span').css('display', 'none');
-                        inrefresh = 1;
-                        var returnV = _this._checkValue();
-                        _this._getAjaxData(returnV);
-                    }, 1000 * 60 * urlParams.refreshTime);
-                }
-            }
-
             $('#switches-btn').bind('click', {}, function (event) {
                 //右侧的列表的隐藏和关闭.
                 $('#aside').toggleClass("open");
@@ -151,18 +141,26 @@ function getToday(){
             });
             $(".controlMiss").bind("click", {}, function (event) {
                 $('#direct').toggleClass("miss");
-                if ($('#direct .contentDir').find('#id_video_container').length != 0) {
-                    $('#direct .contentDir').html('<div class="nowShow"><span>请选择一个直播</span></div>')
-                }
             });
             //搜索按钮点击事件
             $('#search-li').on('click', function () {
                 var returnV = _this._checkValue();
                 _this._getAjaxData(returnV);
             });
+            
             // 刷新按钮
             $('#xt-list-btns').on('click', 'span', function () {
+                // 滚动或拖拽地图后重新获取地图中心坐标
+                if(resc==1){
+                    var pt = _this.map.getBounds().getCenter();
+                    // console.log(pt)
+                    newLacotion.lng = pt.lng;
+                    newLacotion.lat = pt.lat;
+                    resc = 0;
+                }
+                console.log("当前地图层级："+newZoom)
                 refreshBtn = true;
+
                 $('#xt-list-btns span').css('display', 'none');
                 if (inrefresh == 0) {
                     inrefresh = 1;
@@ -171,25 +169,28 @@ function getToday(){
                 }
             });
 
+            // 定时刷新地图和数据
             setInterval(function(){
                 $('#xt-list-btns span').trigger("click")
             },refreshTimeBtn*1000)
 
+            // 滚动鼠标时记录当前地图的层级和中心位置
             var scrollFunc=function(e){
                 e=e || window.event;
                 newZoom = _this.map.getZoom();
+                resc = 1;
             }
-            /*注册事件*/
+            
             if(document.addEventListener){
                 document.addEventListener('DOMMouseScroll',scrollFunc,false);
-            }//W3C
-            window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
+            }
+            window.onmousewheel=document.onmousewheel=scrollFunc;
 
-            _this.map.addEventListener("tilesloaded",function(e){
-                var pt = _this.map.getBounds().getCenter();
-                newLacotion.lng = pt.lng;
-                newLacotion.lat = pt.lat;
+            // 拖动地图结束时获取地图中心坐标
+            _this.map.addEventListener("dragend", function (){
+                resc = 1;
             });
+           
         },
         /**
          * 检查是否有选中的复选框,更具选中的复选框进行加载哪些数据
@@ -226,7 +227,6 @@ function getToday(){
         /**
          * 构建记者数据对象
          */
-         //获取记者
         _doWithAuthData: function (value, type) {
             var _this = this;
             var obj = new Object();
@@ -251,7 +251,7 @@ function getToday(){
                 obj.client = "报道指挥";
             }
             obj.telphone = value.phonenum ? value.phonenum : "";
-            obj.address = value.location?value.location:"";
+            obj.address = "";
             obj.lstatus = value.lstatus;
             obj.username = value.username ? value.username : "";
             obj.usercode = value.usercode;
@@ -297,8 +297,10 @@ function getToday(){
             }
 
             return obj;
-
         },
+        /*
+        * 获取地址
+        */
         getAddress: function (obj) {
             var point = new BMap.Point(obj.x, obj.y);
             var geoc = new BMap.Geocoder();
@@ -323,7 +325,7 @@ function getToday(){
                     function (response, type) {
                         var data = response.data;
                         var taskNumber = data.length;
-                        $("#taskNumber").text("总计任务 "+taskNumber+"条");
+                        $("#taskNumber").text("今日任务 "+taskNumber+"条");
                         plans = [];
                         for (var j = 0; j < data.length;j++) {
                             if (j > config.GPS.maxCount) break;
@@ -374,7 +376,7 @@ function getToday(){
                             }
                             type = '';
                         }
-                        $("#userNumber").text("当前在线记者 "+userNumber+"人");
+                        $("#userNumber").text("在线记者 "+userNumber+"人");
                         _this.queryLiveGroupRe(authors)
                         _this.reporters = authors;
                         d2.resolve(authors);
@@ -401,13 +403,7 @@ function getToday(){
             // 获取当天任务列表
             params.starttime = timeStr+" 00:00:00";
             params.endtime = timeStr+" 23:59:59";
-            // params.startTime = $("#starttime").val();
-            // if (params.startTime)
-            //     params.startTime = params.startTime;
-
-            // params.endTime = $("#endtime").val();
-            // if (params.endTime)
-            //     params.endTime = params.endTime;
+            
             var url = window.config.IpAddress+"/mhq-mserver/rest/gis/interview";
             _this.queryData(url, params, success);
         },
@@ -418,14 +414,16 @@ function getToday(){
             var _this = this;
             var now = new Date(); //当前日期
             var params = {};
-            //params.position = true;
+
             params.start = $("#starttime").val();
-            if (params.start);
-            params.start = params.start + " 00:00:00";
+            if (params.start){
+                params.start = params.start + " 00:00:00";
+            }
 
             params.end = $("#endtime").val();
-            if (params.end)
+            if (params.end){
                 params.end = params.end + " 23:59:59";
+            }
 
 			var url = window.config.IpAddress+"/mhq-mserver/rest/gis/getReports"
 			
@@ -447,213 +445,203 @@ function getToday(){
             });
         },
         
-		_initEcharts: function (plans, datas, fromPoint) {
-            var _this = this;
-            if (_this.map) {
-                //清除覆盖物
-                _this.map.clearOverlays();
-            }
+		// _initEcharts: function (plans, datas, fromPoint) {
+  //           var _this = this;
+  //           if (_this.map) {
+  //               //清除覆盖物
+  //               _this.map.clearOverlays();
+  //           }
 
-            var option,
-                series = [],
-                lineDatas = [],
-                effectScatterDatas = [{name: "", value: fromPoint.concat(0)}];
+  //           var option,
+  //               series = [],
+  //               lineDatas = [],
+  //               effectScatterDatas = [{name: "", value: fromPoint.concat(0)}];
 
-            var color = ['#a6c84c'];
+  //           var color = ['#a6c84c'];
 
-            _.forEach(datas, function (data, index) {
+  //           _.forEach(datas, function (data, index) {
 
-                var toPoint = [data.x, data.y];
-                var effectScatter = 100;
+  //               var toPoint = [data.x, data.y];
+  //               var effectScatter = 100;
 
-                if (data.videostatus == 0) {
-                    effectScatter = 0;
-                }
-                lineDatas.push({fromName: "", toName: "", coords: [fromPoint, toPoint]});
+  //               if (data.videostatus == 0) {
+  //                   effectScatter = 0;
+  //               }
+  //               lineDatas.push({fromName: "", toName: "", coords: [fromPoint, toPoint]});
 
-                effectScatterDatas.push({name: "", value: toPoint.concat(effectScatter)})
-            });
+  //               effectScatterDatas.push({name: "", value: toPoint.concat(effectScatter)})
+  //           });
 
-            series.push(
-                {
-                    type: 'lines',
-                    coordinateSystem: 'bmap',
-                    zlevel: 2,
-                    effect: {
-                        show: false,
-                        period: 6,
-                        trailLength: 0,
-                        symbol: 'arrow',
-                        symbolSize: 12
-                    },
-                    lineStyle: {
-                        normal: {
-                            color: '#187BEB',
-                            width: 2,
-                            //opacity: 0.4,
-                            opacity: 1,
-                            curveness: 0.2
-                        }
-                    },
-                    data: lineDatas
-                },
-                {
-                    type: 'effectScatter',
-                    coordinateSystem: 'bmap',
-                    zlevel: 2,
-                    rippleEffect: {
-                        brushType: 'stroke',
-                        scale: 10,
-                        period: 4
-                    },
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'right',
-                            formatter: '{b}'
-                        }
-                    },
-                    symbolSize: function (val) {
-                        return val[2] / 8;
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#187BEB'
-                        }
-                    },
-                    data: effectScatterDatas
-                });
+  //           series.push(
+  //               {
+  //                   type: 'lines',
+  //                   coordinateSystem: 'bmap',
+  //                   zlevel: 2,
+  //                   effect: {
+  //                       show: false,
+  //                       period: 6,
+  //                       trailLength: 0,
+  //                       symbol: 'arrow',
+  //                       symbolSize: 12
+  //                   },
+  //                   lineStyle: {
+  //                       normal: {
+  //                           color: '#187BEB',
+  //                           width: 2,
+  //                           //opacity: 0.4,
+  //                           opacity: 1,
+  //                           curveness: 0.2
+  //                       }
+  //                   },
+  //                   data: lineDatas
+  //               },
+  //               {
+  //                   type: 'effectScatter',
+  //                   coordinateSystem: 'bmap',
+  //                   zlevel: 2,
+  //                   rippleEffect: {
+  //                       brushType: 'stroke',
+  //                       scale: 10,
+  //                       period: 4
+  //                   },
+  //                   label: {
+  //                       normal: {
+  //                           show: true,
+  //                           position: 'right',
+  //                           formatter: '{b}'
+  //                       }
+  //                   },
+  //                   symbolSize: function (val) {
+  //                       return val[2] / 8;
+  //                   },
+  //                   itemStyle: {
+  //                       normal: {
+  //                           color: '#187BEB'
+  //                       }
+  //                   },
+  //                   data: effectScatterDatas
+  //               });
 
-            var styleJson = [
-                {
-                    "featureType": "background",
-                    "elementType": "all",
-                    "stylers": {
-                        "color": "#dddddd"
-                    }
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels",
-                    "stylers": {
-                        "color": "#f3f3f3",
-                        "visibility": "off"
-                    }
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels.text.fill",
-                    "stylers": {
-                        "color": "#296090"
-                    }
-                },
-                {
-                    "featureType": "boundary",
-                    "elementType": "geometry",
-                    "stylers": {
-                        "color": "#cccccc"
-                    }
-                },
-                {
-                    "featureType": "label",
-                    "elementType": "labels.text.stroke",
-                    "stylers": {
-                        "color": "#d94343",
-                        "visibility": "off"
-                    }
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": {
-                        "color": "#999999"
-                    }
-                },
-                {
-                    "featureType": "highway",
-                    "elementType": "geometry.fill",
-                    "stylers": {
-                        "color": "#eeeeee"
-                    }
-                },
-                {
-                    "featureType": "arterial",
-                    "elementType": "geometry.fill",
-                    "stylers": {
-                        "color": "#eeeeee"
-                    }
-                },
-                {
-                    "featureType": "local",
-                    "elementType": "geometry.fill",
-                    "stylers": {
-                        "color": "#eeeeee"
-                    }
-                },
-                {
-                    "featureType": "railway",
-                    "elementType": "geometry.fill",
-                    "stylers": {
-                        "color": "#eeeeee"
-                    }
-                },
-                {
-                    "featureType": "local",
-                    "elementType": "geometry.fill",
-                    "stylers": {
-                        "color": "#dddddd"
-                    }
-                }
-            ];
-            option = {
-                bmap: {
-                    // 百度地图中心经纬度
-                    center: fromPoint,
-                    // 百度地图缩放
-                    zoom: 13,
-                    // 是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
-                    roam: true,
-                    // 百度地图的自定义样式，见 http://developer.baidu.com/map/jsdevelop-11.htm
-                    mapStyle: {styleJson: styleJson}
-                },
-                series: series
-            };
-            if (!_this.chart) {
-                var dom = document.getElementById("allmap");
+  //           var styleJson = [
+  //               {
+  //                   "featureType": "background",
+  //                   "elementType": "all",
+  //                   "stylers": {
+  //                       "color": "#dddddd"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "poi",
+  //                   "elementType": "labels",
+  //                   "stylers": {
+  //                       "color": "#f3f3f3",
+  //                       "visibility": "off"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "poi",
+  //                   "elementType": "labels.text.fill",
+  //                   "stylers": {
+  //                       "color": "#296090"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "boundary",
+  //                   "elementType": "geometry",
+  //                   "stylers": {
+  //                       "color": "#cccccc"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "label",
+  //                   "elementType": "labels.text.stroke",
+  //                   "stylers": {
+  //                       "color": "#d94343",
+  //                       "visibility": "off"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "water",
+  //                   "elementType": "all",
+  //                   "stylers": {
+  //                       "color": "#999999"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "highway",
+  //                   "elementType": "geometry.fill",
+  //                   "stylers": {
+  //                       "color": "#eeeeee"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "arterial",
+  //                   "elementType": "geometry.fill",
+  //                   "stylers": {
+  //                       "color": "#eeeeee"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "local",
+  //                   "elementType": "geometry.fill",
+  //                   "stylers": {
+  //                       "color": "#eeeeee"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "railway",
+  //                   "elementType": "geometry.fill",
+  //                   "stylers": {
+  //                       "color": "#eeeeee"
+  //                   }
+  //               },
+  //               {
+  //                   "featureType": "local",
+  //                   "elementType": "geometry.fill",
+  //                   "stylers": {
+  //                       "color": "#dddddd"
+  //                   }
+  //               }
+  //           ];
+  //           option = {
+  //               bmap: {
+  //                   // 百度地图中心经纬度
+  //                   center: fromPoint,
+  //                   // 百度地图缩放
+  //                   zoom: 13,
+  //                   // 是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
+  //                   roam: true,
+  //                   // 百度地图的自定义样式，见 http://developer.baidu.com/map/jsdevelop-11.htm
+  //                   mapStyle: {styleJson: styleJson}
+  //               },
+  //               series: series
+  //           };
+  //           if (!_this.chart) {
+  //               var dom = document.getElementById("allmap");
 
-                _this.Chart = echarts.init(dom);
-                _this.Chart.on('click', function (params) {
-                });
-                _this.map = null;
-                _this.infoOverlays = {};
-            }
+  //               _this.Chart = echarts.init(dom);
+  //               _this.Chart.on('click', function (params) {
+  //               });
+  //               _this.map = null;
+  //               _this.infoOverlays = {};
+  //           }
 
-            if (option && typeof option === "object") {
+  //           if (option && typeof option === "object") {
 
-                _this.Chart.setOption(option, false);
-                var allDatas = _.concat(plans, datas);
-                _this.refreshMap(allDatas);
-            }
-
-        },
+  //               _this.Chart.setOption(option, false);
+  //               var allDatas = _.concat(plans, datas);
+  //               _this.refreshMap(allDatas);
+  //           }
+  //       },
         /**
          * 数据加载完后刷新右侧数据显示数据
          * @param Array 获取的所有数据对象数组
          */
         initMap: function () {
             var _this = this;
-            //_this.map = _this.Chart.getModel().getComponent('bmap').getBMap();
             _this.map = new BMap.Map("allmap");
-            if(urlParams.smallMap==1){
-                _this.smallMap = new BMap.Map("smallMap");
-            }
 
-            if(urlParams.mapSet){
-                var centerPoint = new BMap.Point(urlParams.map_lng, urlParams.map_lat);
-                window.config.GPS.level = urlParams.map_level|| window.config.GPS.level;
-            }else{
-                var centerPoint = new BMap.Point(window.config.GPS.longitude, window.config.GPS.latitude);
-            }
+            var centerPoint = new BMap.Point(window.config.GPS.longitude, window.config.GPS.latitude);
 
             _this.map.centerAndZoom(centerPoint, window.config.GPS.level);
             _this.map.enableScrollWheelZoom();//设置鼠标滚动缩放
@@ -663,15 +651,7 @@ function getToday(){
             });//路况信息
             _this.map.addControl(ctrl);//添加控件和比例尺
 
-            if(urlParams.smallMap==1){
-                //小地图模块初始化
-                _this.smallMap.centerAndZoom(centerPoint,1);  // 初始化地图,设置中心点坐标和地图级别
-                _this.smallMap.addControl(ctrl);   //添加地图类型控件
-                _this.smallMap.enableScrollWheelZoom(true);
-            }
-
             ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_LEFT);
-
 
             /**屏蔽右键事件*/
             _this.map.addEventListener("rightclick", function (e) {});
@@ -679,19 +659,10 @@ function getToday(){
             _this.map.addEventListener("tilesloaded", function (e) {
                 $("#tcBtn").removeClass("anchorBL");
             });
-            if(urlParams.smallMap==1){
-                _this.smallMap.addEventListener("rightclick", function (e) {});
-                _this.smallMap.addEventListener("tilesloaded", function (e) {
-                    $("#tcBtn").removeClass("anchorBL");
-                });
-            }
         },
         refreshMap: function (data) {
             var _this = this;
-            // _this.map = new BMap.Map("allmap");
-            if(urlParams.smallMap==1){
-                _this.smallMap = new BMap.Map("smallMap");
-            }
+           
             _this.map.enableScrollWheelZoom();//设置鼠标滚动缩放
             var ctrl = new BMapLib.TrafficControl({
                 showPanel: false,//是否显示路况提示面板
@@ -699,34 +670,16 @@ function getToday(){
             });//路况信息
             _this.map.addControl(ctrl);//添加控件和比例尺
 
-            if(urlParams.smallMap==1){
-                //小地图模块初始化
-                _this.smallMap.addControl(ctrl);   //添加地图类型控件
-                _this.smallMap.enableScrollWheelZoom(true);
-            }
-
             ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_LEFT);
 
             //地图实例化
-            if(urlParams.mapSet){
-                var relOption = {
-                    lng: urlParams.map_lng || null,
-                    lat: urlParams.map_lat || null,
-                    province: decodeURI(urlParams.map_province) || null,
-                    city: decodeURI(urlParams.map_city) || null,
-                    zlevel: urlParams.map_level || null
-                };
-            }
-            else{
-                var relOption = {
-                    lng: window.config.GPS.longitude || null,
-                    lat: window.config.GPS.latitude || null,
-                    province: window.config.GPS.province || null,
-                    city: window.config.GPS.centerCity || null,
-                    zlevel: window.config.GPS.level || null
-                };
-            }
-
+            var relOption = {
+                lng: window.config.GPS.longitude || null,
+                lat: window.config.GPS.latitude || null,
+                province: window.config.GPS.province || null,
+                city: window.config.GPS.centerCity || null,
+                zlevel: window.config.GPS.level || null
+            };
 
             if(relOption.lng&&relOption.lat){
                 var centerPoint = new BMap.Point(relOption.lng, relOption.lat);
@@ -736,10 +689,6 @@ function getToday(){
                 else{
                     var centerPoint0 = new BMap.Point(newLacotion.lng, newLacotion.lat);
                     _this.map.centerAndZoom(centerPoint0, newZoom);
-                }
-                // _this.map.centerAndZoom(centerPoint, relOption.zlevel||window.config.GPS.level);
-                if(urlParams.smallMap==1){
-                    _this.smallMap.centerAndZoom(centerPoint, 4);
                 }
             }else{
                 //根据IP获取当前城市名
@@ -865,7 +814,6 @@ function getToday(){
             }, 1000);
             //填充数据
             var data_info = data;
-            //var userIndex=1;
             var taskIndex_i = 0;
 
             BMapLib.TextIconOverlay.prototype.getStyleByText = function (text, styles) {
@@ -914,9 +862,7 @@ function getToday(){
                             strokeOpacity: 1
                         }); //创建弧线对象;
                         _this.map.addOverlay(curve); //添加到地图中
-                        if(urlParams.smallMap==1){
-                            _this.smallMap.addOverlay(curveCopy); //添加到地图中
-                        }
+                        
                     }
                 }
                 var markerCopy = {};
@@ -924,18 +870,12 @@ function getToday(){
                     markerCopy[p]=marker[p];
                 }
                 if (marker)_this.map.addOverlay(marker);// 将标注添加到地图中
-                if(urlParams.smallMap==1){
-                    if (markerCopy) _this.smallMap.addOverlay(markerCopy);// 将标注添加到地图中
-                }
 
                 (function (marker,markerCopy, data, point) {
                     if (!marker||!markerCopy)return false;
                     marker.addEventListener("click", function () {
                         _this.buildOverlays(point, data);
                     });
-                    //markerCopy.addEventListener("click", function () {
-                    //    _this.buildOverlays(point, data);
-                    //});
                 })(marker,markerCopy, data_info[i], point);
 
             }
@@ -959,9 +899,6 @@ function getToday(){
                 var id = data.uuid;
             }
 
-
-            _this.changeColor($('div[id="' + data.id + '"]'));
-
             //myCompOverlay.V !=null 修复infowindow.V丢失导致不显示的问题
             //if (!infoOverlays[id] || !infoOverlays[id].V) {
 
@@ -975,8 +912,6 @@ function getToday(){
                         .find('button.voiceCall').data('username',data.username)
                         .end()
                         .find('button.videoConversation').data('username',data.username)
-                        .end()
-                        .find('button.lineLive').data('username',data.username);
 
                     //查看素材
                     $('.showBackMaterial').click(function () {
@@ -1007,16 +942,11 @@ function getToday(){
             var ifDirect = '', buttonBtns = '';
             if (data.videostatus == 1) {
                 ifDirect = '<span style="color:red">直播中</span>';
-                if(urlParams.voiceCall==1){
-                    buttonBtns = '<button class="sym lineLive" style="left:0">直播连线</button>';
-                }
             } else {
                 ifDirect = '<span style="color:#fff">未直播</span>';
-                
                 buttonBtns =
                     '<button  class="voiceCall" id="'+data.usercode+'" style="left:0px;min-width: 188px">语音通话</button>' +
                     '<button  class="videoConversation" id="'+data.usercode+'" style="left:188px;min-width: 188px">视频通话</button>';
-
             }
 
             var liveContent = '<label style="font-size: 14px;padding-left: 30px;"><i class="fa fa-video-camera" style="color:#fff;margin-right: 5px;" aria-hidden="true"></i>直播：&nbsp;&nbsp;' + ifDirect + '</label>';
@@ -1077,24 +1007,12 @@ function getToday(){
                     border: 'none',
                 });
 
-
                 tpl = {
                     body: infoBody
                 }
             }
 
             return tpl;
-        },
-        changeColor: function (ele) {
-            var _this = this;
-            //恢复之前点击元素的颜色
-            if (_this.preTager) {
-//              $(_this.preTager).css("background", "#F3F3F3");
-            }
-            //改变当前元素的颜色
-//          $(ele).css("background", "#F3F3F3");
-            _this.preTager = ele;
-
         },
         /**
          * 初始化和事件改变时，构建右侧的列表
@@ -1114,8 +1032,6 @@ function getToday(){
                     userList.push(_this.getUserTempl(data));
                     adds.push(data);
                 }
-
-
             });
             if (xtList.length == 0) {
                 xtList.push('<p class="no-data">无数据！</p>');
@@ -1125,7 +1041,6 @@ function getToday(){
             }
             $xt_list.empty().append(xtList);
             $user_list.empty().append(userList);
-
 
             //默认展示首个素材或者直播列表
             if ($('#xt-list-btns .btn-active').attr('id') == 'xt-list-btn') {
@@ -1145,41 +1060,38 @@ function getToday(){
             var myGeo = new BMap.Geocoder();
             var index = 0;
 
-            // function bdGEO() {
-            //
-            //     if (adds.length > 0) {
-            //         var data = adds[index];
-            //         geocodeSearch(data);
-            //         index++;
-            //     }
-            // }
-            //
-            // function geocodeSearch(data) {
-            //     if (index < adds.length - 1) {
-            //         setTimeout(bdGEO, 100);
-            //     }
-            //     var point = new BMap.Point(data.x, data.y);
-            //     var geoc = new BMap.Geocoder();
-            //     myGeo.getLocation(point, function (rs) {
-            //         var addComp = rs.addressComponents;
-            //         var address = [];
-            //         if (addComp.city)
-            //             address.push(addComp.city);
-            //         if (addComp.district)
-            //             address.push(addComp.district);
-            //         if (addComp.street)
-            //             address.push(addComp.street);
-            //
-            //         data.address = address.join("");
-            //         var user = $("#" + data.id + " p.userAddress");
-            //         if (user)
-            //             user.empty().append('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>地点:&nbsp;&nbsp;' + data.address);
-            //
-            //     });
-            // }
-            //
-            // bdGEO();
+            function bdGEO() {
+                if (adds.length > 0) {
+                    var data = adds[index];
+                    geocodeSearch(data);
+                    index++;
+                }
+            }
 
+            function geocodeSearch(data) {
+                if (index < adds.length - 1) {
+                    setTimeout(bdGEO, 100);
+                }
+                var point = new BMap.Point(data.x, data.y);
+                var geoc = new BMap.Geocoder();
+                myGeo.getLocation(point, function (rs) {
+                    var addComp = rs.addressComponents;
+                    var address = [];
+                    if (addComp.city)
+                        address.push(addComp.city);
+                    if (addComp.district)
+                        address.push(addComp.district);
+                    if (addComp.street)
+                        address.push(addComp.street);
+
+                    data.address = address.join("");
+                    var user = $("#" + data.id + " p.userAddress");
+                    if (user)
+                        user.empty().append('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>地点:&nbsp;&nbsp;' + data.address);
+
+                });
+            }
+            bdGEO();
         },
         showVedioCall: function (data, callType) {
             var _this = this;
@@ -1223,7 +1135,7 @@ function getToday(){
             $div.data('datas', data);
             $div.data('imgip', data.imgip);
             $div.on('click', function () {
-
+                resc = 1;
                 $('.dataChoose').removeClass('dataChoose');
                 $(this).addClass('dataChoose');
                 //获取素材数据并写入右侧展示区
@@ -1231,7 +1143,6 @@ function getToday(){
                 var imgip = $('.dataChoose').data('imgip');
                 _this.showMaterial(material,imgip);
 
-                _this.changeColor(this);
                 var point = new BMap.Point(data.x, data.y);
 
                 _this.map.setCenter(point);//将改点设置为中心
@@ -1295,7 +1206,7 @@ function getToday(){
             }
 
             $userDIV.on('click', function (event) {
-
+                resc = 1;
                 //获取视频地址数据
                 $('.directChoose').removeClass('directChoose');
                 $(this).addClass('directChoose');
@@ -1306,7 +1217,6 @@ function getToday(){
                     $('.directChoose').removeClass('directChoose');
                 }
 
-                _this.changeColor(this);
                 event.preventDefault();
                 var point = new BMap.Point(data.x, data.y);
 
@@ -1330,18 +1240,10 @@ function getToday(){
             	if(_this.isString(material[i])){
             		material[i] = JSON.parse(material[i]);
             	}
-				if(material[i].streamMediaUrl){
-					var imgurl = (material[i].streamMediaUrl[0]).replace("${REQUEST_IP}",imgip)
-					material[i].streamMediaUrl[0] = imgurl
-				}else{
-					material[i].streamMediaUrl = [" "];
-				}
-                if(material[i].keyFrameUrl){
-					var vdurl = (material[i].keyFrameUrl[0]).replace("${REQUEST_IP}",imgip)
-					material[i].keyFrameUrl[0] = vdurl
-				}else{
-					material[i].keyFrameUrl = [" "];
-				}
+                var imgurl = (material[i].streamMediaUrl[0]).replace("${REQUEST_IP}",imgip)
+                material[i].streamMediaUrl[0] = imgurl
+                var vdurl = (material[i].keyFrameUrl[0]).replace("${REQUEST_IP}",imgip)
+                material[i].keyFrameUrl[0] = vdurl
             }
 
             if (material.length == 0) {
@@ -1396,7 +1298,7 @@ function getToday(){
                 })
             }
         },
-        //展示直播
+        //展示直播组列表
         showDirect: function (urldatas) {
 
             if (urlParams.live == 0) {
@@ -1406,87 +1308,6 @@ function getToday(){
             var _this = this;
             $('#direct .headDir').html('<span class="groupLive">直播</span>');
             _this.groupLiveBox();
-
-            //列表点击播放直播
-            $('#direct .imgShow').unbind('click').click(function () {
-                directID = $(this).attr('id');
-                $('.directChoose').removeClass('directChoose');
-                $('.matordirChoosed').removeClass('matordirChoosed');
-                if ($(this).data('type') == 'direct') {
-                    $(this).addClass('matordirChoosed');
-                    $('#direct .contentDir').html('<span>' + $(this).find('span').eq(0).text() + ':</span> <div class="nowShow"><div id="id_video_container" style="width:100%; height:100%;"></div></div>');
-                    var url = $(this).find('img').attr('class');
-                    var option = {
-                        "live_url": url,
-                        "width": 480,
-                        "height": 320
-                    };
-                    if (url != $('#id_video_container').data('src'));
-                    {
-                        $('#id_video_container').data('src', url);
-                        var player = new qcVideo.Player("id_video_container", option);
-                    }
-                }
-            });
-
-            //选中之前的直播若之前没有则自动播放第一个
-            if (directID != '' && $('.matordirChoosed').length != 0) {
-                $("div[id=" + directID + "]").addClass('matordirChoosed');
-            } else {
-                if ($('.directChoose').length != 0) {
-                    $('#direct .imgShow').eq(0).trigger('click');
-                }
-            };
-
-        
-            //复制链接
-            $('#direct .fa-link').unbind('click').click(function (e) {
-                $('#directUrl').val($(this).parents('.imgShow').find('img').attr('class'));
-                Url2 = document.getElementById("directUrl");
-                Url2.select(); // 选择对象
-                document.execCommand("Copy"); // 执行浏览器复制命令
-                if(document.execCommand("Copy")){
-                    layer.msg('<span style="color:black;">复制成功</span>', {icon: 1});
-                }else{
-                    if(confirm("你的浏览器不支持此功能，请在下一个弹出框直接 crtl+C手动复制")){
-                        alert($('#directUrl').val());
-                    }
-                }
-                e.stopPropagation();//防止继续冒泡
-            });
-
-            //左侧记者列表在直播点击播放直播
-            if (urldatas) {
-                $('#direct').removeClass('miss');
-                $('#direct .contentDir').html('<span>' + urldatas.username + ':</span> <div class="nowShow"><div id="id_video_container" style="width:100%; height:100%;"></div></div>');
-                var url = urldatas.videoaddress;
-                var option = {
-                    "live_url": url,
-                    "width": 480,
-                    "height": 320
-                };
-                if (url != $('#id_video_container').data('src'));
-                {
-                    $('.imgShow').find("img").each(function () {
-                        if ($(this).attr('class') == url) {
-                            $(this).parents('.imgShow').trigger('click');
-                        }
-                    });
-                }
-            }
-            $(".headDir").on("click",".liveBtn",function(){
-                $(this).addClass("active");
-                $(".createLiveBox").hide();
-                $(".contentDir").show();
-                $(".groupLive").removeClass("active")
-                _this.livebox()
-            })
-
-            $(".headDir").on("click",".groupLive",function(){
-                $(this).addClass("active")
-                $(".liveBtn").removeClass("active")
-                _this.groupLiveBox()
-            })
         },
         //当素材或这直播数不足9时填充满
         fillFull: function (num, type) {
@@ -1545,15 +1366,18 @@ function getToday(){
             console.log(dataList);
             if(dataList.length==0||dataList==undefined){
                 $(".jizhe-list ul").html("<li><p>无数据！</p><li>")
+                $(".users-list ul").html("<li><p>无数据！</p><li>")
             }
             else{
                 $(".jizhe-list ul").html("")
+                $(".users-list ul").html("")
                 for(var i=0;i<dataList.length;i++){
                     var username = dataList[i].username;
                     var usercode = dataList[i].usercode;
                     var imageUrl = dataList[i].imageUrl;
                     var department = dataList[i].department||"无";
-                    $(".jizhe-list ul").append('<li data-code="'+usercode+'" class="active"><img src="'+imageUrl+'"/><p>'+username+'</p><p>部门：'+department+'</p></li>')
+                    $(".jizhe-list ul").append('<li data-code="'+usercode+'"><img src="'+imageUrl+'"/><p>'+username+'</p><p>部门：'+department+'</p></li>')
+                    $(".users-list ul").append('<li data-code="'+usercode+'"><img src="'+imageUrl+'"/><p>'+username+'</p><p>部门：'+department+'</p></li>')
                 }
             }
         },
@@ -1584,6 +1408,7 @@ function getToday(){
                                     memberArr.push(members[j].userName)
                                 }
                                 $("#groupLiveList").append('<li data-id="'+dataList[i].id+'"><h3>直播主题：<span>'+dataList[i].title+'（直播中）</span></h3><p><span>'+dataList[i].beginTime+' 开始直播<span></p><p>直播时长：'+dataList[i].liveTime+'分钟</p><p>组长：'+dataList[i].userName+'</p><p>组员：'+memberArr.join(",")+'</p></li>')
+                                // <a href="##" class="changeUsers">增减组员</a>
                             }
                             else if(checkStatus==2){
                                 // 审核通过未直播
@@ -1592,6 +1417,7 @@ function getToday(){
                                     memberArr.push(members[j].userName)
                                 }
                                 $("#groupLiveList").append('<li data-id="'+dataList[i].id+'"><h3>直播主题：<span>'+dataList[i].title+'（未开始）</span></h3><p><span>'+dataList[i].beginTime+' 开始直播<span></p><p>直播时长：'+dataList[i].liveTime+'分钟</p><p>组长：'+dataList[i].userName+'</p><p>组员：'+memberArr.join(",")+'</p></li>')
+                                // <a href="##" class="changeUsers">增减组员</a>
                             }
                         }
                         if(liveNumber==0){
@@ -1602,49 +1428,7 @@ function getToday(){
                     }
                 }
             })
-        },
-        // 直播
-        livebox:function(){
-            var _this = this;
-            $('.groupLiveBox').hide().html("");
-            if ($('#direct .contentDir').find('#id_video_container').length == 0) {
-                $('#direct .contentDir').show().html('<div style="box-shadow: 0 0 2px gray;" class="nowShow"><span>请选择一个直播</span></div>')
-            }
-            $('#direct .bottomDir').show().html('');
-            var reporter = reporterDataArr;
-            if (reporter.length == 0) {
-                $('#direct .bottomDir').html('');
-                for (var i = 1; i < 10; i++) {
-                    var content = '<div style="position:relative;box-shadow: 0 0 2px gray;background:url(\'icons/live.png\');background-size: cover;background-position: center;" class="imgShow" data-type=""> <span>频道' + i + '</span>' +
-                    '</div>';
-                    $('#direct .bottomDir').append(content);
-                }
-            } else {
-                for (var i = 0; i < reporter.length; i++) {
-                    var content = '<div class="imgShow" id="' + reporter[i].id + '"  data-type="direct">' +
-                    '<p class="copyAndShare"><i title="分享此直播间" style="float:left;" class="fa fa-share-alt" aria-hidden="true"></i>' +
-                    '<i title="复制此直播间链接" style="float:right;"  class="fa fa-link" aria-hidden="true"></i></p>' +
-                    '<img style="width:100%;height:100%;" onerror="javascript:this.src=\'icons/auther3.png\';" src="' + reporter[i].icon[0] + '" class="' + reporter[i].videoaddress + '" />' +
-                    '<p><span>' + reporter[i].channelname + '</span><br/><span><i style="margin-right:5px;" class="fa fa-user" aria-hidden="true"></i>' + reporter[i].username + '</span></p>' +
-                    '<img class="videosym videosymh" src="icons/play (1).png" />' +
-                    '</div>';
-                    $('#direct .bottomDir').append(content)
-                    $('#direct').find('.imgShow').eq(i).find('img').eq(0).data("nowIndex", 0)
-                }
-                ;
-                _this.fillFull(reporter.length, 'direct');
-            };
-
-            //选中之前的直播若之前没有则自动播放第一个
-            if (directID != '' && $('.matordirChoosed').length != 0) {
-                $("div[id=" + directID + "]").addClass('matordirChoosed');
-            } else {
-                if ($('.directChoose').length != 0) {
-                    $('#direct .imgShow').eq(0).trigger('click');
-                }
-            };
         }
-    
     });
 
     window.Map = Map;

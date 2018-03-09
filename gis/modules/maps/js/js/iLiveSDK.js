@@ -344,7 +344,7 @@ ILiveSDK.prototype = {
         var szRet = this.ilive.getCameraList();
         var obj = JSON.parse(szRet);
         var cList = [];
-        if (obj.code == 0) {
+        if (obj.code == 0&&obj.cameralist!=null) {
             for (var i = 0; i < obj.cameralist.length; ++i) {
                 var camera = new ILiveDevice(obj.cameralist[i].id, obj.cameralist[i].name);
                 cList.push(camera);
@@ -500,12 +500,12 @@ ILiveSDK.prototype = {
             if (message.elems.length == 0) return;
 
             var msg = {};
-	        var elems = [];
-	        for (var i = 0; i < message.elems.length; ++i) {
-            	var elem = {};
-	            elem.type = message.elems[i].type;
-	            elem.content = message.elems[i].content;
-	            elems.push(elem);
+            var elems = [];
+            for (var i = 0; i < message.elems.length; ++i) {
+                var elem = {};
+                elem.type = message.elems[i].type;
+                elem.content = message.elems[i].content;
+                elems.push(elem);
             }
             msg.elems = elems;
             this.ilive.sendGroupMessage(JSON.stringify(msg), function () {
@@ -531,16 +531,16 @@ ILiveSDK.prototype = {
     sendC2CMessage: function (to, message, suc, err) {
         if (message instanceof ILiveMessage) {
             if (message.elems.length == 0) return;
-	        var msg = {};
-	        var elems = [];
-	        msg.to = to;
-	        for (var i = 0; i < message.elems.length; ++i) {
-            	var elem = {};
-	            elem.type = message.elems[i].type;
-	            elem.content = message.elems[i].content;	
-	            elems.push(elem);
+            var msg = {};
+            var elems = [];
+            msg.to = to;
+            for (var i = 0; i < message.elems.length; ++i) {
+                var elem = {};
+                elem.type = message.elems[i].type;
+                elem.content = message.elems[i].content;    
+                elems.push(elem);
             }
-	        msg.elems = elems;
+            msg.elems = elems;
             this.ilive.sendC2CMessage(JSON.stringify(msg), function () {
                 if (suc) {
                     suc();
@@ -758,24 +758,24 @@ ILiveSDK.prototype = {
     * 设置美颜程度
     * @param {number} beauty - 美颜程度 0~7
     */
-	setBeauty: function (beauty) {
+    setBeauty: function (beauty) {
 
-		this.ilive.setBeauty(beauty);
-	},
+        this.ilive.setBeauty(beauty);
+    },
     /**
     * 设置美白程度
     * @param {number} white - 美白程度 0~9
     */
-	setWhite: function (white) {
-		this.ilive.setWhite(white);
-	},
+    setWhite: function (white) {
+        this.ilive.setWhite(white);
+    },
     /**
     * 设置清晰程度
     * @param {number} sharpen - 清晰程度 0~9
     */
-	setSharpen: function (sharpen) {
-		this.ilive.setSharpen(sharpen);
-	},
+    setSharpen: function (sharpen) {
+        this.ilive.setSharpen(sharpen);
+    },
 
    /**
     * 修改角色
@@ -1031,7 +1031,6 @@ var E_iLiveRecordDataType = {
 var E_iLivePushEncode = {
     HLS: 0x1,
     FLV: 0x2,
-    HLS_AND_FLV: 0x3,
     RAW: 0x4,
     RTMP: 0x5,
     HLS_AND_RTMP: 0x6,
@@ -1061,21 +1060,21 @@ var E_iLivePushRecordFileType = {
  */
 var E_iLiveOperType = {
     /** 打开摄像头 */
-	Open_Camera: 1,
+    Open_Camera: 1,
     /** 关闭摄像头 */
-	Close_Camera: 2,
+    Close_Camera: 2,
     /** 打开麦克风 */
-	Open_Mic: 5,
+    Open_Mic: 5,
     /** 关闭麦克风 */
-	Close_Mic: 6,
+    Close_Mic: 6,
     /** 打开扬声器 */
-	Open_Player: 7,
+    Open_Player: 7,
     /** 关闭扬声器 */
-	Close_Player: 8,
+    Close_Player: 8,
     /** 打开屏幕分享 */
-	Open_Screen_Share: 9,
+    Open_Screen_Share: 9,
     /** 关闭屏幕分享 */
-	Close_ScreenShare: 10,
+    Close_ScreenShare: 10,
 };
 
 /**
@@ -1085,9 +1084,9 @@ var E_iLiveOperType = {
  */
 var E_iLiveRenderMode = {
     /** 根据视频画面比例缩放，不足的填充黑边 */
-	RenderMode_BlackBorder: 0,
+    RenderMode_BlackBorder: 0,
     /** 拉伸画面到渲染控件大小 */
-	RenderMode_FullWnd: 1,
+    RenderMode_FullWnd: 1,
 };
 
 /**

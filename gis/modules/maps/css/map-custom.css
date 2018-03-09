@@ -29,7 +29,7 @@ ul li {
     text-align: center;
 }
 .header h1 {
-  
+
     display: inline-block;
 }
 .header h1 span {
@@ -67,14 +67,14 @@ ul li {
     top: 0px;
     bottom: 0;
     left: -380px;
-   /* padding-left: 10px;*/
+    /* padding-left: 10px;*/
     z-index:4;
     -webkit-transition: all 100ms;
     -moz-transition: all 100ms;
     -ms-transition: all 100ms;
     -o-transition: all 100ms;
     transition: all 100ms;
-    
+
 }
 #aside.open {
     left: 0px;
@@ -175,7 +175,7 @@ ul li {
     /*left: 10px;*/
     right: 0;
     bottom: 0;
-    overflow-y:auto; 
+    overflow-y:auto;
     /*margin-top: 20px;*/
 }
 
@@ -186,7 +186,7 @@ ul li {
     left: 50px;
     right: 0;
     bottom: 0;
-    overflow-y:auto; 
+    overflow-y:auto;
     float: left;
     width: 400px;
     height: 380px;
@@ -203,8 +203,8 @@ ul li {
     width: 100%;
 }
 .layui-layer-shade{
-	/*width: 380px!important;*/
-	float: right!important;
+    /*width: 380px!important;*/
+    float: right!important;
 }
 
 
@@ -214,67 +214,67 @@ ul li {
  * sunxin
  */
 #allmap{
-	margin: 110px 3% 60px;
-	width: 94%;
-	/*border: 5px solid #316fb8;*/
+    margin: 110px 3% 60px;
+    width: 94%;
+    /*border: 5px solid #316fb8;*/
 }
 #aside{
-	margin: 140px 0 90px 6%;
-	width: 300px;
-	left: -424px;
-	background: rgba(16,54,90,0.9);
-	box-shadow: 0px 0px 100px 10px #172941 inset;
-	-moz-transition: 0.3s ease;
-	-webkit-transition: 0.3s ease;
-	-ms-transition: 0.3s ease;
-	transition: 0.3s ease;
+    margin: 140px 0 90px 6%;
+    width: 300px;
+    left: -424px;
+    background: rgba(16,54,90,0.9);
+    box-shadow: 0px 0px 100px 10px #172941 inset;
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    transition: 0.3s ease;
 }
 #xt-list-btns span.glyphicon-repeat{
-	background: #233b57;
-	left: -56px; 
-	top: 48px; 
-	width: 30px; 
-	height: 45px; 
-	line-height: 45px; 
-	font-size: 18px; 
-	display: block; 
-	position: absolute; 
-	cursor: pointer;
-	border-radius: none;
+    background: #233b57;
+    left: -56px;
+    top: 48px;
+    width: 30px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    border-radius: none;
 }
 #aside .float-bar{
-	right: -116px;
-	top: 0; 
-	width: 30px; 
-	height: 50px; 
-	line-height: 45px;
-	-moz-transition: 0.2s ease;
-	-webkit-transition: 0.2s ease;
-	-ms-transition: 0.2s ease;
-	transition: 0.2s ease;
+    right: -116px;
+    top: 0;
+    width: 30px;
+    height: 50px;
+    line-height: 45px;
+    -moz-transition: 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    -ms-transition: 0.2s ease;
+    transition: 0.2s ease;
 }
 #aside.open .float-bar{
-	background: #233b57;
-	right: 300px;
-	border-radius: none;
+    background: #233b57;
+    right: 300px;
+    border-radius: none;
 }
 #aside .float-bar .icon-btn{
-	background: #233b57;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	left: 0;
-	line-height: 42px;
-	font-size: 32px;
+    background: #233b57;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    left: 0;
+    line-height: 42px;
+    font-size: 32px;
 }
 #aside-content{
-	background: none;
-	overflow: hidden;
-	overflow-y: auto;
-	width: 100%;
+    background: none;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
 }
 .header{
-	background: none;
-	box-shadow: 0px 0px 30px 1px #1c6ec4 inset;
-	border-bottom: none;
+    background: none;
+    box-shadow: 0px 0px 30px 1px #1c6ec4 inset;
+    border-bottom: none;
 }

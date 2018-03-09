@@ -714,7 +714,7 @@ nav {
 }
 
 #direct .bottomDir {
-    height: 396px;
+    height: 590px;
     overflow: auto;
     box-sizing: border-box;
 }
@@ -732,207 +732,6 @@ nav {
     top: 3px !important;
     left: 20px !important;
     color: rgb(255, 255, 255);
-}
-
-/*宸濆彴璁ㄨ缁�/
-
-#talkGroups {
-    display: none;
-    width: 500px;
-    padding-bottom: 35px;
-    background-color: #FFF;
-    box-shadow: 0 0 2px gray;
-    z-index: 4;
-    color: black;
-}
-
-.showGroups {
-    display: block !important;
-}
-
-#talkGroups .title {
-    width: 500px;
-    padding: 5px 10px;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-#talkGroups .title span:nth-child(2) {
-    display: inline-block;
-    width: 25px;
-    margin-top: -3px;
-    margin-right: -5px;
-    float: right;
-    background-color: #D8D8D8;
-    cursor: pointer;
-    padding: 3px 3px 0 0;
-    text-align: center;
-}
-
-#talkGroups .content {
-    padding: 10px 25px;
-}
-
-#talkGroups .content > span {
-    display: inline-block;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-right: 5px;
-}
-
-#talkGroups input {
-    width: 402px;
-}
-
-#talkGroups textarea {
-    margin-top: 15px;
-    display: inline-block;
-    width: 402px;
-    height: 170px;
-    border: 1px solid #b1a8a8;
-    resize: none;
-    vertical-align: top;
-    color: black;
-    background-color: #FFF !important;
-}
-
-#talkGroups .content .reporterGroups {
-    display: inline-block;
-    width: 401px;
-    max-height: 210px;
-    padding-bottom: 30px;
-    margin-bottom: 15px;
-    vertical-align: top;
-    overflow: auto;
-}
-
-#talkGroups .content .reporterGroups > div {
-    float: left;
-    position: relative;
-    width: 58px;
-    height: 58px;
-    margin: 0 11px;
-    margin-top: 30px;
-    border-radius: 50%;
-    background: lightblue;
-}
-
-#talkGroups .content .reporterGroups > div img {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-}
-
-#talkGroups .content .reporterGroups > div p, #talkGroups #users-online li p {
-    display: inline-block;
-    position: absolute;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    visibility: hidden;
-    line-height: 58px;
-    text-align: center;
-    background: rgb(114, 110, 110);
-}
-
-#talkGroups .content .reporterGroups > div:hover p, #talkGroups #users-online li:hover p {
-    visibility: visible;
-    background: rgba(114, 110, 110, 0.6);
-    color: #EA3827;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-#talkGroups #users-online li:hover p {
-    color: #187BEB;
-}
-
-#talkGroups .content .reporterGroups > div > span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    margin-top: 6px;
-    font-size: 14px;
-    text-align: center;
-}
-
-#talkGroups .user-list {
-    position: absolute;
-    padding: 15px;
-    top: 0;
-    left: 500px;
-    background: #F3F3F3;
-    width: 400px;
-    height: 100%;
-    box-shadow: 0 0 2px gray;
-    overflow: hidden;
-}
-
-#talkGroups .content button {
-    float: right;
-    width: 60px;
-    height: 27px;
-    background: #E02222;
-    color: #FFF;
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-#talkGroups #users-online {
-    display: inline-block;
-    liststyle: none;
-    padding: 0;
-    float: left;
-    display: block;
-    height: 80%;
-    overflow: auto;
-}
-
-#talkGroups #users-online li {
-    position: relative;
-    float: left;
-    width: 58px;
-    height: 58px;
-    margin: 15px 16px;
-    border-radius: 50%;
-}
-
-#talkGroups #users-online li > img {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-}
-
-#talkGroups #users-online li > span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    margin-top: 6px;
-    font-size: 14px;
-    text-align: center;
-}
-
-#talkGroups .user-list input {
-    width: 315px;
-    height: 32px;
-    margin-bottom: 30px;
-}
-
-#talkGroups .user-list > span {
-    display: inline-block;
-    width: 42px;
-    height: 32px;
-    vertical-align: top;
-    line-height: 30px;
-    text-align: center;
-    background: #cecdcd;
-    cursor: pointer;
-}
-
-.userInfo label {
-    font-weight: normal !important;
-    margin: 13px 0;
 }
 
 /*閬僵*/
@@ -1111,91 +910,16 @@ nav {
     opacity: 0.55;
 }
 
-#aside {
+/*#aside {
     display: none;
 }
 
 #direct {
     display: none;
-}
+}*/
 
 #mapNav {
     display: none;
-}
-
-/*鍒嗕韩tab椤�/
-.tabSearch ul {
-    list-style: none;
-    color: black;
-    padding: 10px 15px;
-    max-height: 250px;
-}
-
-.tabSearch ul li {
-    list-style: none;
-    padding: 5px 25px;
-    cursor: pointer;
-}
-
-.tabSearch ul li:hover {
-    background: #f9f9f9;
-}
-
-.tabTree {
-    display: none;
-}
-
-.btnSearch, .btnTree {
-    float: left;
-    height: 34px;
-    margin-top: 10px;
-    padding: 0 17px;
-    border: 1px solid #d8cdcd;
-    color: black;
-    background: #FFF;
-}
-
-.shareChoosed {
-    color: #FFF;
-    background: #DF1D14;
-}
-
-.clear {
-    clear: both;
-}
-
-#pointer_tree span.treeSearch {
-    position: relative;
-    height: 27px;
-    background: #ececec;
-    line-height: 26px;
-    cursor: pointer;
-}
-
-.searchBody button {
-    position: absolute;
-    height: 28px;
-    padding: 0;
-    border: none;
-    background: none;
-    outline: none;
-    top: 8px;
-    right: 35px;
-}
-
-#smallMap{
-    position:absolute;
-    display:none;
-    width:515px;
-    height:400px;
-    box-shadow: 0 0 2px gray;
-    left:0;
-    bottom:0;
-    z-index:3;
-    transition: all 100ms;
-}
-#smallMap.smallMapOpen{
-    left:380px;
 }
 
 /**
@@ -1265,8 +989,7 @@ nav {
     margin-left:-137px;
 	height: 103px;
 	background: url(../icons/title.png) center no-repeat;
-    -webkit-background-size:100% 100%;
-    background-size:100% 100%;
+	background-size: 100% 100%;
 	text-align: center;
 	color: #fff;
 	font-size: 40px;
@@ -1274,13 +997,13 @@ nav {
 .gis-title h1{
 	color: #fff;
 	font-size: 34px;
+	margin: 0;
 	line-height: 103px;
 	font-weight: bold;
-    margin:0;
 }
 #direct.material{
 	height: 800px;
-	margin: 180px 6% 0 0;
+	margin: 200px 100px 0 0;
 	width: 440px;
 	background: none;
 	-moz-transition: 0.3s ease;
@@ -1317,7 +1040,7 @@ nav {
 	color: #fff;
 }
 #direct .bottomDir{
-	/*height: auto;*/
+	height: auto;
 	width: 100%;
 }
 #direct .imgShow{
@@ -1349,10 +1072,10 @@ nav {
 	border-radius: 0 0 0 0;
 }
 #direct.miss .controlMiss{
-	left: -116px;
+	left: -100px;
 }
 #direct.miss{
-	right: -568px;
+	right: -545px;
 }
 #direct .imgShow img{
 	width: 100%;
@@ -1439,6 +1162,7 @@ ul#groupLiveList li{
     background: rgba(14,130,205,0.3);
     border-radius: 6px;
     margin-bottom: 12px;
+    float: left;
 }
 ul#groupLiveList li:hover,ul#groupLiveList li.active{
     background-color: #1c4481;
@@ -1450,12 +1174,22 @@ ul#groupLiveList li h3{
     width: 100%;
     margin: 0 0 10px 0;
     line-height: 30px;
+    float: left;
 }
 ul#groupLiveList li p{
     width: 100%;
     color: #fff;
     line-height: 20px;
     font-size: 16px;
+    float: left;
+}
+ul#groupLiveList li a{
+    color: #fff;
+    float: right;
+    line-height: 26px;
+    background: rgba(248,189,6,0.9);
+    padding: 0 12px;
+    border-radius: 6px;
 }
 ul#groupLiveList li span{
     color: #54a0f4;
@@ -1697,6 +1431,7 @@ ul#groupLiveList li span{
     position: relative;
     top: 45%;
 }
+/*审核直播*/
 .examineLive{
     width: 800px;
     height: 660px;
@@ -1787,4 +1522,104 @@ ul#groupLiveList li span{
     color: #fff;
     cursor: pointer;
     font-size: 16px;
+}
+/*增减组员*/
+#changeUsers{
+    position: absolute;
+    top: 20%;
+    right: 550px;
+    z-index: 99999;
+    width: 240px;
+    border-radius: 5px;
+    border: 1px solid #187beb;
+    background: rgba(16,54,90,0.9);
+    display: none;
+}
+#changeUsers h3{
+    margin: 0;
+    color: #54a0f4;
+    line-height: 50px;
+    font-size: 16px;
+    border-bottom: 1px solid #54a0f4;
+    text-align: center;
+}
+.users-list{
+    padding: 20px;
+    height: 500px;
+    overflow-y: auto;
+}
+.users-list ul{
+    padding: 0;
+}
+.users-list li{
+    width: 100%;
+    border: 1px solid #589ded;
+    background-color: #2355a3;
+    border-radius: 5px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    float: left;
+    position: relative;
+}
+.users-list li.active{
+    border: 1px solid #696a70;
+    background-color: #050c2a;
+}
+.users-list li img{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.users-list li p{
+    width: 108px;
+    float: right;
+    line-height: 20px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.users-list li a.delete-user{
+    position: absolute;
+    z-index: 99999;
+    top: 5px;
+    right: 10px;
+    color: #f00;
+    font-size: 18px;
+}
+.users-list li a.add-user{
+    position: absolute;
+    z-index: 99999;
+    top: 5px;
+    right: 10px;
+    color: rgba(71, 209, 57, 1);
+    font-size: 18px;
+}
+#changeUsers span.close{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+.change-btn{
+    padding: 20px;
+    text-align: center;
+}
+.change-btn a{
+    color: #fff;
+    line-height: 30px;
+    background: rgba(248,189,6,0.9);
+    padding: 0 12px;
+    border-radius: 6px;
+}
+#version{
+    position: fixed;
+    bottom: 0;
+    right: 35px;
+    color: #fff;
+    font-size: 14px;
+    z-index: 9999999;
+    margin: 0;
 }
