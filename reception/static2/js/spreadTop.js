@@ -68,9 +68,9 @@ function getSettings() {
             $("#top>.top_title").html(TITLE);
             //更改背景
             if(RADIO_BG===0){
-                $("body").css("background-image","url('../static2/images/bgOnd.jpg')");
-            }else if(RADIO_BG===1){
                 $("body").css("background-image","url("+BG_URL+")");
+            }else{
+                $("body").css("background-image","url('../static2/images/bgOnd.jpg')");
             }
         },
         error: function(error){

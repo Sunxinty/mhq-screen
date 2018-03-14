@@ -160,10 +160,8 @@ function getSettings(DataContainer,Top) {
             //更改背景
             if(RADIO_BG===0){
                 $("body").css("background-image","url("+BG_URL+")");
-            }else if(RADIO_BG===1){
-                $("body").css("background-image","url('../static/imgs/dataContainer/bg1.png')");
-            }else if(RADIO_BG===2){
-                $("body").css("background-image","url('../static/imgs/dataContainer/bg2.png')");
+            }else{
+                $("body").css("background-image","url('../static/imgs/dataContainer/bg"+RADIO_BG+".png')");
             }
 
         })

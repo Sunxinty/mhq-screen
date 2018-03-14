@@ -354,7 +354,7 @@ var refresh;
 $(document).ready(function(){
 
     //请求管理设置数据
-    getSettings();
+    // getSettings();
 
 	productionQTV.init();
     refresh = setInterval(function(){
@@ -389,9 +389,9 @@ function getSettings() {
             $("#top>.top_title").html(TITLE);
             //更改背景
             if(RADIO_BG===0){
-                $("body").css("background-image","url('../static2/images/bgPro.jpg')");
-            }else if(RADIO_BG===1){
                 $("body").css("background-image","url("+BG_URL+")");
+            }else if(RADIO_BG===1){
+                $("body").css("background-image","url('../static2/images/bgPro.jpg')");
             }
         },
         error: function(error){

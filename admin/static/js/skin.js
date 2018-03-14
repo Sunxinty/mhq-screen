@@ -24,11 +24,7 @@ function loadData(){
             console.log(result.data);
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
-                if(RADIO_BG===1){
-                    $('#DEFULT1').prop('checked',true);
-                }else if(RADIO_BG===2){
-                    $('#DEFULT2').prop('checked',true);
-                }
+                $('#DEFULT'+RADIO_BG).prop('checked',true);
             }
         },
         error:function(error){

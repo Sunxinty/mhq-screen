@@ -370,10 +370,8 @@ function getSettings() {
             //更改背景
             if(RADIO_BG===0){
                 $("body").css("background-image","url("+BG_URL+")");
-            }else if(RADIO_BG===1){
-                $("body").css("background-image","url('../static2/images/phoneDisclose/bg1.png')");
-            }else if(RADIO_BG===2){
-                $("body").css("background-image","url('../static2/images/phoneDisclose/bg2.png')");
+            }else{
+                $("body").css("background-image","url('../static2/images/phoneDisclose/bg"+RADIO_BG+".png')");
             }
         },
         error: function(error){

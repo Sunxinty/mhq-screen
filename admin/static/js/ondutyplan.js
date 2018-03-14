@@ -60,11 +60,8 @@ function loadData(){
                 var RADIO_BG = result.data.imgtype;
                 if(RADIO_BG===0){
                     $('#USER').prop('checked',true);
-                }else if(RADIO_BG===1){
-                    $('#DEFULT1').prop('checked',true);
-                }
-                else if(RADIO_BG===2){
-                    $('#DEFULT2').prop('checked',true);
+                }else{
+                    $('#DEFULT'+RADIO_BG).prop('checked',true);
                 }
             }
             //隐藏或者显示上传图片

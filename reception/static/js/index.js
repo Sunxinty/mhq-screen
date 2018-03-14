@@ -116,11 +116,7 @@ function loadData(){
             console.log(result.data);
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
-                if(RADIO_BG===1){
-                    $("body").css("background-image","url('static/imgs/index/bg1.png')");
-                }else if(RADIO_BG===2){
-                    $("body").css("background-image","url('static/imgs/index/bg2.png')");
-                }
+                $("body").css("background-image","url('static/imgs/index/bg"+RADIO_BG+".png')");
             }
         },
         error:function(error){
