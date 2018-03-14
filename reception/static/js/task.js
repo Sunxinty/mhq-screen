@@ -96,8 +96,8 @@ function formatProgramsData(msg){
     let programs = [];
     let arr = msg.data;
     if(arr.length===0){
-        // programs.push({'name':"当日无数据",'uid':"0"});
-        programs.push({'name':"sobey新闻",'uid':"0"}); //展会时接口未返回数据要展示假数据
+        programs.push({'name':"当日无数据",'uid':"0"});
+        // programs.push({'name':"sobey新闻",'uid':"0"}); //展会时接口未返回数据要展示假数据
     }else{
         for (let i = 0; i < arr.length; i++) {
             programs.push({
@@ -116,7 +116,7 @@ function formatProgramsData(msg){
         dk.refresh();
     },50);
 
-    // TVlist.getList();
+    TVlist.getList();
 
 }
 

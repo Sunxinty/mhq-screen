@@ -29,6 +29,64 @@ body {
 }
 /*顶部标题 end*/
 
+/*选择时间 start*/
+#time_start{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 45px;
+    right:137px;
+}
+#time_start p{
+    float: left;
+    color: #71E3FE;
+}
+#time_start p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:26px;
+    color: #71E3FE;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end{
+    width:360px;
+    height:60px;
+    position: absolute;
+    top: 45px;
+    right:-30px;
+}
+#time_end p{
+    float: left;
+}
+#time_end p input{
+    width:150px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size:26px;
+    color: #71E3FE;
+    background: rgba(255,255,255,0);
+    cursor: pointer;
+}
+#time_end #done{
+    display: block;
+    width:80px;
+    height:40px;
+    line-height:40px;
+    margin-top:0;
+    margin-left:20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #FFFFFF;
+    background-color: #01A6EA;
+}
+#time_end #done:hover{
+    color: #FBC204;
+}
+/*选择时间 end*/
+
 #dataContainer{
     width:1280px;
     height:900px;

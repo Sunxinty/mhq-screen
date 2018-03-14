@@ -4,16 +4,20 @@ let refresh;
 let timer;
 //动画间隔
 let play;
+//请求间隔
+let REQUEST;
 
 //初始化 MediaTask对象
 let MediaTask = new Vue({
     el:"#container",
     data:{
         title:"新媒体任务监看",
-        apiUrl:HTTP.url+"",
-        postParams:{},
-        domArr:["wechat","weibo","website"],
-        dataArr:[Json.wechat,Json.weibo,Json.website]
+        startDate:getOneWeekBefore(),
+        endDate:getDate(),
+        apiUrl:HTTP.url+"rest/newmedia/getdata",
+        // apiUrl:"http://172.16.146.4:8068/mhq-mserver/rest/newmedia/getdata",
+        domArr:["website","wechat","weibo"],
+        dataArr:[Json.website,Json.wechat,Json.weibo]
     },
     mounted:function(){
         var _this = this;
@@ -24,12 +28,24 @@ let MediaTask = new Vue({
         },600000);
     },
     methods: {
+        chooseTime: function() {
+            clearInterval(refresh);
+            var _this = this;
+            _this.$set(_this,'startDate', this.$refs.newStart.value);
+            _this.$set(_this,'endDate', this.$refs.newEnd.value);
+            _this.getData();
+            refresh = setInterval(function(){
+                _this.getData();
+            },REQUEST);
+        },
         getData: function() {
-            this.$http.post(this.apiUrl,JSON.stringify(this.postParams))
+            this.$http.get(this.apiUrl+"?startTime="+this.startDate+"&endTime="+this.endDate)
                 .then(function(response){
                     console.log("请求成功：",response.data);
-                    //格式化返回的数据
-                    formatData(response.data);
+                    if(response.data.code==="00"){
+                        //格式化返回的数据
+                        this.formatData(response.data);
+                    }
                 })
                 .catch(function(response) {
                     console.log("请求错误：",response)
@@ -37,18 +53,36 @@ let MediaTask = new Vue({
         },
         formatData: function (results) {
             //返回数据
-            let result = results.data.result;
-            if(results.data===''||result.length===0||result===''){
+            let result = results.data;
+            let detailsData = [];
+            if(!result||result.length===0){
                 console.log(results.msg||"返回数据异常");
             }else {
-                for (let i = 0; i < 5; i++) {
-                    if(result[i]){
-                        let pathList = result[i].pathList;
+                for (R in result) {
+                    let published = result[R].published;
+                    let notPub = result[R].notPub;
+                    if(result[R].list){
+                        let pathList = result[R].list;
                         let newList = [];
                         // 下面只显示6条数据，不足6条显示为空，多6条去掉后面的
                         for (let j = 0; j < 6; j++) {
                             if (pathList[j]) {
-                                newList.push(pathList[j]);
+                                let newStatus = null;
+                                if(pathList[j].status==="审核通过"){
+                                    newStatus = 2; //通过
+                                }else if(pathList[j].status==="审核退回"){
+                                    newStatus = 0; //退回
+                                }else if(pathList[j].status==="推送中"||pathList[j].status==="推送完成"||pathList[j].status==="推送失败"){
+                                    newStatus = 3; //已推送
+                                }else {
+                                    newStatus = 1; //待审
+                                }
+                                newList.push({
+                                    title:pathList[j].title,
+                                    name:pathList[j].name,
+                                    time:pathList[j].time,
+                                    status:newStatus
+                                });
                             } else {
                                 newList.push("");
                             }
@@ -56,10 +90,9 @@ let MediaTask = new Vue({
                         //添加数据到detailsData
                         detailsData.push(
                             {
-                                name: result[i].xxx,
-                                time: result[i].xxx,
-                                title: result[i].xxx,
-                                status: result[i].xxx
+                                published:published,
+                                notPub:notPub,
+                                list:newList
                             }
                         );
                     }else{
@@ -70,10 +103,9 @@ let MediaTask = new Vue({
                         //添加数据到detailsData
                         detailsData.push(
                             {
-                                name: result[i].xxx,
-                                time: result[i].xxx,
-                                title: result[i].xxx,
-                                status: result[i].xxx
+                                published:published,
+                                notPub:notPub,
+                                list:newList
                             }
                         );
                     }
@@ -81,9 +113,8 @@ let MediaTask = new Vue({
                     console.log(detailsData);
                 }
                 //更新数据模型
-                this.$set(this, 'wechat', detailsData);
-                this.$set(this, 'weibo', detailsData);
-                this.$set(this, 'website', detailsData);
+                this.$set(this, 'dataArr',detailsData);
+                action(PLAY,3);
             }
         },
         drawChartNormal: function(DOMid,color,text,dataArr){
@@ -255,8 +286,7 @@ let MediaTask = new Vue({
         }
     }
 });
-//请求数据
-// MediaTask.getData();
+
 MediaTask.setChartOption("wechat");
 
 //页面动画
@@ -290,7 +320,7 @@ function getSettings(MediaTask) {
     Vue.http.get(HTTP.url+"allocation/search/SOBEY_MHQ_CENTER")
         .then(function(response){
             let result = response.body.data;
-            const REQUEST = parseInt(result.reqtime)*1000||36000;
+            REQUEST = parseInt(result.reqtime)*1000||36000;
             PLAY = parseInt(result.carouseltime)*1000||6000;
             const TITLE = result.title||"新媒体任务监看";
             const RADIO_BG = parseInt(result.imgtype)||1;
@@ -326,9 +356,47 @@ function getSettings(MediaTask) {
 }
 
 $(function(){
+    //选择日期时间
+    $("#pickdate_start").dateDropper({
+        animate: true,
+        init_animation:'bounce',
+        format: 'Y-m-d',
+        yearsRange:10,
+        minYear: '1990'
+    });
+    //选择日期时间
+    $("#pickdate_end").dateDropper({
+        animate: true,
+        init_animation:'bounce',
+        format: 'Y-m-d',
+        yearsRange:10,
+        minYear: '1990'
+    });
 
     getSettings(MediaTask);
 
-    action(PLAY,3);
+    // action(PLAY,3);
 
 });
+
+//显示日期
+function getDate() {
+    let D = new Date();
+    let y = D.getFullYear();
+    let m = D.getMonth()+1;
+    let d = D.getDate();
+    let day = d<10?"0"+d:d;
+    let month = m<10?"0"+m:m;
+    return y+"-"+month+"-"+day;
+}
+//显示一周前
+function getOneWeekBefore() {
+    let now = new Date();
+    let D = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
+    let y = D.getFullYear();
+    let m = D.getMonth()+1;
+    let d = D.getDate();
+    let day = d<10?"0"+d:d;
+    let month = m<10?"0"+m:m;
+    return y+"-"+month+"-"+day;
+}

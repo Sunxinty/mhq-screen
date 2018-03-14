@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>任务一览</title>
     <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/datatimedropper/datedropper.css">
     <link rel="stylesheet" href="../static/css/taskView.css">
 </head>
 <body>
@@ -14,14 +15,23 @@
             {{title}}
         </div>
     </div>
+    <!--选择时间范围-->
+    <div id="time_choose">
+        <div id="time_start">
+            <p><input type="text" class="input" id="pickdate_start" v-model="startDate" ref="newStart"/></p>
+            <p style="line-height:30px;font-size: 20px;">~</p>
+        </div>
+        <div id="time_end">
+            <p><input type="text" class="input" id="pickdate_end" v-model="endDate" ref="newEnd" /></p>
+            <p style="line-height:30px;font-size: 20px;"><span id="done" v-on:click="chooseTime()">确定</span></p>
+        </div>
+    </div>
     <!--右侧概览-->
     <div id="chartPie">
         <div class="part selected">采访任务</div>
         <div class="part">电视任务</div>
         <div class="part">互联网任务</div>
         <div id="pie" class="chart"></div>
-        <div class="text">{{whichToShow.text}}</div>
-        <div class="num">{{whichToShow.num}}</div>
         <div class="count">
             <p>任务总量&nbsp;&nbsp;{{totalCount}}</p>
             <p>已完成&nbsp;&nbsp;{{finishCount}}</p>
@@ -84,6 +94,7 @@
 <script src="../static/lib/jquery-3.1.0.min.js"></script>
 <script src="../static/lib/vue.js"></script>
 <script src="../static/lib/vue-resource.js"></script>
+<script src="../static/lib/datatimedropper/datedropper.min.js"></script>
 <script src="../static/lib/echarts4.0.3.min.js"></script>
 <script src="../static/json/taskViewJson.js"></script>
 <script src="../static/json/HTTPNAME.js"></script>

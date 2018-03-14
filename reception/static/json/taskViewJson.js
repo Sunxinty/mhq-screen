@@ -4,11 +4,8 @@ var Json = {
         {value:25,name:"电视任务"},
         {value:55,name:"互联网任务"}
     ],
-    count:[
-        {num:400,text:"采访任务"},
-        {num:500,text:"电视任务"},
-        {num:1100,text:"互联网任务"}
-    ],
+    finishCount:580,
+    totalCount:1200,
     interview:[
         {
             title:"喜迎戊戌新年 国家图书馆春节前夕开放展示《永乐大典》喜迎戊戌新年 国家图书馆春节前夕开放展示《永乐大典》喜迎戊戌新年 国家图书馆春节前夕开放展示《永乐大典》",
