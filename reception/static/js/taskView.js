@@ -21,7 +21,7 @@ let Task = new Vue({
         finishCount:Json.finishCount,
         totalCount:Json.totalCount,
         chartData:Json.chart,
-        dataArr:[]
+        dataArr:[Json.interview,Json.tv,Json.web]
     },
     mounted:function(){
         var _this = this;
