@@ -158,17 +158,21 @@ function getSettings(DataContainer,Top) {
             //重置标题
             Vue.set(Top,'title', TITLE);
             //更改背景
-            if(RADIO_BG===0){
-                $("body").css("background-image","url("+BG_URL+")");
-            }else{
-                $("body").css("background-image","url('../static/imgs/dataContainer/bg"+RADIO_BG+".png')");
-            }
+            changeBG(BG_URL,RADIO_BG);
 
         })
         .catch(function(response) {
             console.log(response);
         })
 }
+    function changeBG(BG_URL,RADIO_BG){
+        //更改背景
+        if(RADIO_BG===0){
+            $("body").css("background-image","url("+BG_URL+")");
+        }else{
+            $("body").css("background-image","url('../static/imgs/dataContainer/bg"+RADIO_BG+".png')");
+        }
+    }
 
 //页面动画
 function action(ms){
@@ -273,9 +277,9 @@ function getOneWeekBefore() {
     let now = new Date();
     let D = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
     let y = D.getFullYear();
-    let m = D.getMonth()+1;
+    let m = D.getMonth() + 1;
     let d = D.getDate();
-    let day = d<10?"0"+d:d;
-    let month = m<10?"0"+m:m;
-    return y+"-"+month+"-"+day;
+    let day = d < 10 ? "0" + d : d;
+    let month = m < 10 ? "0" + m : m;
+    return y + "-" + month + "-" + day;
 }

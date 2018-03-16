@@ -116,11 +116,15 @@ function loadData(){
             console.log(result.data);
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
-                $("body").css("background-image","url('static/imgs/index/bg"+RADIO_BG+".png')");
+                changeBG("",RADIO_BG);
             }
         },
         error:function(error){
-            $.Huimodalalert(error.msg||"请求异常",2000);
+            console.log(error.msg||"请求异常",2000);
         }
     });
+}
+function changeBG(BG_URL,RADIO_BG){
+    //更改背景
+    $("body").css("background-image","url('static/imgs/index/bg"+RADIO_BG+".png')");
 }

@@ -236,16 +236,20 @@ function getSettings(Top) {
             $(".top_title").html(TITLE); //一个十分诡异的事件,临时解决一下
             
             //更改背景
-            if(RADIO_BG===0){
-                $("body").css("background-image","url("+BG_URL+")");
-            }else{
-                $("body").css("background-image","url('../static/imgs/task/bg"+RADIO_BG+".png')");
-            }
+            changeBG(BG_URL,RADIO_BG);
 
         })
         .catch(function(response) {
             console.log(response)
         })
+}
+function changeBG(BG_URL,RADIO_BG){
+    //更改背景
+    if(RADIO_BG===0){
+        $("body").css("background-image","url("+BG_URL+")");
+    }else{
+        $("body").css("background-image","url('../static/imgs/task/bg"+RADIO_BG+".png')");
+    }
 }
 
 //页面动画

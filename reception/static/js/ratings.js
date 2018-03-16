@@ -63,16 +63,20 @@ function getSettings(List) {
             //重置标题
             Vue.set(List,'title', TITLE);
             //更改背景
-            if(RADIO_BG===0){
-                $("body").css("background-image","url("+BG_URL+")");
-            }else{
-                $("body").css("background-image","url('../static/imgs/ratings/bg"+RADIO_BG+".png')");
-            }
+            changeBG(BG_URL,RADIO_BG);
 
         })
         .catch(function(response) {
             console.log(response)
         })
+}
+function changeBG(BG_URL,RADIO_BG){
+    //更改背景
+    if(RADIO_BG===0){
+        $("body").css("background-image","url("+BG_URL+")");
+    }else{
+        $("body").css("background-image","url('../static/imgs/ratings/bg"+RADIO_BG+".png')");
+    }
 }
 //页面动画
 function action(ms,howMany){
