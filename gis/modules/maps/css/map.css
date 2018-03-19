@@ -983,23 +983,29 @@ nav {
 }
 .gis-title{
 	position: absolute;
-	width: 274px;
+	width: 900px;
 	top: 0;
 	left: 50%;
-    margin-left:-137px;
+    margin-left:-450px;
 	height: 103px;
-	background: url(../icons/title.png) center no-repeat;
+	/*background: url(../icons/title.png) center no-repeat;*/
 	background-size: 100% 100%;
 	text-align: center;
 	color: #fff;
-	font-size: 40px;
+}
+@font-face
+{
+    font-family: myFirstFont;
+    src: url(../../../fonts/miao.ttf);
 }
 .gis-title h1{
 	color: #fff;
-	font-size: 34px;
+	font-size: 60px;
 	margin: 0;
 	line-height: 103px;
 	font-weight: bold;
+    font-family: myFirstFont !important;
+    text-shadow: 5px 5px 5px #04AADD;
 }
 #direct.material{
 	height: 800px;

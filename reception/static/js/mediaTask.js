@@ -3,7 +3,7 @@ let refresh;
 //动画播放间隔的定时器
 let timer;
 //动画间隔
-let play;
+let play = 6000;
 //请求间隔
 let REQUEST;
 
@@ -114,7 +114,9 @@ let MediaTask = new Vue({
                 }
                 //更新数据模型
                 this.$set(this, 'dataArr',detailsData);
-                action(PLAY,3);
+                if(!timer) {
+                    action(PLAY, 3);
+                }
             }
         },
         drawChartNormal: function(DOMid,color,text,dataArr){
