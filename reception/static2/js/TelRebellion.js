@@ -368,14 +368,18 @@ function getSettings() {
             //重置标题
             $("#top>.top_title").html(TITLE);
             //更改背景
-            if(RADIO_BG===0){
-                $("body").css("background-image","url("+BG_URL+")");
-            }else{
-                $("body").css("background-image","url('../static2/images/phoneDisclose/bg"+RADIO_BG+".png')");
-            }
+            changeBG(BG_URL,RADIO_BG);
         },
         error: function(error){
             console.error("管理设置数据获取异常");
         }
     });
+}
+function changeBG(BG_URL,RADIO_BG){
+    //更改背景
+    if(RADIO_BG===0){
+        $("body").css("background-image","url("+BG_URL+")");
+    }else{
+        $("body").css("background-image","url('../static2/images/phoneDisclose/bg"+RADIO_BG+".png')");
+    }
 }
