@@ -17,9 +17,9 @@ let Top = new Vue({
 let Container = new Vue({
     el:"#container",
     data:{
-        list:Json.spring,
+        list:[],
         centerSrc:"static/imgs/index/selected.png",
-        whichList:Json.spring[0],
+        whichList:{},
         deg:0,             //根据块块个数计算每个块块的角度
         imgWIDTH:258,      //每个块块的宽度
         turnIndex:0,     //转动了多少个单位
@@ -50,7 +50,6 @@ let Container = new Vue({
                     if(index===0){
                         $(this).css("opacity","0");
                     }
-                    console.log(rad);
                 });
             },30);
         },
