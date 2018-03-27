@@ -20,20 +20,20 @@ let Container = new Vue({
         list:Json.spring,
         centerSrc:"static/imgs/index/selected.png",
         whichList:Json.spring[0],
+        deg:0,             //根据块块个数计算每个块块的角度
         imgWIDTH:258,      //每个块块的宽度
         turnIndex:0,     //转动了多少个单位
         Index:0           //正面展示哪一个块块
     },
-    computed: {
-        //根据块块个数计算每个块块的角度
-        deg:function(){
-            var len = this.list.length;
-            return 360/len;
+    watch: {
+        list:function(arr){
+            var len = arr.length;
+            this.deg = 360/len;
+            this.layout();
         }
     },
     mounted: function () {
         loadData();
-        this.layout();
     },
     methods:{
         //根据元素的个数，进行布局
@@ -43,14 +43,16 @@ let Container = new Vue({
             var r = width / 2 / Math.tan(deg / 2 / 180 * Math.PI);
             // var Z = r+20;
             var Z = 700;
-            $(".station ul li").each(function(index,elem){
-                var rad = deg*index;
-                $(this).css("transform","rotateY("+rad+"deg) "+"translateZ("+Z+"px) "+"rotateX("+30+"deg) ");
-                if(index===0){
-                    $(this).css("opacity","0");
-                }
-            });
-
+            setTimeout(function(){
+                $(".station ul li").each(function(index,elem){
+                    var rad = deg*index;
+                    $(this).css("transform","rotateY("+rad+"deg) "+"translateZ("+Z+"px) "+"rotateX("+30+"deg) ");
+                    if(index===0){
+                        $(this).css("opacity","0");
+                    }
+                    console.log(rad);
+                });
+            },30);
         },
         left: function() {
             //控制中间大转盘选取的块块
