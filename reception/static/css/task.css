@@ -30,13 +30,16 @@ body {
 /*顶部标题 end*/
 
 /*表格 start*/
+#taskTableContainer.hide{
+    display: none;
+}
 #taskTable{
     width:1920px;
     height:880px;
     margin-top:40px;
     text-align: center;
 }
-#table_head{
+#taskTable #table_head{
     height:72px;
     line-height:72px;
     width:1760px;
@@ -45,7 +48,7 @@ body {
     color: #99E9FF;
     background: url("../imgs/task/thead.png") center no-repeat;
 }
-#table_body .tr{
+#taskTable #table_body .tr{
     height:117px;
     line-height:117px;
     margin:13px 80px;
@@ -55,19 +58,19 @@ body {
     background: url("../imgs/task/tr.png") center no-repeat;
     background-size:100%;
 }
-.td{
+#taskTable .td{
     float: left;
 }
-#table_head .td1{
+#taskTable #table_head .td1{
     visibility: hidden;
 }
-#table_body .td1{
+#taskTable #table_body .td1{
     height:114px;
     line-height:100px;
     background: url("../imgs/task/sort.png") center no-repeat;
     position: relative;
 }
-#table_body .td1 span{
+#taskTable #table_body .td1 span{
     font-size: 26px;
     font-weight:bold;
     position: absolute;
@@ -75,9 +78,9 @@ body {
     right:55px;
     z-index: 10;
 }
-#table_body .td3,
-#table_body .td4,
-#table_body .td5
+#taskTable #table_body .td3,
+#taskTable #table_body .td4,
+#taskTable #table_body .td5
 {
     height:117px;
     line-height:117px;
@@ -85,32 +88,105 @@ body {
     overflow:hidden;
     text-overflow: ellipsis;
 }
-.td1{
+#taskTable .td1{
     width:8%;
 }
-.td2{
+#taskTable .td2{
     width:8%;
 }
-.td3{
+#taskTable .td3{
     width:23%;
 }
-.td4{
+#taskTable .td4{
     width:8%;
 }
-.td5{
+#taskTable .td5{
     width:7%;
 }
-.td6{
+#taskTable .td6{
     width:280px;
     position: relative;
     overflow: hidden;
 }
-.td7{
+#taskTable .td7{
     width:500px;
     position: relative;
     overflow: hidden;
 }
 /*表格 end*/
+
+/*平铺列表 start*/
+#listStyleContainer.hide{
+    display: none;
+}
+#list_body{
+    width:1920px;
+    height:880px;
+    margin-top:40px;
+    text-align: center;
+}
+#list_body .tr{
+    float: left;
+    width:880px;
+    height:234px;
+    margin:30px 40px;
+    padding-left:30px;
+    font-size:26px;
+    color: #40DDFF;
+    background: url("../imgs/task/tr.png") center no-repeat;
+    background-size:100% 100%;
+    position: relative;
+}
+#list_body .td{
+    float: left;
+}
+#list_body .sort{
+    width:100px;
+    height:100px;
+    line-height:100px;
+    background: url("../imgs/task/sort.png") center no-repeat;
+    position: absolute;
+    top:10px;
+    right:55px;
+    z-index: 10;
+}
+#list_body .sort span{
+    font-size: 26px;
+    font-weight:bold;
+}
+#list_body .title,
+#list_body .playtime,
+#list_body .info
+{
+    width:90%;
+    height:36px;
+    line-height:36px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.title{
+    font-size:28px;
+}
+.playtime{
+    text-align: left;
+    font-size:22px;
+}
+.info{
+    text-align: left;
+    font-size:18px;
+}
+.Tstatus{
+    width:280px;
+    position: relative;
+    overflow: hidden;
+}
+.Pstatus{
+    width:500px;
+    position: relative;
+    overflow: hidden;
+}
+/*平铺列表 end*/
 
 /*任务进程 start*/
 .process {

@@ -1,8 +1,9 @@
 //提交表单
 function article_save_submit(){
     var RADIO_BG=$('input:radio[name="radio-bg"]:checked').val();
+    var RADIO_THEME=$('input:radio[name="radio-theme"]:checked').val();
     $.ajax({
-        "url":HTTP.url+"alloction/changeSkin?imgtype="+RADIO_BG,
+        "url":HTTP.url+"alloction/changeSkin?imgtype="+RADIO_BG+"&theme="+RADIO_THEME,
         "type":"post",
         "dataType":"json",
         "contentType":"application/json",
@@ -24,7 +25,9 @@ function loadData(){
             console.log(result.data);
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
-                $('#DEFULT'+RADIO_BG).prop('checked',true);
+                $('#DEFULT'+RADIO_BG).prop('checked',true); //背景
+                var RADIO_THEME = result.data.theme;
+                $('#THEME'+RADIO_THEME).prop('checked',true);  //主题
             }
         },
         error:function(error){
@@ -40,5 +43,12 @@ $(function(){
         loadData();
     },300);
 
+    $(".radio-box-boom>img").on("click",function(){
+        var $ov = $(this).clone();
+        $ov.addClass("ov").on("click",function(){
+            $(".ov").remove();
+        });
+        $(this).after($ov);
+    });
 
 });

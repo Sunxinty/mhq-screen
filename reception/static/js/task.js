@@ -1,7 +1,7 @@
 
 //动画播放间隔的定时器
 let timer;
-let PLAY = 3000;
+let PLAY;
 //选择栏目的下拉菜单
 let dk;
 
@@ -124,9 +124,17 @@ function formatProgramsData(msg){
 let list;
 let START;
 let WAITLENGTH;
+let pageDown;
+let pageSelf;
 function foolishPager(msg){
     if(timer){
         clearInterval(timer);
+    }
+    if(pageDown){
+        clearTimeout(pageDown);
+    }
+    if(pageSelf){
+        clearTimeout(pageSelf);
     }
     list = [];
     let nowList = [];
@@ -145,7 +153,7 @@ function foolishPager(msg){
         for(let j = 0;j<len;j++){
             nowList.push(list[j]);        //把当前页面要显示的数据放进nowList中
         }
-        setTimeout(function(){
+        pageDown = setTimeout(function(){
             page(START,WAITLENGTH)
         },PLAY*len);
 
@@ -164,6 +172,9 @@ function page(start,waitLength){
         if(timer){
             clearInterval(timer);
         }
+        if(pageSelf){
+            clearTimeout(pageSelf);
+        }
         let NOWLIST = [];
         let LEN = WAITLENGTH<6?WAITLENGTH:6;
         for(let j = START;j<LEN+START;j++){
@@ -174,7 +185,7 @@ function page(start,waitLength){
         START += LEN;
         WAITLENGTH -= LEN;
         action(PLAY,LEN);
-        setTimeout(function(){
+        pageSelf = setTimeout(function(){
             page(START,WAITLENGTH)
         },PLAY*LEN);
     }else{
@@ -225,12 +236,20 @@ function getSettings(Top) {
             PLAY = parseInt(result.carouseltime)*1000||3000;
             const TITLE = result.title||"串联单任务监看";
             const RADIO_BG = parseInt(result.imgtype)||1;
+            const RADIO_SW = parseInt(result.showway)||1;
             const BG_URL = result.backgroundurl;
             //重置页面动画间隔
             if(timer){
                 clearInterval(timer);
             }
             action(PLAY,6);
+            if(RADIO_SW===1){
+                $('#taskTableContainer').removeClass("hide");
+                $('#listStyleContainer').addClass("hide");
+            }else if(RADIO_SW===2){
+                $('#listStyleContainer').removeClass("hide");
+                $('#taskTableContainer').addClass("hide");
+            }
             //重置标题
             Vue.set(Top,'title', TITLE);
             $(".top_title").html(TITLE); //一个十分诡异的事件,临时解决一下

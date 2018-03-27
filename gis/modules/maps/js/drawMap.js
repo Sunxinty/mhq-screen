@@ -671,7 +671,7 @@ function getToday(){
             _this.map.addControl(ctrl);//添加控件和比例尺
 
             ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_LEFT);
-
+             
             //地图实例化
             var relOption = {
                 lng: window.config.GPS.longitude || null,
@@ -704,7 +704,10 @@ function getToday(){
                 var myCity = new BMap.LocalCity();
                 myCity.get(myFun);
             }
-
+            // 设置地图风格
+            if(window.config.GPS.mapStyle){
+                _this.map.setMapStyle({style:window.config.GPS.mapStyle});
+            }
             //清楚覆盖物
             _this.map.clearOverlays();
             if(urlParams.smallMap==1){

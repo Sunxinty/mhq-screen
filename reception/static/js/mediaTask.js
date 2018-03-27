@@ -313,8 +313,10 @@ function animotion(i){
     MediaTask.setChartOption(MediaTask.domArr[i]);
     $("#left>div").removeClass("selected");
     $("#left>div").eq(i).addClass("selected");
-    $("#right>div").removeClass("show");
-    $("#right>div").eq(i).addClass("show");
+    $("#right1>div").removeClass("show");
+    $("#right1>div").eq(i).addClass("show");
+    $("#right2>div").removeClass("show");
+    $("#right2>div").eq(i).addClass("show");
 }
 
 //请求管理设置数据
@@ -326,6 +328,7 @@ function getSettings(MediaTask) {
             PLAY = parseInt(result.carouseltime)*1000||6000;
             const TITLE = result.title||"新媒体任务监看";
             const RADIO_BG = parseInt(result.imgtype)||1;
+            const RADIO_SW = parseInt(result.showway)||1;
             const BG_URL = result.backgroundurl;
             //定时发送请求刷新数据
             if(refresh){
@@ -339,6 +342,13 @@ function getSettings(MediaTask) {
                 clearInterval(timer);
             }
             action(PLAY,3);
+            if(RADIO_SW===1){
+                $('#right1').removeClass("hide");
+                $('#right2').addClass("hide");
+            }else if(RADIO_SW===2){
+                $('#right2').removeClass("hide");
+                $('#right1').addClass("hide");
+            }
             //重置标题
             Vue.set(MediaTask,'title', TITLE);
 

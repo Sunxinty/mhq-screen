@@ -80,6 +80,7 @@ var phoneDisclose = {
             dataType: "json",
             data:JSON.stringify({
                 "starttime":start,
+                // "starttime":"2017-03-16",
                 "endtime":end,
                 "page":1,
                 "size":8,
@@ -92,10 +93,14 @@ var phoneDisclose = {
             /**
              * 今日爆料top8
              */
-            $('.newsList').html(juicer(discloseTemplate.phoneDisclose, {
+            $('.newsList1').html(juicer(discloseTemplate.phoneDisclose, {
+                data: msg.data.array
+            }));
+            $('.newsList2').html(juicer(discloseTemplate.phoneDisclose, {
                 data: msg.data.array
             }));
             textLength($('.newsListBody>div'),70);
+            textLength($('.newsListBody>h3'),20);
             /**
              * 爆料统计
              */
@@ -356,6 +361,7 @@ function getSettings() {
             const PLAY = parseInt(result.carouseltime)*1000||6000;
             const TITLE = result.title||"电话爆料";
             const RADIO_BG = parseInt(result.imgtype)||1;
+            const RADIO_SW = parseInt(result.showway)||1;
             const BG_URL = result.backgroundurl;
             //定时发送请求刷新数据
             if(refresh){
@@ -365,6 +371,13 @@ function getSettings() {
                 console.log('刷新');
                 initData(START,END);
             },REQUEST);
+            if(RADIO_SW===1){
+                $('#newsList1').removeClass("hide");
+                $('#newsList2').addClass("hide");
+            }else if(RADIO_SW===2){
+                $('.newsList2').removeClass("hide");
+                $('.newsList1').addClass("hide");
+            }
             //重置标题
             $("#top>.top_title").html(TITLE);
             //更改背景

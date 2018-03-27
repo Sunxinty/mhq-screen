@@ -2,7 +2,8 @@
 
 body {
     background: url("../imgs/mediaTask/bg.png") top no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
+    overflow: hidden;
 }
 #container{
     width:100%;
@@ -105,7 +106,8 @@ body {
     background-size: 120px 120px !important;
 }
 
-#right{
+/*右边详情的第二套样式*/
+#right1{
     width:1200px;
     height:900px;
     float: left;
@@ -113,7 +115,10 @@ body {
     position: relative;
     overflow: hidden;
 }
-#right>div{
+#right1.hide{
+    display: none;
+}
+#right1>div{
     position: absolute;
     top:0;
     left:-1200px;
@@ -147,27 +152,27 @@ body {
         transform: rotateX(0deg);
     }
 }
-#right>div#wechatDetails.show{
+#right1>div#wechatDetails1.show{
      left:0;
      opacity:1;
      animation: RtoL .7s ease 0s;
 }
-#right>div#wechatDetails.show div.details:nth-child(1){
+#right1>div#wechatDetails1.show div.details:nth-child(1){
     animation: rotateX1 .7s linear .4s;
 }
-#right>div#wechatDetails.show div.details:nth-child(2){
+#right1>div#wechatDetails1.show div.details:nth-child(2){
     animation: rotateX1 .7s linear .6s;
 }
-#right>div#wechatDetails.show div.details:nth-child(3){
+#right1>div#wechatDetails1.show div.details:nth-child(3){
     animation: rotateX1 .7s linear .8s;
 }
-#right>div#wechatDetails.show div.details:nth-child(4){
+#right1>div#wechatDetails1.show div.details:nth-child(4){
     animation: rotateX1 .7s linear .9s;
 }
-#right>div#wechatDetails.show div.details:nth-child(5){
+#right1>div#wechatDetails1.show div.details:nth-child(5){
     animation: rotateX1 .7s linear 1s;
 }
-#right>div#wechatDetails.show div.details:nth-child(6){
+#right1>div#wechatDetails1.show div.details:nth-child(6){
     animation: rotateX1 .7s linear 1.1s;
 }
 /*微信的动画 end*/
@@ -198,27 +203,27 @@ body {
         transform: rotateX(0deg);
     }
 }
-#right>div#weiboDetails.show{
+#right1>div#weiboDetails1.show{
     left:0;
     opacity:1;
     animation: LtoR .7s ease 0s;
 }
-#right>div#weiboDetails.show div.details:nth-child(6){
+#right1>div#weiboDetails1.show div.details:nth-child(6){
     animation: rotateX2 .7s linear .5s;
 }
-#right>div#weiboDetails.show div.details:nth-child(5){
+#right1>div#weiboDetails1.show div.details:nth-child(5){
     animation: rotateX2 .7s linear .7s;
 }
-#right>div#weiboDetails.show div.details:nth-child(4){
+#right1>div#weiboDetails1.show div.details:nth-child(4){
     animation: rotateX2 .7s linear .8s;
 }
-#right>div#weiboDetails.show div.details:nth-child(3){
+#right1>div#weiboDetails1.show div.details:nth-child(3){
     animation: rotateX2 .7s linear .9s;
 }
-#right>div#weiboDetails.show div.details:nth-child(2){
+#right1>div#weiboDetails1.show div.details:nth-child(2){
     animation: rotateX2 .7s linear 1s;
 }
-#right>div#weiboDetails.show div.details:nth-child(1){
+#right1>div#weiboDetails1.show div.details:nth-child(1){
     animation: rotateX2 .7s linear 1.1s;
 }
 /*微博的动画 end*/
@@ -254,94 +259,346 @@ body {
     }
 }
 
-#right>div#websiteDetails.show{
+#right1>div#websiteDetails1.show{
     top: 0;
     left:0;
     opacity:1;
     animation: BtoT .7s linear 0s;
 }
-#right>div#websiteDetails.show div.details:nth-child(1){
+#right1>div#websiteDetails1.show div.details:nth-child(1){
     animation: translate .7s linear 0s;
 }
-#right>div#websiteDetails.show div.details:nth-child(2){
+#right1>div#websiteDetails1.show div.details:nth-child(2){
     animation: translate .7s linear .1s;
 }
-#right>div#websiteDetails.show div.details:nth-child(3){
+#right1>div#websiteDetails1.show div.details:nth-child(3){
     animation: translate .7s linear .2s;
 }
-#right>div#websiteDetails.show div.details:nth-child(4){
+#right1>div#websiteDetails1.show div.details:nth-child(4){
     animation: translate .7s linear .3s;
 }
-#right>div#websiteDetails.show div.details:nth-child(5){
+#right1>div#websiteDetails1.show div.details:nth-child(5){
     animation: translate .7s linear .4s;
 }
-#right>div#websiteDetails.show div.details:nth-child(6){
+#right1>div#websiteDetails1.show div.details:nth-child(6){
     animation: translate .7s linear .5s;
 }
 /*网站的动画 end*/
 
-#right div.details{
+#right1 div.details{
     width: 1195px;
     height:123px;
     margin-bottom:30px;
     position: relative;
 }
-#right div.details.yellow{
+#right1 div.details.yellow{
     background:url("../imgs/mediaTask/yellow.png") center no-repeat;
 }
-#right div.details.red{
+#right1 div.details.red{
     background:url("../imgs/mediaTask/red.png") center no-repeat;
 }
-#right div.details.green{
+#right1 div.details.green{
     background:url("../imgs/mediaTask/green.png") center no-repeat;
 }
-#right div.details.blue{
+#right1 div.details.blue{
     background:url("../imgs/mediaTask/blue.png") center no-repeat;
 }
-#right div.details h3.title{
+#right1 div.details h3.title{
     line-height:70px;
     padding-left:45px;
     color:#fff;
     font-size:20px;
 }
-#right div.details div.info{
+#right1 div.details div.info{
     line-height:30px;
     padding-left:45px;
     color:#2BA5C8;
     font-size:18px;
 }
-#right div.details div.info p{
+#right1 div.details div.info p{
     float: left;
     margin-right:40px;
 }
-#right div.details.yellow div.info p:nth-child(1){
+#right1 div.details.yellow div.info p:nth-child(1){
     color: #FFBA01;
 }
-#right div.details.green div.info p:nth-child(1){
+#right1 div.details.green div.info p:nth-child(1){
     color: #37DF03;
 }
-#right div.details.red div.info p:nth-child(1){
+#right1 div.details.red div.info p:nth-child(1){
     color: #FF304D;
 }
-#right div.details.blue div.info p:nth-child(1){
+#right1 div.details.blue div.info p:nth-child(1){
     color: #27F7FF;
 }
-#right div.details div.info p span{
+#right1 div.details div.info p span{
     margin-right:6px;
 }
-#right div.details div.marker{
+#right1 div.details div.marker{
     width: 60px;
     height:60px;
     position: absolute;
     top:32px;
     right:30px;
 }
-#right #wechatDetails div.details div.marker{
+#right1 #wechatDetails1 div.details div.marker{
     background:url("../imgs/mediaTask/wechat.png") center no-repeat;
 }
-#right #weiboDetails div.details div.marker{
+#right1 #weiboDetails1 div.details div.marker{
     background:url("../imgs/mediaTask/weibo.png") center no-repeat;
 }
-#right #websiteDetails div.details div.marker{
+#right1 #websiteDetails1 div.details div.marker{
+    background:url("../imgs/mediaTask/website.png") center no-repeat;
+}
+
+/*右边详情的第二套样式*/
+#right2{
+    width:1200px;
+    height:900px;
+    float: left;
+    margin-top:30px;
+    position: relative;
+    overflow: hidden;
+}
+#right2.hide{
+    display: none;
+}
+#right2>div{
+    position: absolute;
+    top:0;
+    left:-1200px;
+    opacity:0;
+}
+
+/*微信的动画 start*/
+@keyframes RtoL
+{
+    from {
+        left: 1200px;
+        opacity:0;
+    }
+    to {
+        left: 0;
+        opacity:1;
+    }
+}
+@keyframes rotateX1
+{
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(75deg);
+    }
+    75% {
+        transform: rotateX(-30deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+#right2>div#wechatDetails2.show{
+    left:0;
+    opacity:1;
+    animation: RtoL .7s ease 0s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(1){
+    animation: rotateX1 .7s linear .4s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(2){
+    animation: rotateX1 .7s linear .6s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(3){
+    animation: rotateX1 .7s linear .8s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(4){
+    animation: rotateX1 .7s linear .9s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(5){
+    animation: rotateX1 .7s linear 1s;
+}
+#right2>div#wechatDetails2.show div.details:nth-child(6){
+    animation: rotateX1 .7s linear 1.1s;
+}
+/*微信的动画 end*/
+/*微博的动画 start*/
+@keyframes LtoR
+{
+    from {
+        left: -1200px;
+        opacity:0;
+    }
+    to {
+        left: 0;
+        opacity:1;
+    }
+}
+@keyframes rotateX2
+{
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-75deg);
+    }
+    75% {
+        transform: rotateX(30deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+#right2>div#weiboDetails2.show{
+    left:0;
+    opacity:1;
+    animation: LtoR .7s ease 0s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(6){
+    animation: rotateX2 .7s linear .5s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(5){
+    animation: rotateX2 .7s linear .7s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(4){
+    animation: rotateX2 .7s linear .8s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(3){
+    animation: rotateX2 .7s linear .9s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(2){
+    animation: rotateX2 .7s linear 1s;
+}
+#right2>div#weiboDetails2.show div.details:nth-child(1){
+    animation: rotateX2 .7s linear 1.1s;
+}
+/*微博的动画 end*/
+/*网站的动画 start*/
+@keyframes BtoT
+{
+    from {
+        top: 900px;
+        opacity:0;
+    }
+    to {
+        top: 0;
+        opacity:1;
+    }
+}
+@keyframes translate
+{
+    0% {
+        margin-left:500px;
+        transform: rotate(-30deg);
+    }
+    50% {
+        margin-left:300px;
+        transform: rotate(-20deg);
+    }
+    75% {
+        margin-left:100px;
+        transform: rotate(-10deg);
+    }
+    100% {
+        margin-left:0;
+        transform: rotate(0deg);
+    }
+}
+
+#right2>div#websiteDetails2.show{
+    top: 0;
+    left:0;
+    opacity:1;
+    animation: BtoT .7s linear 0s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(1){
+    animation: translate .7s linear 0s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(2){
+    animation: translate .7s linear .1s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(3){
+    animation: translate .7s linear .2s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(4){
+    animation: translate .7s linear .3s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(5){
+    animation: translate .7s linear .4s;
+}
+#right2>div#websiteDetails2.show div.details:nth-child(6){
+    animation: translate .7s linear .5s;
+}
+/*网站的动画 end*/
+
+#right2 div.details{
+    width: 560px;
+    height:270px;
+    margin-bottom:30px;
+    margin-right:20px;
+    position: relative;
+    float: left;
+}
+#right2 div.details.yellow{
+    background:url("../imgs/mediaTask/yellow.png") center no-repeat;
+    background-size:100% 100%;
+}
+#right2 div.details.red{
+    background:url("../imgs/mediaTask/red.png") center no-repeat;
+    background-size:100% 100%;
+}
+#right2 div.details.green{
+    background:url("../imgs/mediaTask/green.png") center no-repeat;
+    background-size:100% 100%;
+}
+#right2 div.details.blue{
+    background:url("../imgs/mediaTask/blue.png") center no-repeat;
+    background-size:100% 100%;
+}
+#right2 div.details h3.title{
+    height:140px;
+    line-height:70px;
+    padding-left:45px;
+    color:#fff;
+    font-size:20px;
+}
+#right2 div.details div.info{
+    line-height:30px;
+    padding-left:45px;
+    color:#2BA5C8;
+    font-size:18px;
+}
+#right2 div.details div.info p{
+    float: left;
+    margin-right:40px;
+}
+#right2 div.details.yellow div.info p:nth-child(1){
+    color: #FFBA01;
+}
+#right2 div.details.green div.info p:nth-child(1){
+    color: #37DF03;
+}
+#right2 div.details.red div.info p:nth-child(1){
+    color: #FF304D;
+}
+#right2 div.details.blue div.info p:nth-child(1){
+    color: #27F7FF;
+}
+#right2 div.details div.info p span{
+    margin-right:6px;
+}
+#right2 div.details div.marker{
+    width: 60px;
+    height:60px;
+    position: absolute;
+    top:185px;
+    right:30px;
+}
+#right2 #wechatDetails2 div.details div.marker{
+    background:url("../imgs/mediaTask/wechat.png") center no-repeat;
+}
+#right2 #weiboDetails2 div.details div.marker{
+    background:url("../imgs/mediaTask/weibo.png") center no-repeat;
+}
+#right2 #websiteDetails2 div.details div.marker{
     background:url("../imgs/mediaTask/website.png") center no-repeat;
 }

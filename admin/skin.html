@@ -32,6 +32,36 @@
             height:16px;
             cursor: pointer;
         }
+        .radio-box-boom{
+            margin-top:10px;
+        }
+        .radio-box-boom label{
+            margin-right:16px;
+        }
+        .radio-box-boom img{
+            width:180px;
+            cursor: pointer;
+        }
+        .radio-box-boom img.ov{
+            position: absolute;
+            width: 900px;
+            margin-left:-450px;
+            margin-top:-100px;
+            animation:look .5s;
+            z-index:99;
+        }
+        @keyframes look {
+            0%{
+                width:180px;
+                margin-left:-180px;
+                margin-top:0px;
+            }
+            100%{
+                width:900px;
+                margin-left:-450px;
+                margin-top:-100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -40,7 +70,7 @@
         <form class="form form-horizontal" id="form-article-add">
 
             <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 背景设置</strong></label>
+                <label class="form-label col-xs-4 col-sm-2 col-md-3 clo-lg-3"><strong class="c-black">* 风格设置</strong></label>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">背景图：</label>
@@ -60,6 +90,25 @@
                     <div class="radio-box-boom">
                         <input type="radio" id="DEFULT4" value="4" name="radio-bg">
                         <label for="DEFULT4">梦幻蓝</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2 col-md-4 clo-lg-4">主题：</label>
+                <div class="formControls col-xs-8 col-sm-9 col-md-6 clo-lg-6">
+                    <div class="radio-box-boom">
+                        <input type="radio" id="THEME1" value="1" name="radio-theme">
+                        <label for="THEME1">盛夏</label>
+                        <img src="static/img/summer1.png" alt="">
+                        <img src="static/img/summer2.png" alt="">
+                        <img src="static/img/summer3.png" alt="">
+                    </div>
+                    <div class="radio-box-boom">
+                        <input type="radio" id="THEME2" value="2" name="radio-theme">
+                        <label for="THEME2">暖春</label>
+                        <img src="static/img/spring1.png" alt="">
+                        <img src="static/img/spring2.png" alt="">
+                        <img src="static/img/spring3.png" alt="">
                     </div>
                 </div>
             </div>

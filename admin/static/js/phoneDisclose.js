@@ -5,6 +5,7 @@ function article_save_submit(){
     var PLAY = parseFloat($("#PLAY").val());
     var TITLE = $("#TITLE").val();
     var RADIO_BG=$('input:radio[name="radio-bg"]:checked').val();
+    var RADIO_SW=$('input:radio[name="radio-sw"]:checked').val();
     var pramas = JSON.stringify({
         "layoutid": "SOBEY_MHQ_PHONEDISCLOSE",
       
@@ -13,7 +14,8 @@ function article_save_submit(){
         "title": TITLE,
         "staticdata": null,
         "datatype": 1,
-        "imgtype":Number(RADIO_BG)
+        "imgtype":Number(RADIO_BG),
+        "showway":Number(RADIO_SW)
     });
     $("#form-article-add").validate();
     if($("#form-article-add").valid()){
@@ -49,6 +51,8 @@ function loadData(){
                 $("#PLAY").val(PLAY);
                 var TITLE = result.data.title;
                 $("#TITLE").val(TITLE);
+                var RADIO_SW = result.data.showway;
+                $('#way'+RADIO_SW).prop('checked',true);
                 var RADIO_BG = result.data.imgtype;
                 if(RADIO_BG===0){
                     $('#USER').prop('checked',true);

@@ -14,23 +14,45 @@
             {{title}}
         </div>
     </div>
-    <!--左侧按钮组-->
-    <div id="btnList">
-        <div v-for="(b,index) in btn" class="btn">
-            <div class="filter"></div>
-            <div class="sort">{{index+1}}</div>
-            <div class="btn_info">
-                <h3 class="btn_title">{{b.title}}</h3>
-                <p>
-                    <i class="glyphicon glyphicon-user"></i>
-                    作者：<span class="btn_name">{{b.name}}</span>
-                    <i class="glyphicon glyphicon-time"></i>
-                    发布时间：<span class="btn_time">{{b.time}}</span>
-                </p>
+    <div id="btnContainer">
+        <!--左侧按钮组1-->
+        <div id="btnList1" v-bind:class="{'notyou':animotionType===2}">
+            <div v-for="(b,index) in btn" class="btn">
+                <div class="filter"></div>
+                <div class="sort">{{index+1}}</div>
+                <div class="btn_info">
+                    <h3 class="btn_title">{{b.title}}</h3>
+                    <p>
+                        <i class="glyphicon glyphicon-user"></i>
+                        作者：<span class="btn_name">{{b.name}}</span>
+                        <i class="glyphicon glyphicon-time"></i>
+                        发布时间：<span class="btn_time">{{b.time}}</span>
+                    </p>
+                </div>
             </div>
+            <div id="btnSelected1"></div>
         </div>
-        <div id="btnSelected"></div>
+        <!--左侧按钮组2-->
+        <div id="btnList2" v-bind:class="{'notyou':animotionType===1}">
+            <div v-for="(b,index) in btn" class="btn">
+                <div class="filter"></div>
+                <div class="sort">{{index+1}}</div>
+                <div class="btn_info">
+                    <h3 class="btn_title">{{b.title}}</h3>
+                    <p>
+                        <i class="glyphicon glyphicon-user"></i>
+                        作者：<span class="btn_name">{{b.name}}</span>
+                    </p>
+                    <p>
+                        <i class="glyphicon glyphicon-time"></i>
+                        发布时间：<span class="btn_time">{{b.time}}</span>
+                    </p>
+                </div>
+            </div>
+            <div id="btnSelected2"></div>
+        </div>
     </div>
+
     <!--右侧详细内容-->
     <div id="dataContainer">
         <div v-for="d in details" class="detailsContainer">

@@ -13,13 +13,13 @@ let Top = new Vue({
     }
 });
 
-//初始化 Choose对象
+//初始化 Container对象
 let Container = new Vue({
     el:"#container",
     data:{
-        list:Json.list,
+        list:Json.spring,
         centerSrc:"static/imgs/index/selected.png",
-        whichList:Json.list[0],
+        whichList:Json.spring[0],
         imgWIDTH:258,      //每个块块的宽度
         turnIndex:0,     //转动了多少个单位
         Index:0           //正面展示哪一个块块
@@ -116,7 +116,11 @@ function loadData(){
             console.log(result.data);
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
-                changeBG("",RADIO_BG);
+                changeBG("",RADIO_BG);     //背景
+                // var RADIO_THEME = result.data.themetype;
+                // if(RADIO_THEME===1){
+                //     Vue.set(Container,"list",Json.summer);  //主题
+                // }
             }
         },
         error:function(error){

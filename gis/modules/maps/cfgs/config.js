@@ -25,5 +25,17 @@ window.config = {
         queryNews:'',//定位选题接口
         maxCount:100,//最大查询数
         refreshTime: 1,//刷新时间，单位分钟
+        mapStyle:"midnight",// 地图风格设置
     }
 };
+/*
+* 地图可选风格
+* 默认：(normal)
+* 清新蓝风格(light)
+* 黑夜风格(dark)
+* 红色警戒风格(redalert)
+* 自然绿风格(grassgreen)
+* 午夜蓝风格(midnight)
+* 浪漫粉风格(pink)
+* 清新蓝绿风格(bluish)
+*/

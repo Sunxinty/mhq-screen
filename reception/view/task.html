@@ -30,26 +30,69 @@
         </span>
     </div>
     <!--表格内容-->
-    <div id="taskTable">
-        <div v-once id="table_head">
-            <div class="td td1">{{thead.td1}}</div>
-            <div class="td td2">{{thead.td2}}</div>
-            <div class="td td3">{{thead.td3}}</div>
-            <div class="td td4">{{thead.td4}}</div>
-            <div class="td td5">{{thead.td5}}</div>
-            <div class="td td6">{{thead.td6}}</div>
-            <div class="td td7">{{thead.td7}}</div>
+    <div id="taskTableContainer" class="">
+        <div id="taskTable">
+            <div v-once id="table_head">
+                <div class="td td1">{{thead.td1}}</div>
+                <div class="td td2">{{thead.td2}}</div>
+                <div class="td td3">{{thead.td3}}</div>
+                <div class="td td4">{{thead.td4}}</div>
+                <div class="td td5">{{thead.td5}}</div>
+                <div class="td td6">{{thead.td6}}</div>
+                <div class="td td7">{{thead.td7}}</div>
+            </div>
+            <div id="table_body">
+                <div v-for="tr in list" class="tr">
+                    <div class="td td1">
+                        <span>{{tr.td1}}</span>
+                    </div>
+                    <div class="td td2">{{tr.td2}}</div>
+                    <div class="td td3">{{tr.td3}}</div>
+                    <div class="td td4">{{selectedProgramName}}</div>
+                    <div class="td td5">{{tr.td5}}</div>
+                    <div class="td td6">
+                        <ul class="process docProcess">
+                            <li v-for="p in docProcessArr" v-bind:class="{active: tr.docProcess >= p.uid}">
+                                <p class="up"><span class="circle"></span></p>
+                                <p class="down">{{p.name}}</p>
+                            </li>
+                        </ul>
+                        <div class="processContainer1">
+                            <div class="huakuai" v-bind:class='"process"+tr.docProcess'></div>
+                        </div>
+                    </div>
+                    <div class="td td7">
+                        <ul class="process">
+                            <li v-for="p in processArr" v-bind:class="{active: tr.process >= p.uid}">
+                                <p class="up"><span class="circle"></span></p>
+                                <p class="down">{{p.name}}</p>
+                            </li>
+                        </ul>
+                        <div class="processContainer2">
+                            <div class="huakuai" v-bind:class='"process"+tr.process'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="table_body">
+        <!--选择框-->
+        <div id="selected">
+            <div v-for="u in ImgsUrls" class="selectedImg">
+                <img v-bind:src=u alt=""/>
+            </div>
+        </div>
+    </div>
+    <!--平铺列表展示方式-->
+    <div id="listStyleContainer" class="hide">
+        <div id="list_body">
             <div v-for="tr in list" class="tr">
-                <div class="td td1">
+                <div class="td sort">
                     <span>{{tr.td1}}</span>
                 </div>
-                <div class="td td2">{{tr.td2}}</div>
-                <div class="td td3">{{tr.td3}}</div>
-                <div class="td td4">{{selectedProgramName}}</div>
-                <div class="td td5">{{tr.td5}}</div>
-                <div class="td td6">
+                <div class="td title">标题内容：{{tr.td3}}</div>
+                <div class="td playtime">预计播出时间：{{tr.td2}}</div>
+                <div class="td info">{{selectedProgramName}},{{tr.td5}}</div>
+                <div class="td Tstatus">
                     <ul class="process docProcess">
                         <li v-for="p in docProcessArr" v-bind:class="{active: tr.docProcess >= p.uid}">
                             <p class="up"><span class="circle"></span></p>
@@ -60,7 +103,7 @@
                         <div class="huakuai" v-bind:class='"process"+tr.docProcess'></div>
                     </div>
                 </div>
-                <div class="td td7">
+                <div class="td Pstatus">
                     <ul class="process">
                         <li v-for="p in processArr" v-bind:class="{active: tr.process >= p.uid}">
                             <p class="up"><span class="circle"></span></p>
@@ -72,12 +115,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--选择框-->
-    <div id="selected">
-        <div v-for="u in ImgsUrls" class="selectedImg">
-            <img v-bind:src=u alt=""/>
         </div>
     </div>
 </div>

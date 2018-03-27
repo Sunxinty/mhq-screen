@@ -30,8 +30,9 @@
         <div id="wechat"></div>
         <div id="weibo"></div>
     </div>
-    <div id="right">
-        <div id="websiteDetails" class="show">
+    <!--right1-->
+    <div id="right1">
+        <div id="websiteDetails1" class="show">
             <div v-for="news in dataArr[0].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
                 <h3 class="title">{{news.title}}</h3>
                 <div class="info">
@@ -47,7 +48,7 @@
                 <div class="marker"></div>
             </div>
         </div>
-        <div id="wechatDetails">
+        <div id="wechatDetails1">
             <div v-for="news in dataArr[1].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
                 <h3 class="title">{{news.title}}</h3>
                 <div class="info">
@@ -63,7 +64,58 @@
                 <div class="marker"></div>
             </div>
         </div>
-        <div id="weiboDetails">
+        <div id="weiboDetails1">
+            <div v-for="news in dataArr[2].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+    </div>
+    <!--right2-->
+    <div id="right2" class="hide">
+        <div id="websiteDetails2" class="show">
+            <div v-for="news in dataArr[0].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div id="wechatDetails2">
+            <div v-for="news in dataArr[1].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
+                <h3 class="title">{{news.title}}</h3>
+                <div class="info">
+                    <p><span class="glyphicon glyphicon-tag"></span>
+                        {{news.status===0?'退回':''}}
+                        {{news.status===1?'待审':''}}
+                        {{news.status===2?'通过':''}}
+                        {{news.status===3?'已推送':''}}
+                    </p>
+                    <p><span class="glyphicon glyphicon-user"></span>{{news.name}}</p>
+                    <p><span class="glyphicon glyphicon-time"></span>{{news.time}}</p>
+                </div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div id="weiboDetails2">
             <div v-for="news in dataArr[2].list" class="details" v-bind:class="{'yellow':news.status===1,'green':news.status===2,'red':news.status===0,'blue':news.status===3}">
                 <h3 class="title">{{news.title}}</h3>
                 <div class="info">

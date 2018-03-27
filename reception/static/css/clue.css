@@ -29,15 +29,15 @@ body {
 }
 /*顶部标题 end*/
 
-/*左侧按钮组 start*/
-#btnList{
+/*左侧按钮组1 start*/
+#btnList1{
     width:771px;
     height:800px;
     float: left;
     margin:34px 32px 0 85px;
     position: relative;
 }
-#btnList .btn{
+#btnList1 .btn{
     width: 728px;
     height: 128px;
     margin-top:16px;
@@ -45,10 +45,10 @@ body {
     transition: width 1s;
     text-align: left;
 }
-#btnList .btn.selected {
+#btnList1 .btn.selected {
     width:728px;
 }
-#btnList .btn .filter{
+#btnList1 .btn .filter{
     width: 728px;
     height: 128px;
     background: url("../imgs/clue/btn.png") bottom no-repeat;
@@ -58,10 +58,10 @@ body {
     left:0;
     transition: width 1s;
 }
-#btnList .btn.selected .filter{
+#btnList1 .btn.selected .filter{
     filter: blur(5px);
 }
-#btnList .btn .sort {
+#btnList1 .btn .sort {
     width:70px;
     height:70px;
     line-height:70px;
@@ -76,44 +76,44 @@ body {
     border-radius: 35px;
     background: #FF5F5F;
 }
-#btnList .btn:nth-child(1) .sort{
+#btnList1 .btn:nth-child(1) .sort{
     background: url("../imgs/clue/sort1.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn:nth-child(2) .sort{
+#btnList1 .btn:nth-child(2) .sort{
     background: url("../imgs/clue/sort2.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn:nth-child(3) .sort{
+#btnList1 .btn:nth-child(3) .sort{
     background: url("../imgs/clue/sort3.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn:nth-child(4) .sort{
+#btnList1 .btn:nth-child(4) .sort{
     background: url("../imgs/clue/sort4.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn:nth-child(5) .sort{
+#btnList1 .btn:nth-child(5) .sort{
     background: url("../imgs/clue/sort5.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn:nth-child(6) .sort{
+#btnList1 .btn:nth-child(6) .sort{
     background: url("../imgs/clue/sort6.png") bottom no-repeat;
     background-size:100% 100%;
 }
-#btnList .btn .btn_info{
+#btnList1 .btn .btn_info{
     width: 540px;
     position: absolute;
     top:30px;
     left:170px;
     z-index: 20;
 }
-#btnList .btn.selected .btn_info h3{
+#btnList1 .btn.selected .btn_info h3{
     color:#29F7FE;
 }
-#btnList .btn.selected .btn_info p{
+#btnList1 .btn.selected .btn_info p{
     color:#16AAC2;
 }
-#btnList .btn .btn_info h3{
+#btnList1 .btn .btn_info h3{
     height:40px;
     line-height:40px;
     white-space:nowrap;
@@ -123,7 +123,7 @@ body {
     font-weight:normal;
     color:#01C2EC;
 }
-#btnList .btn .btn_info p{
+#btnList1 .btn .btn_info p{
     height:36px;
     line-height:36px;
     white-space:nowrap;
@@ -132,10 +132,10 @@ body {
     font-size: 16px;
     color:#5782AD;
 }
-#btnList .btn .btn_info p .btn_name {
+#btnList1 .btn .btn_info p .btn_name {
     margin-right:16px;
 }
-#btnSelected {
+#btnSelected1 {
     width:836px;
     height:176px;
     background: url("../imgs/clue/selected.png") center no-repeat;
@@ -146,7 +146,125 @@ body {
     z-index: 10;
     transition: top 1s;
 }
-/*左侧按钮组 end*/
+/*左侧按钮组1 end*/
+.notyou{
+    display: none;
+}
+/*左侧按钮组2 start*/
+#btnList2{
+    width:850px;
+    height:800px;
+    float: left;
+    margin:34px 16px 0 36px;
+    position: relative;
+}
+#btnList2 .btn{
+    width: 364px;
+    height: 256px;
+    margin:16px;
+    position: relative;
+    transition: width 1s;
+    text-align: left;
+}
+#btnList2 .btn.selected {
+    width:364px;
+}
+#btnList2 .btn .filter{
+    width: 364px;
+    height: 256px;
+    background: url("../imgs/clue/btn.png") bottom no-repeat;
+    background-size:364px 256px;
+    position: absolute;
+    top:0;
+    left:0;
+    transition: width 1s;
+}
+#btnList2 .btn.selected .filter{
+    filter: blur(5px);
+}
+#btnList2 .btn .sort {
+    width:70px;
+    height:70px;
+    line-height:70px;
+    position: absolute;
+    top:100px;
+    left:2px;
+    z-index: 20;
+    font-size: 32px;
+    font-weight:bold;
+    color:#fff;
+    text-align: center;
+    border-radius: 35px;
+    background: #FF5F5F;
+}
+#btnList2 .btn:nth-child(1) .sort{
+    background: url("../imgs/clue/sort1.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn:nth-child(2) .sort{
+    background: url("../imgs/clue/sort2.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn:nth-child(3) .sort{
+    background: url("../imgs/clue/sort3.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn:nth-child(4) .sort{
+    background: url("../imgs/clue/sort4.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn:nth-child(5) .sort{
+    background: url("../imgs/clue/sort5.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn:nth-child(6) .sort{
+    background: url("../imgs/clue/sort6.png") bottom no-repeat;
+    background-size:100% 100%;
+}
+#btnList2 .btn .btn_info{
+    width: 265px;
+    position: absolute;
+    top:30px;
+    left:85px;
+    z-index: 20;
+}
+#btnList2 .btn.selected .btn_info h3{
+    color:#29F7FE;
+}
+#btnList2 .btn.selected .btn_info p{
+    color:#16AAC2;
+}
+#btnList2 .btn .btn_info h3{
+    width: 265px;
+    height:130px;
+    line-height:40px;
+    white-space:normal;
+    font-size: 26px;
+    font-weight:normal;
+    color:#01C2EC;
+}
+#btnList2 .btn .btn_info p{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    color:#5782AD;
+}
+#btnList2 .btn .btn_info p .btn_name {
+    margin-right:16px;
+}
+#btnSelected2 {
+    width:418px;
+    height:352px;
+    background: url("../imgs/clue/selected.png") center no-repeat;
+    background-size:418px 352px;
+    position: absolute;
+    top:-30px;
+    left:-3px;
+    z-index: 10;
+    transition: top 1s,left 1s;
+}
+/*左侧按钮组2 end*/
 
 /*右侧详细内容 start*/
 #dataContainer{
