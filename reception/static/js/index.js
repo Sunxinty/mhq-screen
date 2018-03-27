@@ -117,10 +117,14 @@ function loadData(){
             if(result.data){
                 var RADIO_BG = result.data.imgtype;
                 changeBG("",RADIO_BG);     //背景
-                // var RADIO_THEME = result.data.themetype;
-                // if(RADIO_THEME===1){
-                //     Vue.set(Container,"list",Json.summer);  //主题
-                // }
+                var RADIO_THEME = result.data.theme;
+                if(RADIO_THEME===1){
+                    Vue.set(Container,"list",Json.summer);  //主题
+                    Vue.set(Container,"whichList",Json.summer[0]);
+                }else if(RADIO_THEME===2){
+                    Vue.set(Container,"list",Json.spring);  //主题
+                    Vue.set(Container,"whichList",Json.spring[0]);
+                }
             }
         },
         error:function(error){
