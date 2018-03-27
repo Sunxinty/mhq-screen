@@ -24,7 +24,7 @@ var Json = {
         {name:"线索汇聚",icon:"static/imgs/index/hlw.png",icon_s:"static/imgs/index/s_hlw.png",url:"../../MHQ/reception/view/clue.html"},
         {name:"串联单",icon:"static/imgs/index/cld.png",icon_s:"static/imgs/index/s_cld.png",url:"../../MHQ/reception/view/task.html"},
         {name:"手机素材",icon:"static/imgs/index/sjsc.png",icon_s:"static/imgs/index/s_sjsc.png",url:"../../MHQ/reception/view/pgc.html"},
-        {name:"内容库",icon:"static/imgs/index/nrk.png",icon_s:"static/imgs/index/s_nrk.png",url:"../../MHQ/reception/view//dataContainer.html"},
+        {name:"内容库",icon:"static/imgs/index/nrk.png",icon_s:"static/imgs/index/s_nrk.png",url:"../../MHQ/reception/view/dataContainer.html"},
         {name:"采访任务",icon:"static/imgs/index/cfbd.png",icon_s:"static/imgs/index/s_cfbd.png",url:"../../MHQ/reception/view/inter../../MHQ/reception/view/Task.html"},
         {name:"实时热点",icon:"static/imgs/index/rd.png",icon_s:"static/imgs/index/s_rd.png",url:"../../MHQ/reception/view/gis.html"},
         {name:"收视率排行",icon:"static/imgs/index/sslph.png",icon_s:"static/imgs/index/s_sslph.png",url:"../../MHQ/reception/view/ratings.html"},
