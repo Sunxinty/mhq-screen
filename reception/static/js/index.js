@@ -119,13 +119,7 @@ function loadData(){
                 var RADIO_BG = result.data.imgtype;
                 changeBG("",RADIO_BG);     //背景
                 var RADIO_THEME = result.data.theme;
-                if(RADIO_THEME===1){
-                    Vue.set(Container,"list",Json.summer);  //主题
-                    Vue.set(Container,"whichList",Json.summer[0]);
-                }else if(RADIO_THEME===2){
-                    Vue.set(Container,"list",Json.spring);  //主题
-                    Vue.set(Container,"whichList",Json.spring[0]);
-                }
+                changeTHEME(RADIO_THEME);  //主题
             }
         },
         error:function(error){
@@ -136,4 +130,14 @@ function loadData(){
 function changeBG(BG_URL,RADIO_BG){
     //更改背景
     $("body").css("background-image","url('static/imgs/index/bg"+RADIO_BG+".png')");
+}
+function changeTHEME(RADIO_THEME){
+    //更改主题
+    if(RADIO_THEME===1){
+        Vue.set(Container,"list",Json.summer);
+        Vue.set(Container,"whichList",Json.summer[0]);
+    }else if(RADIO_THEME===2){
+        Vue.set(Container,"list",Json.spring);
+        Vue.set(Container,"whichList",Json.spring[0]);
+    }
 }

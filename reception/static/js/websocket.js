@@ -23,6 +23,9 @@ function webSocket() {
             const BG_URL = result.backgroundurl||"";
             //更改背景
             changeBG(BG_URL,RADIO_BG);
+            const RADIO_THEME = parseInt(result.theme)||2;
+            //更改主题
+            changeTHEME(RADIO_THEME);
         };
         //连接关闭的回调方法
         websocket.onclose = function(){
